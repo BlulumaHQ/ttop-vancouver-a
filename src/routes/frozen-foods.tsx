@@ -38,34 +38,46 @@ const DESCRIPTIONS: Record<string, string> = {
   I3: "Boneless chicken leg with rehydrated dried shiitake, ginger and light seasoning. Gently braised, the chicken stays silky and drinks in the mushroom aroma. Serve over rice or simmer into congee.",
 };
 
-function ProductCard({ code, name, price, note, description }: {
-  code: string; name: string; price: string; note?: string; description: string;
+function ProductCard({
+  code, name, price, note, description, image, tone,
+}: {
+  code: string; name: string; price: string; note?: string;
+  description: string; image?: string; tone: "blue" | "red";
 }) {
+  const ring = tone === "blue" ? "border-[#1d418f]/15" : "border-[#ca3134]/20";
   return (
-    <article className="flex flex-col border border-[#1d418f]/20 bg-white p-6 transition-shadow hover:shadow-[6px_6px_0_0_#1d418f]">
-      <div className="mb-4 flex items-center justify-between">
-        <CodeChip tone="blue" size="md">{code}</CodeChip>
-        <span className="tabular text-2xl font-bold text-[#ca3134]">${price}</span>
+    <article className={`group flex flex-col overflow-hidden border ${ring} bg-white transition-shadow hover:shadow-[6px_6px_0_0_#1d418f]`}>
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#faf6ef]">
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="grid h-full place-items-center text-xs uppercase tracking-widest text-[#1d418f]/40">
+            Photo coming soon
+          </div>
+        )}
+        <span className="absolute left-3 top-3">
+          <CodeChip tone={tone}>{code}</CodeChip>
+        </span>
+        <span className="absolute right-3 top-3 rounded-sm bg-white/95 px-2.5 py-1 font-display text-lg font-bold tabular text-[#ca3134] shadow-sm">
+          ${price}
+        </span>
       </div>
-      <h3 className="font-display text-xl leading-tight text-[#1d418f]">
-        {name}
-      </h3>
-      {note && (
-        <p className="mt-2 text-[11px] font-semibold uppercase tracking-wider text-[#17233f]/60">
-          {note}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-display text-lg leading-tight text-[#1d418f]">{name}</h3>
+        {note && (
+          <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#17233f]/55">
+            {note}
+          </p>
+        )}
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#17233f]/80">
+          {description}
         </p>
-      )}
-      <p className="mt-4 flex-1 text-sm leading-relaxed text-[#17233f]/85">
-        {description}
-      </p>
-      <a
-        href="https://order.chatchefs.com/taiwan-taipei-original-pot-07b91840/13986-cambie-rd-unit-223-richmond-bc-v6v-2k3-29340aa5/menu"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-[#ca3134] hover:text-[#a5262a]"
-      >
-        Order Online →
-      </a>
+      </div>
     </article>
   );
 }
@@ -117,6 +129,8 @@ function FrozenFoodsPage() {
               price={it.price}
               note={it.note ?? undefined}
               description={DESCRIPTIONS[it.code] ?? ""}
+              image={it.image}
+              tone="blue"
             />
           ))}
         </div>
@@ -132,6 +146,8 @@ function FrozenFoodsPage() {
               name={it.name.replace(" (6 pcs)", "").replace(" (2 pcs)", "").replace(" (500g)", "")}
               price={it.price}
               description={DESCRIPTIONS[it.code] ?? ""}
+              image={it.image}
+              tone="red"
             />
           ))}
         </div>

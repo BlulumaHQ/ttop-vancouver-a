@@ -31,13 +31,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#1d418f]/15 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
-        <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl font-black tracking-tight text-[#1d418f]">
-            TTOP
-          </span>
-          <span className="font-display italic text-sm font-semibold tracking-wider text-[#ca3134]">
-            Chicken
-          </span>
+        <Link to="/" aria-label="TTOP Chicken — home" className="flex items-center gap-2">
+          <img
+            src="/images/ttop-logo-full.png"
+            alt="TTOP Chicken"
+            className="h-11 w-auto sm:h-12"
+            width={500}
+            height={500}
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -85,11 +86,14 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <OrderButton size="sm" className="hidden sm:inline-flex" />
-          <OrderButton size="sm" className="sm:hidden">Order</OrderButton>
+          <OrderButton size="sm" className="!px-3 sm:!px-4">
+            <span className="sm:hidden">Order</span>
+            <span className="hidden sm:inline">Order Online</span>
+          </OrderButton>
           <button
             aria-label="Toggle menu"
-            className="ml-1 grid h-10 w-10 place-items-center border border-[#1d418f]/20 text-[#1d418f] lg:hidden"
+            aria-expanded={open}
+            className="ml-1 grid h-10 w-10 place-items-center rounded-sm border border-[#1d418f]/25 text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white lg:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             <span className="text-xl leading-none">{open ? "✕" : "≡"}</span>
