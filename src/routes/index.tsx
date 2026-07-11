@@ -20,7 +20,7 @@ const PATHWAYS = [
   {
     code: "01",
     title: "Dine In & Take Out",
-    zh: "堂食・外帶",
+    accent: "Chicken Pot · Bentos",
     body: "Signature chicken pot, bentos, rice bowls and Taiwanese street snacks.",
     to: "/menu",
     cta: "View the Menu",
@@ -28,7 +28,7 @@ const PATHWAYS = [
   {
     code: "02",
     title: "Frozen Cooked Foods",
-    zh: "冷凍預製菜",
+    accent: "TTOP at Home",
     body: "Restaurant dishes, vacuum-packed and frozen. Heat, eat, done.",
     to: "/frozen-foods",
     cta: "Shop Frozen Foods",
@@ -36,7 +36,7 @@ const PATHWAYS = [
   {
     code: "03",
     title: "Schools, Daycares & Groups",
-    zh: "校園・團體",
+    accent: "Programs & Catering",
     body: "Hot lunch programs for schools and Montessori daycares, plus group ordering.",
     to: "/school-lunch",
     cta: "See Programs",
@@ -58,8 +58,8 @@ function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-24">
           {/* vertical ornament */}
           <div className="pointer-events-none absolute left-2 top-24 hidden lg:block" aria-hidden="true">
-            <div className="font-tc-serif text-3xl leading-[1.1] tracking-widest text-[#1d418f]/25 [writing-mode:vertical-rl]">
-              花雕雞
+            <div className="font-display text-[11px] font-black leading-[1.1] tracking-[0.5em] text-[#1d418f]/25 [writing-mode:vertical-rl]">
+              HUA · DIAO · CHICKEN
             </div>
           </div>
           <div className="relative lg:pl-14">
@@ -98,7 +98,7 @@ function Home() {
 
       {/* PATHWAYS */}
       <Section tone="white">
-        <SectionHead eyebrow="Three ways to enjoy" title="How to TTOP" chineseTitle="三種享用方式" />
+        <SectionHead eyebrow="Three ways to enjoy" title="How to TTOP" />
         <div className="grid gap-6 md:grid-cols-3">
           {PATHWAYS.map((p) => (
             <Link
@@ -109,7 +109,9 @@ function Home() {
               <div>
                 <div className="mb-5 flex items-center gap-3">
                   <CodeChip tone="blue" size="md">{p.code}</CodeChip>
-                  <span className="font-tc-serif text-lg text-[#ca3134]">{p.zh}</span>
+                  <span className="font-display italic text-xs font-semibold uppercase tracking-wider text-[#ca3134]">
+                    {p.accent}
+                  </span>
                 </div>
                 <h3 className="font-display text-2xl leading-tight text-[#1d418f]">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#17233f]/75">{p.body}</p>
@@ -135,7 +137,7 @@ function Home() {
             <img src="/images/food-portrait-03.jpg" alt="TTOP dish" className="aspect-[3/4] w-full object-cover" width={400} height={533} loading="lazy" />
           </div>
           <div>
-            <SectionHead eyebrow="A truly unique dining experience" title="Three tastes," chineseTitle="一鍋三味" chip="A" />
+            <SectionHead eyebrow="A truly unique dining experience" title="Three tastes," chip="A" />
             <p className="text-base leading-relaxed text-[#17233f]/85">
               Our chicken pots offer three different taste sensations all within
               one pot. From the moment the lid is lifted, you are greeted by the
@@ -171,7 +173,7 @@ function Home() {
             />
           </div>
           <div className="order-1 lg:order-2">
-            <SectionHead eyebrow="From our kitchen to yours" title="TTOP Chicken Pot" chineseTitle="花雕雞鍋" chip="H1" />
+            <SectionHead eyebrow="From our kitchen to yours" title="TTOP Chicken Pot" chip="H1" />
             <p className="text-base leading-relaxed text-[#17233f]/85">
               We transform the essence of traditional Taiwanese cuisine into
               every pot of our aromatic Chicken Pot. Top-quality, fresh chicken
@@ -196,7 +198,7 @@ function Home() {
 
       {/* REVIEWS */}
       <Section tone="cream">
-        <SectionHead eyebrow="What diners say" title="Real reviews" chineseTitle="食客留言" />
+        <SectionHead eyebrow="What diners say" title="Real reviews" />
         <div className="grid gap-6 md:grid-cols-2">
           {REVIEWS.map((r) => (
             <figure key={r.name} className="relative bg-white p-8 pl-14 shadow-sm">
@@ -242,7 +244,7 @@ function Home() {
       <Section tone="white">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
-            <SectionHead eyebrow="Visit us" title="Food Street, Richmond" chineseTitle="美食街" />
+            <SectionHead eyebrow="Visit us" title="Food Street, Richmond" />
             <dl className="space-y-3 text-sm text-[#17233f]/85">
               <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Address</dt>
                 <dd><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">{ADDRESS}</a></dd></div>

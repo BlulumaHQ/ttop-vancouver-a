@@ -29,9 +29,9 @@ const TRUST = [
 ];
 
 const PHASES = [
-  { n: "1", t: "Precise Planning", zh: "精準規劃", d: "Custom consultation, safety protocols, and a menu shaped to your school's budget and preferences." },
-  { n: "2", t: "Operational Excellence", zh: "卓越營運", d: "Temperature-controlled freshness, class-sorted delivery, meals labelled with class number and student name." },
-  { n: "3", t: "Easy Recovery", zh: "輕鬆復原", d: "Sustainable paper meal boxes designed for teachers and students — cleanup in about 3 minutes." },
+  { n: "1", t: "Precise Planning", accent: "Before day one", d: "Custom consultation, safety protocols, and a menu shaped to your school's budget and preferences." },
+  { n: "2", t: "Operational Excellence", accent: "Every school day", d: "Temperature-controlled freshness, class-sorted delivery, meals labelled with class number and student name." },
+  { n: "3", t: "Easy Recovery", accent: "After lunch", d: "Sustainable paper meal boxes designed for teachers and students — cleanup in about 3 minutes." },
 ];
 
 const SCHOOLS = [
@@ -72,7 +72,9 @@ function SchoolLunchPage() {
             <h1 className="font-display text-[42px] font-black leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
               Nutritious hot lunch for elementary <em className="italic text-[#ca3134]">schools</em>.
             </h1>
-            <p className="mt-3 font-tc-serif text-xl text-[#1d418f]/70">小學營養熟食午餐</p>
+            <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70">
+              Elementary hot lunch program
+            </p>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
               Weekly, monthly or seasonal ordering · Free delivery · Peanut-free & nut-free menu.
             </p>
@@ -83,7 +85,7 @@ function SchoolLunchPage() {
           </div>
           <div className="border border-[#1d418f]/25 bg-[#faf6ef] p-8">
             <div className="font-display text-5xl leading-tight text-[#1d418f] md:text-6xl">
-              300 <span className="font-tc-serif text-3xl text-[#ca3134]">students</span>.
+              300 <span className="italic font-display text-3xl text-[#ca3134]">students</span>.
             </div>
             <div className="mt-2 font-display text-5xl leading-tight text-[#1d418f] md:text-6xl">
               30 minutes.
@@ -102,7 +104,7 @@ function SchoolLunchPage() {
 
       {/* Zero friction */}
       <Section tone="cream">
-        <SectionHead eyebrow="How we deliver" title="The zero-friction school lunch" chineseTitle="無縫供餐" />
+        <SectionHead eyebrow="How we deliver" title="The zero-friction school lunch" />
         <div className="grid gap-6 md:grid-cols-2">
           {[
             ["Classroom-direct delivery","Meals arrive in three-layer insulated thermal bags, sorted by class, so school workflow is never disrupted."],
@@ -123,7 +125,7 @@ function SchoolLunchPage() {
 
       {/* Priorities */}
       <Section tone="white">
-        <SectionHead eyebrow="We know your priorities" title="What matters to your school" chineseTitle="家長與校方最在意的" />
+        <SectionHead eyebrow="We know your priorities" title="What matters to your school" />
         <div className="grid gap-4 md:grid-cols-3">
           {TRUST.map((t) => (
             <div key={t.t} className="border-l-2 border-[#ca3134] bg-[#faf6ef] p-5">
@@ -135,7 +137,9 @@ function SchoolLunchPage() {
         <div className="mt-10 border border-[#1d418f]/20 bg-[#1d418f] p-8 text-white md:p-10">
           <div className="flex flex-wrap items-baseline gap-3">
             <span className="font-display text-4xl md:text-5xl">Rainbow Index</span>
-            <span className="font-tc-serif text-xl text-white/70">彩虹指數</span>
+            <span className="font-display italic text-sm uppercase tracking-widest text-white/70">
+              a colour-based nutrition metric
+            </span>
           </div>
           <p className="mt-3 max-w-3xl text-white/85">
             In every four-week cycle, students are exposed to at least{" "}
@@ -147,7 +151,7 @@ function SchoolLunchPage() {
 
       {/* Partner schools */}
       <Section tone="cream">
-        <SectionHead eyebrow="Trusted by schools across Greater Vancouver since 2024" title="Our school partners" chineseTitle="合作學校" />
+        <SectionHead eyebrow="Trusted by schools across Greater Vancouver since 2024" title="Our school partners" />
         <div className="flex flex-wrap gap-x-6 gap-y-3">
           {SCHOOLS.map((s) => (
             <span key={s} className="border-b-2 border-[#1d418f]/25 pb-1 font-display text-lg text-[#17233f]">
@@ -159,7 +163,7 @@ function SchoolLunchPage() {
 
       {/* Testimonials */}
       <Section tone="white">
-        <SectionHead eyebrow="Notes from partner schools" title="What educators tell us" chineseTitle="來自校方的回饋" />
+        <SectionHead eyebrow="Notes from partner schools" title="What educators tell us" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (
             <figure key={t.s} className="relative border border-[#1d418f]/20 bg-white p-6 pt-10">
@@ -173,13 +177,13 @@ function SchoolLunchPage() {
 
       {/* Phases */}
       <Section tone="cream">
-        <SectionHead eyebrow="How partnership works" title="Three phases, one team" chineseTitle="三階段合作流程" />
+        <SectionHead eyebrow="How partnership works" title="Three phases, one team" />
         <div className="grid gap-6 md:grid-cols-3">
           {PHASES.map((p) => (
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
               <CodeChip tone="blue" size="lg">{p.n}</CodeChip>
               <h3 className="mt-4 font-display text-2xl text-[#1d418f]">{p.t}</h3>
-              <p className="mt-1 font-tc-serif text-sm text-[#ca3134]">{p.zh}</p>
+              <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]">{p.accent}</p>
               <p className="mt-4 text-sm text-[#17233f]/80">{p.d}</p>
             </div>
           ))}
@@ -204,7 +208,7 @@ function SchoolLunchPage() {
       <Section tone="white" id="inquiry">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
-            <SectionHead eyebrow="Book a consultation" title="Start a conversation" chineseTitle="校方諮詢" />
+            <SectionHead eyebrow="Book a consultation" title="Start a conversation" />
             <p className="text-sm leading-relaxed text-[#17233f]/85">
               Tell us a little about your school and we'll get back to you
               with a proposed menu, delivery plan and budget. You can also
@@ -240,7 +244,7 @@ function SchoolLunchPage() {
 
       {/* FAQ */}
       <Section tone="cream">
-        <SectionHead eyebrow="FAQ" title="What administrators ask" chineseTitle="常見問題" />
+        <SectionHead eyebrow="FAQ" title="What administrators ask" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
           {FAQS.map((f, i) => (
             <div key={i}>

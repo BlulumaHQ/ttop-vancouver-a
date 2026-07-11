@@ -37,6 +37,10 @@ export function SectionHead({
   chip?: string;
   onDark?: boolean;
 }) {
+  // chineseTitle is accepted for backward compatibility but no longer rendered —
+  // the site is English-primary. A serif italic red accent below the eyebrow
+  // preserves the red/blue visual variety.
+  void chineseTitle;
   return (
     <div className="mb-10 max-w-3xl">
       <div className="mb-4 flex items-center gap-3">
@@ -48,12 +52,7 @@ export function SectionHead({
         )}
       </div>
       <h2 className={`font-display text-4xl leading-[1.05] md:text-5xl ${onDark ? "text-white" : "text-[#1d418f]"}`}>
-        {title}{" "}
-        {chineseTitle && (
-          <span className={`font-tc-serif text-3xl md:text-4xl ${onDark ? "text-white/80" : "text-[#ca3134]"}`}>
-            {chineseTitle}
-          </span>
-        )}
+        {title}
       </h2>
       <RuleRedBlue className="mt-6 max-w-[220px]" />
     </div>

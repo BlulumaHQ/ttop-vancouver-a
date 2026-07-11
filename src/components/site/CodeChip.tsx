@@ -41,11 +41,11 @@ export function RuleRedBlue({ className = "" }: { className?: string }) {
 export function Seal({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#ca3134] bg-[#ca3134]/5 font-tc-serif text-[#ca3134] ${className}`}
+      className={`inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#ca3134] bg-[#ca3134]/5 font-display text-[#ca3134] ${className}`}
       aria-hidden="true"
     >
-      <span className="text-[10px] leading-tight text-center">
-        花<br />雕<br />雞
+      <span className="text-[11px] font-black leading-[1.05] tracking-wider">
+        TTOP
       </span>
     </div>
   );

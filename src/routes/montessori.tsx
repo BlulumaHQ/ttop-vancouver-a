@@ -34,9 +34,9 @@ const SUPPORTS = [
 ];
 
 const PHASES = [
-  { n: "1", t: "Precise Planning", zh: "精準規劃", d: "Custom consultation, safety protocols, budget matching and menus built for young children." },
-  { n: "2", t: "Operational Excellence", zh: "卓越營運", d: "Temperature-controlled freshness, class-sorted delivery system, 3-minute cleanup, silent-school delivery." },
-  { n: "3", t: "Easy Recovery", zh: "輕鬆復原", d: "Sustainable packaging, zero food waste, respectful of the prepared environment." },
+  { n: "1", t: "Precise Planning", accent: "Before day one", d: "Custom consultation, safety protocols, budget matching and menus built for young children." },
+  { n: "2", t: "Operational Excellence", accent: "Every school day", d: "Temperature-controlled freshness, class-sorted delivery system, 3-minute cleanup, silent-school delivery." },
+  { n: "3", t: "Easy Recovery", accent: "After lunch", d: "Sustainable packaging, zero food waste, respectful of the prepared environment." },
 ];
 
 function MontessoriPage() {
@@ -52,7 +52,9 @@ function MontessoriPage() {
             <h1 className="font-display text-[40px] font-black leading-[1.03] text-[#1d418f] md:text-[56px] lg:text-[68px]">
               Daily meal service that makes the lunch table an <em className="italic text-[#ca3134]">extension</em> of the classroom.
             </h1>
-            <p className="mt-3 font-tc-serif text-xl text-[#1d418f]/70">蒙特梭利每日膳食</p>
+            <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70">
+              Montessori daily meal service
+            </p>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
               The classroom is a prepared environment. Why should the lunch table be any different?
             </p>
@@ -71,7 +73,7 @@ function MontessoriPage() {
       </section>
 
       <Section tone="white">
-        <SectionHead eyebrow="Four pillars" title="How we support the environment" chineseTitle="四大核心" />
+        <SectionHead eyebrow="Four pillars" title="How we support the environment" />
         <div className="grid gap-6 md:grid-cols-2">
           {PILLARS.map(([t, d], i) => (
             <div key={t} className="flex gap-5 border-l-2 border-[#ca3134] bg-[#faf6ef] p-6">
@@ -88,7 +90,7 @@ function MontessoriPage() {
       <Section tone="cream">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHead eyebrow="Our menu supports" title="A prepared table" chineseTitle="餐桌即教室" />
+            <SectionHead eyebrow="Our menu supports" title="A prepared table" />
             <ul className="space-y-3 text-sm text-[#17233f]/85">
               {SUPPORTS.map((s) => (
                 <li key={s} className="flex items-start gap-3">
@@ -109,13 +111,13 @@ function MontessoriPage() {
       </Section>
 
       <Section tone="white">
-        <SectionHead eyebrow="How partnership works" title="Three phases, one team" chineseTitle="三階段合作流程" />
+        <SectionHead eyebrow="How partnership works" title="Three phases, one team" />
         <div className="grid gap-6 md:grid-cols-3">
           {PHASES.map((p) => (
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
               <CodeChip tone="blue" size="lg">{p.n}</CodeChip>
               <h3 className="mt-4 font-display text-2xl text-[#1d418f]">{p.t}</h3>
-              <p className="mt-1 font-tc-serif text-sm text-[#ca3134]">{p.zh}</p>
+              <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]">{p.accent}</p>
               <p className="mt-4 text-sm text-[#17233f]/80">{p.d}</p>
             </div>
           ))}
@@ -133,7 +135,7 @@ function MontessoriPage() {
       <Section tone="white" id="inquiry">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
-            <SectionHead eyebrow="Book a consultation" title="Start a conversation" chineseTitle="幼兒園諮詢" />
+            <SectionHead eyebrow="Book a consultation" title="Start a conversation" />
             <p className="text-sm leading-relaxed text-[#17233f]/85">
               Tell us about your centre and we'll follow up with a menu plan
               tailored to your children's ages and your daily rhythm. Reach us

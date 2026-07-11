@@ -10,7 +10,7 @@ export const Route = createFileRoute("/frozen-foods")({
   component: FrozenFoodsPage,
   head: () => ({
     meta: [
-      { title: "Frozen Cooked Foods 冷凍預製菜 | TTOP Chicken" },
+      { title: "Frozen Cooked Foods | TTOP Chicken" },
       { name: "description", content: "TTOP at Home — restaurant dishes vacuum-packed and frozen the day they're cooked. Chicken pot, beef noodle, LOBA sauce and more, available in Richmond, BC." },
       { property: "og:title", content: "Frozen Cooked Foods | TTOP Chicken" },
       { property: "og:description", content: "Restaurant dishes, vacuum-packed and frozen the day they're cooked." },
@@ -38,8 +38,8 @@ const DESCRIPTIONS: Record<string, string> = {
   I3: "Boneless chicken leg with rehydrated dried shiitake, ginger and light seasoning. Gently braised, the chicken stays silky and drinks in the mushroom aroma. Serve over rice or simmer into congee.",
 };
 
-function ProductCard({ code, name, zh, price, note, description }: {
-  code: string; name: string; zh: string; price: string; note?: string; description: string;
+function ProductCard({ code, name, price, note, description }: {
+  code: string; name: string; price: string; note?: string; description: string;
 }) {
   return (
     <article className="flex flex-col border border-[#1d418f]/20 bg-white p-6 transition-shadow hover:shadow-[6px_6px_0_0_#1d418f]">
@@ -50,7 +50,6 @@ function ProductCard({ code, name, zh, price, note, description }: {
       <h3 className="font-display text-xl leading-tight text-[#1d418f]">
         {name}
       </h3>
-      <p className="mt-1 font-tc-sans text-sm text-[#17233f]/70">{zh}</p>
       {note && (
         <p className="mt-2 text-[11px] font-semibold uppercase tracking-wider text-[#17233f]/60">
           {note}
@@ -90,7 +89,6 @@ function FrozenFoodsPage() {
             </div>
             <h1 className="font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
               Frozen<br /><em className="italic text-[#ca3134]">Cooked</em> Foods
-              <span className="mt-3 block font-tc-serif text-2xl text-[#1d418f]/70 md:text-3xl">冷凍預製菜</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
               Restaurant dishes, vacuum-packed and frozen the day they're cooked. Heat, eat, done.
@@ -109,14 +107,13 @@ function FrozenFoodsPage() {
       </section>
 
       <Section tone="white">
-        <SectionHead eyebrow="Frozen Cooked" title="Ready in minutes" chineseTitle="冷凍預製菜" chip="H" />
+        <SectionHead eyebrow="Frozen Cooked" title="Ready in minutes" chip="H" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {FROZEN_H.items.map((it) => (
             <ProductCard
               key={it.code}
               code={it.code}
               name={it.name.replace(" (500g)", "").replace(" (400g)", "").replace(" (550g)", "").replace(" (250g)", "").replace(" (2 pcs)", "")}
-              zh={it.zh}
               price={it.price}
               note={it.note ?? undefined}
               description={DESCRIPTIONS[it.code] ?? ""}
@@ -126,14 +123,13 @@ function FrozenFoodsPage() {
       </Section>
 
       <Section tone="cream">
-        <SectionHead eyebrow="Frozen Raw" title="For your own kitchen" chineseTitle="冷凍食品" chip="I" />
+        <SectionHead eyebrow="Frozen Raw" title="For your own kitchen" chip="I" />
         <div className="grid gap-6 md:grid-cols-3">
           {FROZEN_I.items.map((it) => (
             <ProductCard
               key={it.code}
               code={it.code}
               name={it.name.replace(" (6 pcs)", "").replace(" (2 pcs)", "").replace(" (500g)", "")}
-              zh={it.zh}
               price={it.price}
               description={DESCRIPTIONS[it.code] ?? ""}
             />
@@ -181,7 +177,7 @@ function FrozenFoodsPage() {
 
       {/* FAQ */}
       <Section tone="cream">
-        <SectionHead eyebrow="Good to know" title="Frozen FAQ" chineseTitle="常見問題" />
+        <SectionHead eyebrow="Good to know" title="Frozen FAQ" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
           {FAQS.map((f, i) => (
             <div key={i}>

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About TTOP Chicken — Our Story | TTOP Chicken" },
-      { name: "description", content: "A love letter to the people who raised us. The Lee brothers — Albert & Eric — bring three generations of Taiwanese family cooking to Richmond, BC through TTOP 花雕雞." },
+      { name: "description", content: "A love letter to the people who raised us. The Lee brothers — Albert & Eric — bring three generations of Taiwanese family cooking to Richmond, BC through TTOP Chicken." },
       { property: "og:title", content: "About TTOP Chicken — Our Story" },
       { property: "og:description", content: "A first-generation Taiwanese immigrant journey, woven from passion, love, and the taste of home." },
       { property: "og:url", content: "/about" },
@@ -33,7 +33,9 @@ function AboutPage() {
             A love letter to the<br />
             <em className="italic text-[#ca3134]">people who raised us.</em>
           </h1>
-          <p className="mt-4 font-tc-serif text-2xl text-[#1d418f]/70">寫給養育我們的人</p>
+          <p className="mt-4 font-display italic text-lg tracking-wider text-[#1d418f]/70">
+            A Taiwanese-Canadian family story.
+          </p>
         </div>
       </section>
 
@@ -80,7 +82,7 @@ function AboutPage() {
 
       {/* What we cook */}
       <Section tone="cream">
-        <SectionHead eyebrow="What we cook" title="A unique dining experience" chineseTitle="一鍋三味" chip="A" />
+        <SectionHead eyebrow="What we cook" title="A unique dining experience" chip="A" />
         <div className="mx-auto max-w-3xl text-base leading-relaxed text-[#17233f]/85">
           <p>
             Taiwan Taipei Original Pot provides its Vancouver diners with a

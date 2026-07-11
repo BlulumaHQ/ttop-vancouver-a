@@ -33,7 +33,9 @@ function CateringPage() {
             Catering &<br />
             <em className="italic text-[#ca3134]">Group Orders</em>
           </h1>
-          <p className="mt-4 font-tc-serif text-2xl text-[#1d418f]/70">團體訂餐</p>
+          <p className="mt-4 font-display italic text-lg tracking-wider text-[#1d418f]/70">
+            One week's notice for large parties.
+          </p>
           <p className="mt-8 text-lg text-[#17233f]/85">
             Bentos, chicken pots and Taiwanese street snacks for your team or
             event. Companies and groups welcome — for large orders, please
@@ -43,7 +45,7 @@ function CateringPage() {
       </section>
 
       <Section tone="cream">
-        <SectionHead eyebrow="Two ways to order" title="How it works" chineseTitle="訂餐方式" />
+        <SectionHead eyebrow="Two ways to order" title="How it works" />
         <div className="grid gap-6 md:grid-cols-2">
           <div className="border border-[#1d418f]/20 bg-white p-8">
             <CodeChip tone="blue" size="lg">01</CodeChip>
@@ -75,7 +77,7 @@ function CateringPage() {
       <Section tone="white" id="inquiry">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
           <div>
-            <SectionHead eyebrow="Send an inquiry" title="Tell us about your order" chineseTitle="團體訂餐諮詢" />
+            <SectionHead eyebrow="Send an inquiry" title="Tell us about your order" />
             <p className="text-sm leading-relaxed text-[#17233f]/85">
               A few details help us put together the right plan. We'll get
               back to you with recommendations, quantities and pickup timing.

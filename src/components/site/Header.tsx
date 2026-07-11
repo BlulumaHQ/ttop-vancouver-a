@@ -35,7 +35,9 @@ export function Header() {
           <span className="font-display text-2xl font-black tracking-tight text-[#1d418f]">
             TTOP
           </span>
-          <span className="font-tc-serif text-lg text-[#ca3134]">花雕雞</span>
+          <span className="font-display italic text-sm font-semibold tracking-wider text-[#ca3134]">
+            Chicken
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
