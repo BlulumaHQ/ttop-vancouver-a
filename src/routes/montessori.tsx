@@ -73,7 +73,7 @@ function MontessoriPage() {
       </section>
 
       <Section tone="white">
-        <SectionHead eyebrow="Four pillars" title="How we support the environment" chineseTitle="四大核心" />
+        <SectionHead eyebrow="Four pillars" title="How we support the environment" />
         <div className="grid gap-6 md:grid-cols-2">
           {PILLARS.map(([t, d], i) => (
             <div key={t} className="flex gap-5 border-l-2 border-[#ca3134] bg-[#faf6ef] p-6">
@@ -90,7 +90,7 @@ function MontessoriPage() {
       <Section tone="cream">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHead eyebrow="Our menu supports" title="A prepared table" chineseTitle="餐桌即教室" />
+            <SectionHead eyebrow="Our menu supports" title="A prepared table" />
             <ul className="space-y-3 text-sm text-[#17233f]/85">
               {SUPPORTS.map((s) => (
                 <li key={s} className="flex items-start gap-3">
@@ -111,7 +111,7 @@ function MontessoriPage() {
       </Section>
 
       <Section tone="white">
-        <SectionHead eyebrow="How partnership works" title="Three phases, one team" chineseTitle="三階段合作流程" />
+        <SectionHead eyebrow="How partnership works" title="Three phases, one team" />
         <div className="grid gap-6 md:grid-cols-3">
           {PHASES.map((p) => (
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
@@ -135,7 +135,7 @@ function MontessoriPage() {
       <Section tone="white" id="inquiry">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
-            <SectionHead eyebrow="Book a consultation" title="Start a conversation" chineseTitle="幼兒園諮詢" />
+            <SectionHead eyebrow="Book a consultation" title="Start a conversation" />
             <p className="text-sm leading-relaxed text-[#17233f]/85">
               Tell us about your centre and we'll follow up with a menu plan
               tailored to your children's ages and your daily rhythm. Reach us

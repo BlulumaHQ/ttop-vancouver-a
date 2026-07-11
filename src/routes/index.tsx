@@ -98,7 +98,7 @@ function Home() {
 
       {/* PATHWAYS */}
       <Section tone="white">
-        <SectionHead eyebrow="Three ways to enjoy" title="How to TTOP" chineseTitle="三種享用方式" />
+        <SectionHead eyebrow="Three ways to enjoy" title="How to TTOP" />
         <div className="grid gap-6 md:grid-cols-3">
           {PATHWAYS.map((p) => (
             <Link
@@ -137,7 +137,7 @@ function Home() {
             <img src="/images/food-portrait-03.jpg" alt="TTOP dish" className="aspect-[3/4] w-full object-cover" width={400} height={533} loading="lazy" />
           </div>
           <div>
-            <SectionHead eyebrow="A truly unique dining experience" title="Three tastes," chineseTitle="一鍋三味" chip="A" />
+            <SectionHead eyebrow="A truly unique dining experience" title="Three tastes," chip="A" />
             <p className="text-base leading-relaxed text-[#17233f]/85">
               Our chicken pots offer three different taste sensations all within
               one pot. From the moment the lid is lifted, you are greeted by the
@@ -173,7 +173,7 @@ function Home() {
             />
           </div>
           <div className="order-1 lg:order-2">
-            <SectionHead eyebrow="From our kitchen to yours" title="TTOP Chicken Pot" chineseTitle="花雕雞鍋" chip="H1" />
+            <SectionHead eyebrow="From our kitchen to yours" title="TTOP Chicken Pot" chip="H1" />
             <p className="text-base leading-relaxed text-[#17233f]/85">
               We transform the essence of traditional Taiwanese cuisine into
               every pot of our aromatic Chicken Pot. Top-quality, fresh chicken
@@ -198,7 +198,7 @@ function Home() {
 
       {/* REVIEWS */}
       <Section tone="cream">
-        <SectionHead eyebrow="What diners say" title="Real reviews" chineseTitle="食客留言" />
+        <SectionHead eyebrow="What diners say" title="Real reviews" />
         <div className="grid gap-6 md:grid-cols-2">
           {REVIEWS.map((r) => (
             <figure key={r.name} className="relative bg-white p-8 pl-14 shadow-sm">
@@ -244,7 +244,7 @@ function Home() {
       <Section tone="white">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
-            <SectionHead eyebrow="Visit us" title="Food Street, Richmond" chineseTitle="美食街" />
+            <SectionHead eyebrow="Visit us" title="Food Street, Richmond" />
             <dl className="space-y-3 text-sm text-[#17233f]/85">
               <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Address</dt>
                 <dd><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">{ADDRESS}</a></dd></div>

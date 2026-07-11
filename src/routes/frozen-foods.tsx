@@ -107,7 +107,7 @@ function FrozenFoodsPage() {
       </section>
 
       <Section tone="white">
-        <SectionHead eyebrow="Frozen Cooked" title="Ready in minutes" chineseTitle="冷凍預製菜" chip="H" />
+        <SectionHead eyebrow="Frozen Cooked" title="Ready in minutes" chip="H" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {FROZEN_H.items.map((it) => (
             <ProductCard
@@ -123,7 +123,7 @@ function FrozenFoodsPage() {
       </Section>
 
       <Section tone="cream">
-        <SectionHead eyebrow="Frozen Raw" title="For your own kitchen" chineseTitle="冷凍食品" chip="I" />
+        <SectionHead eyebrow="Frozen Raw" title="For your own kitchen" chip="I" />
         <div className="grid gap-6 md:grid-cols-3">
           {FROZEN_I.items.map((it) => (
             <ProductCard
@@ -177,7 +177,7 @@ function FrozenFoodsPage() {
 
       {/* FAQ */}
       <Section tone="cream">
-        <SectionHead eyebrow="Good to know" title="Frozen FAQ" chineseTitle="常見問題" />
+        <SectionHead eyebrow="Good to know" title="Frozen FAQ" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
           {FAQS.map((f, i) => (
             <div key={i}>

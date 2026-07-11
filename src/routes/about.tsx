@@ -82,7 +82,7 @@ function AboutPage() {
 
       {/* What we cook */}
       <Section tone="cream">
-        <SectionHead eyebrow="What we cook" title="A unique dining experience" chineseTitle="一鍋三味" chip="A" />
+        <SectionHead eyebrow="What we cook" title="A unique dining experience" chip="A" />
         <div className="mx-auto max-w-3xl text-base leading-relaxed text-[#17233f]/85">
           <p>
             Taiwan Taipei Original Pot provides its Vancouver diners with a

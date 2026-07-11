@@ -104,7 +104,7 @@ function SchoolLunchPage() {
 
       {/* Zero friction */}
       <Section tone="cream">
-        <SectionHead eyebrow="How we deliver" title="The zero-friction school lunch" chineseTitle="無縫供餐" />
+        <SectionHead eyebrow="How we deliver" title="The zero-friction school lunch" />
         <div className="grid gap-6 md:grid-cols-2">
           {[
             ["Classroom-direct delivery","Meals arrive in three-layer insulated thermal bags, sorted by class, so school workflow is never disrupted."],
@@ -125,7 +125,7 @@ function SchoolLunchPage() {
 
       {/* Priorities */}
       <Section tone="white">
-        <SectionHead eyebrow="We know your priorities" title="What matters to your school" chineseTitle="家長與校方最在意的" />
+        <SectionHead eyebrow="We know your priorities" title="What matters to your school" />
         <div className="grid gap-4 md:grid-cols-3">
           {TRUST.map((t) => (
             <div key={t.t} className="border-l-2 border-[#ca3134] bg-[#faf6ef] p-5">
@@ -151,7 +151,7 @@ function SchoolLunchPage() {
 
       {/* Partner schools */}
       <Section tone="cream">
-        <SectionHead eyebrow="Trusted by schools across Greater Vancouver since 2024" title="Our school partners" chineseTitle="合作學校" />
+        <SectionHead eyebrow="Trusted by schools across Greater Vancouver since 2024" title="Our school partners" />
         <div className="flex flex-wrap gap-x-6 gap-y-3">
           {SCHOOLS.map((s) => (
             <span key={s} className="border-b-2 border-[#1d418f]/25 pb-1 font-display text-lg text-[#17233f]">
@@ -163,7 +163,7 @@ function SchoolLunchPage() {
 
       {/* Testimonials */}
       <Section tone="white">
-        <SectionHead eyebrow="Notes from partner schools" title="What educators tell us" chineseTitle="來自校方的回饋" />
+        <SectionHead eyebrow="Notes from partner schools" title="What educators tell us" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (
             <figure key={t.s} className="relative border border-[#1d418f]/20 bg-white p-6 pt-10">
@@ -177,7 +177,7 @@ function SchoolLunchPage() {
 
       {/* Phases */}
       <Section tone="cream">
-        <SectionHead eyebrow="How partnership works" title="Three phases, one team" chineseTitle="三階段合作流程" />
+        <SectionHead eyebrow="How partnership works" title="Three phases, one team" />
         <div className="grid gap-6 md:grid-cols-3">
           {PHASES.map((p) => (
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
@@ -208,7 +208,7 @@ function SchoolLunchPage() {
       <Section tone="white" id="inquiry">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
-            <SectionHead eyebrow="Book a consultation" title="Start a conversation" chineseTitle="校方諮詢" />
+            <SectionHead eyebrow="Book a consultation" title="Start a conversation" />
             <p className="text-sm leading-relaxed text-[#17233f]/85">
               Tell us a little about your school and we'll get back to you
               with a proposed menu, delivery plan and budget. You can also
@@ -244,7 +244,7 @@ function SchoolLunchPage() {
 
       {/* FAQ */}
       <Section tone="cream">
-        <SectionHead eyebrow="FAQ" title="What administrators ask" chineseTitle="常見問題" />
+        <SectionHead eyebrow="FAQ" title="What administrators ask" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
           {FAQS.map((f, i) => (
             <div key={i}>
