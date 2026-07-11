@@ -86,11 +86,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <OrderButton size="sm" className="hidden sm:inline-flex">
-            Order Online
-          </OrderButton>
-          <OrderButton size="sm" className="sm:hidden !px-3 !py-2">
-            Order
+          <OrderButton size="sm" className="!px-3 sm:!px-4">
+            <span className="sm:hidden">Order</span>
+            <span className="hidden sm:inline">Order Online</span>
           </OrderButton>
           <button
             aria-label="Toggle menu"
