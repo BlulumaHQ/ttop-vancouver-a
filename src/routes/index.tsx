@@ -20,7 +20,7 @@ const PATHWAYS = [
   {
     code: "01",
     title: "Dine In & Take Out",
-    zh: "堂食・外帶",
+    accent: "Chicken Pot · Bentos",
     body: "Signature chicken pot, bentos, rice bowls and Taiwanese street snacks.",
     to: "/menu",
     cta: "View the Menu",
@@ -28,7 +28,7 @@ const PATHWAYS = [
   {
     code: "02",
     title: "Frozen Cooked Foods",
-    zh: "冷凍預製菜",
+    accent: "TTOP at Home",
     body: "Restaurant dishes, vacuum-packed and frozen. Heat, eat, done.",
     to: "/frozen-foods",
     cta: "Shop Frozen Foods",
@@ -36,7 +36,7 @@ const PATHWAYS = [
   {
     code: "03",
     title: "Schools, Daycares & Groups",
-    zh: "校園・團體",
+    accent: "Programs & Catering",
     body: "Hot lunch programs for schools and Montessori daycares, plus group ordering.",
     to: "/school-lunch",
     cta: "See Programs",
@@ -58,8 +58,8 @@ function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-24">
           {/* vertical ornament */}
           <div className="pointer-events-none absolute left-2 top-24 hidden lg:block" aria-hidden="true">
-            <div className="font-tc-serif text-3xl leading-[1.1] tracking-widest text-[#1d418f]/25 [writing-mode:vertical-rl]">
-              花雕雞
+            <div className="font-display text-[11px] font-black leading-[1.1] tracking-[0.5em] text-[#1d418f]/25 [writing-mode:vertical-rl]">
+              HUA · DIAO · CHICKEN
             </div>
           </div>
           <div className="relative lg:pl-14">
@@ -109,7 +109,9 @@ function Home() {
               <div>
                 <div className="mb-5 flex items-center gap-3">
                   <CodeChip tone="blue" size="md">{p.code}</CodeChip>
-                  <span className="font-tc-serif text-lg text-[#ca3134]">{p.zh}</span>
+                  <span className="font-display italic text-xs font-semibold uppercase tracking-wider text-[#ca3134]">
+                    {p.accent}
+                  </span>
                 </div>
                 <h3 className="font-display text-2xl leading-tight text-[#1d418f]">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#17233f]/75">{p.body}</p>

@@ -34,9 +34,9 @@ const SUPPORTS = [
 ];
 
 const PHASES = [
-  { n: "1", t: "Precise Planning", zh: "精準規劃", d: "Custom consultation, safety protocols, budget matching and menus built for young children." },
-  { n: "2", t: "Operational Excellence", zh: "卓越營運", d: "Temperature-controlled freshness, class-sorted delivery system, 3-minute cleanup, silent-school delivery." },
-  { n: "3", t: "Easy Recovery", zh: "輕鬆復原", d: "Sustainable packaging, zero food waste, respectful of the prepared environment." },
+  { n: "1", t: "Precise Planning", accent: "Before day one", d: "Custom consultation, safety protocols, budget matching and menus built for young children." },
+  { n: "2", t: "Operational Excellence", accent: "Every school day", d: "Temperature-controlled freshness, class-sorted delivery system, 3-minute cleanup, silent-school delivery." },
+  { n: "3", t: "Easy Recovery", accent: "After lunch", d: "Sustainable packaging, zero food waste, respectful of the prepared environment." },
 ];
 
 function MontessoriPage() {
@@ -52,7 +52,9 @@ function MontessoriPage() {
             <h1 className="font-display text-[40px] font-black leading-[1.03] text-[#1d418f] md:text-[56px] lg:text-[68px]">
               Daily meal service that makes the lunch table an <em className="italic text-[#ca3134]">extension</em> of the classroom.
             </h1>
-            <p className="mt-3 font-tc-serif text-xl text-[#1d418f]/70">蒙特梭利每日膳食</p>
+            <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70">
+              Montessori daily meal service
+            </p>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
               The classroom is a prepared environment. Why should the lunch table be any different?
             </p>
@@ -115,7 +117,7 @@ function MontessoriPage() {
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
               <CodeChip tone="blue" size="lg">{p.n}</CodeChip>
               <h3 className="mt-4 font-display text-2xl text-[#1d418f]">{p.t}</h3>
-              <p className="mt-1 font-tc-serif text-sm text-[#ca3134]">{p.zh}</p>
+              <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]">{p.accent}</p>
               <p className="mt-4 text-sm text-[#17233f]/80">{p.d}</p>
             </div>
           ))}

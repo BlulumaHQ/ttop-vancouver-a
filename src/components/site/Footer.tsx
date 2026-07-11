@@ -11,7 +11,9 @@ export function Footer() {
         <div>
           <div className="flex items-baseline gap-2">
             <span className="font-display text-3xl font-black">TTOP</span>
-            <span className="font-tc-serif text-xl text-white/80">花雕雞</span>
+            <span className="font-display italic text-base tracking-wider text-[#ffb6b6]">
+              Chicken
+            </span>
           </div>
           <p className="mt-3 max-w-xs text-sm text-white/70">
             Taiwan Taipei Original Pot — authentic Taiwanese bentos, chicken pot

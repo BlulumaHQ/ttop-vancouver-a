@@ -29,9 +29,9 @@ const TRUST = [
 ];
 
 const PHASES = [
-  { n: "1", t: "Precise Planning", zh: "精準規劃", d: "Custom consultation, safety protocols, and a menu shaped to your school's budget and preferences." },
-  { n: "2", t: "Operational Excellence", zh: "卓越營運", d: "Temperature-controlled freshness, class-sorted delivery, meals labelled with class number and student name." },
-  { n: "3", t: "Easy Recovery", zh: "輕鬆復原", d: "Sustainable paper meal boxes designed for teachers and students — cleanup in about 3 minutes." },
+  { n: "1", t: "Precise Planning", accent: "Before day one", d: "Custom consultation, safety protocols, and a menu shaped to your school's budget and preferences." },
+  { n: "2", t: "Operational Excellence", accent: "Every school day", d: "Temperature-controlled freshness, class-sorted delivery, meals labelled with class number and student name." },
+  { n: "3", t: "Easy Recovery", accent: "After lunch", d: "Sustainable paper meal boxes designed for teachers and students — cleanup in about 3 minutes." },
 ];
 
 const SCHOOLS = [
@@ -72,7 +72,9 @@ function SchoolLunchPage() {
             <h1 className="font-display text-[42px] font-black leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
               Nutritious hot lunch for elementary <em className="italic text-[#ca3134]">schools</em>.
             </h1>
-            <p className="mt-3 font-tc-serif text-xl text-[#1d418f]/70">小學營養熟食午餐</p>
+            <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70">
+              Elementary hot lunch program
+            </p>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
               Weekly, monthly or seasonal ordering · Free delivery · Peanut-free & nut-free menu.
             </p>
@@ -83,7 +85,7 @@ function SchoolLunchPage() {
           </div>
           <div className="border border-[#1d418f]/25 bg-[#faf6ef] p-8">
             <div className="font-display text-5xl leading-tight text-[#1d418f] md:text-6xl">
-              300 <span className="font-tc-serif text-3xl text-[#ca3134]">students</span>.
+              300 <span className="italic font-display text-3xl text-[#ca3134]">students</span>.
             </div>
             <div className="mt-2 font-display text-5xl leading-tight text-[#1d418f] md:text-6xl">
               30 minutes.
@@ -135,7 +137,9 @@ function SchoolLunchPage() {
         <div className="mt-10 border border-[#1d418f]/20 bg-[#1d418f] p-8 text-white md:p-10">
           <div className="flex flex-wrap items-baseline gap-3">
             <span className="font-display text-4xl md:text-5xl">Rainbow Index</span>
-            <span className="font-tc-serif text-xl text-white/70">彩虹指數</span>
+            <span className="font-display italic text-sm uppercase tracking-widest text-white/70">
+              a colour-based nutrition metric
+            </span>
           </div>
           <p className="mt-3 max-w-3xl text-white/85">
             In every four-week cycle, students are exposed to at least{" "}
@@ -179,7 +183,7 @@ function SchoolLunchPage() {
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
               <CodeChip tone="blue" size="lg">{p.n}</CodeChip>
               <h3 className="mt-4 font-display text-2xl text-[#1d418f]">{p.t}</h3>
-              <p className="mt-1 font-tc-serif text-sm text-[#ca3134]">{p.zh}</p>
+              <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]">{p.accent}</p>
               <p className="mt-4 text-sm text-[#17233f]/80">{p.d}</p>
             </div>
           ))}

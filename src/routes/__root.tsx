@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Taiwanese Bento & Chicken Pot in Richmond, BC | TTOP Chicken" },
-      { name: "description", content: "TTOP 花雕雞 (Taiwan Taipei Original Pot) serves authentic Taiwanese chicken pot, bentos and street snacks in Richmond, BC — dine in, order online, take home frozen cooked foods, or book our school hot-lunch and Montessori meal programs." },
+      { name: "description", content: "Taiwan Taipei Original Pot serves authentic Taiwanese chicken pot, bentos and street snacks in Richmond, BC — dine in, order online, take home frozen cooked foods, or book our school hot-lunch and Montessori meal programs." },
       { name: "author", content: "TTOP Chicken" },
       { property: "og:site_name", content: "TTOP Chicken" },
       { property: "og:title", content: "Taiwanese Bento & Chicken Pot in Richmond, BC | TTOP Chicken" },

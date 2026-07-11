@@ -33,7 +33,9 @@ function CateringPage() {
             Catering &<br />
             <em className="italic text-[#ca3134]">Group Orders</em>
           </h1>
-          <p className="mt-4 font-tc-serif text-2xl text-[#1d418f]/70">團體訂餐</p>
+          <p className="mt-4 font-display italic text-lg tracking-wider text-[#1d418f]/70">
+            One week's notice for large parties.
+          </p>
           <p className="mt-8 text-lg text-[#17233f]/85">
             Bentos, chicken pots and Taiwanese street snacks for your team or
             event. Companies and groups welcome — for large orders, please
