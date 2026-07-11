@@ -17,6 +17,118 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+const HERO_SLIDES = [
+  {
+    eyebrow: "Taiwan Taipei Original Pot",
+    titleTop: "Old-world",
+    titleTopItalic: true,
+    titleRest: (
+      <>
+        {" "}flavour.<br />Maximum<br />authenticity.
+      </>
+    ),
+    body: "Taiwan Taipei Original Pot prepares its chicken according to old world cooking methods, ensuring the maximum flavour and authenticity for Vancouver diners to enjoy.",
+    image: "/images/home-hero-01.jpg",
+    imageAlt: "TTOP signature chicken pot",
+    primaryLabel: "Order Online",
+    secondaryHref: "/menu",
+    secondaryLabel: "View Menu",
+    frame: "blue" as const,
+  },
+  {
+    eyebrow: "Loyalty Rewards",
+    titleTop: "Every $20",
+    titleTopItalic: true,
+    titleRest: (
+      <>
+        {" "}earns<br />a star. Stars<br />never expire.
+      </>
+    ),
+    body: "Redeem in-store for free drinks, rice bowls, bentos and discounts up to $100 off. Ask our team the next time you visit.",
+    image: "/images/promo-high-value-meal.png",
+    imageAlt: "TTOP loyalty rewards",
+    primaryLabel: "Order & Earn Stars",
+    secondaryHref: "/menu",
+    secondaryLabel: "See the Menu",
+    frame: "red" as const,
+  },
+];
+
+function HeroSlider() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((v) => (v + 1) % HERO_SLIDES.length), 7000);
+    return () => clearInterval(id);
+  }, []);
+  const slide = HERO_SLIDES[i];
+  return (
+    <section className="relative overflow-hidden bg-[#faf6ef]">
+      <div className="mx-auto grid max-w-7xl items-stretch gap-10 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-24">
+        <div className="pointer-events-none absolute left-2 top-24 hidden lg:block" aria-hidden="true">
+          <div className="font-display text-[11px] font-black leading-[1.1] tracking-[0.5em] text-[#1d418f]/25 [writing-mode:vertical-rl]">
+            HUA · DIAO · CHICKEN
+          </div>
+        </div>
+        <div className="relative flex flex-col justify-center lg:pl-14">
+          <div className="mb-6 flex items-center gap-3">
+            <RuleRedBlue className="w-16" />
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">
+              {slide.eyebrow}
+            </span>
+          </div>
+          <h1 className="font-display text-[44px] font-black leading-[1.02] text-[#1d418f] md:text-[64px] lg:text-[76px]">
+            {slide.titleTopItalic ? (
+              <em className="font-normal italic text-[#ca3134]">{slide.titleTop}</em>
+            ) : (
+              slide.titleTop
+            )}
+            {slide.titleRest}
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-[#17233f]/80 md:text-lg">
+            {slide.body}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <OrderButton size="lg">{slide.primaryLabel}</OrderButton>
+            <OutlineButton href={slide.secondaryHref}>{slide.secondaryLabel}</OutlineButton>
+          </div>
+          {/* Slide dots */}
+          <div className="mt-10 flex items-center gap-3">
+            {HERO_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                aria-label={`Go to slide ${idx + 1}`}
+                onClick={() => setI(idx)}
+                className={`h-[3px] transition-all ${
+                  idx === i ? "w-10 bg-[#ca3134]" : "w-6 bg-[#1d418f]/30 hover:bg-[#1d418f]/60"
+                }`}
+              />
+            ))}
+            <span className="ml-2 font-display text-xs font-bold tracking-widest text-[#1d418f]/60 tabular">
+              {String(i + 1).padStart(2, "0")} / {String(HERO_SLIDES.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+        <div className="relative min-h-[360px] lg:min-h-0">
+          <div
+            className={`absolute -inset-3 border ${
+              slide.frame === "red" ? "border-[#ca3134]/60" : "border-[#1d418f]/30"
+            }`}
+            aria-hidden="true"
+          />
+          <img
+            key={slide.image}
+            src={slide.image}
+            alt={slide.imageAlt}
+            width={1200}
+            height={1200}
+            className="relative block h-full min-h-[360px] w-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const PATHWAYS = [
   {
     code: "01",
