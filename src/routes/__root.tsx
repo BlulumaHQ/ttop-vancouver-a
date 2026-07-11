@@ -16,8 +16,7 @@ import { Footer } from "@/components/site/Footer";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
+    <div className="flex min-h-[60vh] flex-col">
       <div className="flex flex-1 items-center justify-center bg-[#faf6ef] px-5 py-24">
         <div className="max-w-md text-center">
           <h1 className="font-display text-7xl text-[#1d418f]">404</h1>
@@ -30,7 +29,6 @@ function NotFoundComponent() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
