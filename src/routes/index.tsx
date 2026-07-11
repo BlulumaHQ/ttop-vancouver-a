@@ -166,48 +166,7 @@ const REVIEWS = [
 function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-[#faf6ef]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-24">
-          {/* vertical ornament */}
-          <div className="pointer-events-none absolute left-2 top-24 hidden lg:block" aria-hidden="true">
-            <div className="font-display text-[11px] font-black leading-[1.1] tracking-[0.5em] text-[#1d418f]/25 [writing-mode:vertical-rl]">
-              HUA · DIAO · CHICKEN
-            </div>
-          </div>
-          <div className="relative lg:pl-14">
-            <div className="mb-6 flex items-center gap-3">
-              <RuleRedBlue className="w-16" />
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">
-                Taiwan Taipei Original Pot
-              </span>
-            </div>
-            <h1 className="font-display text-[44px] font-black leading-[1.02] text-[#1d418f] md:text-[64px] lg:text-[76px]">
-              <em className="font-normal italic text-[#ca3134]">Old-world</em> flavour.<br />
-              Maximum<br />authenticity.
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#17233f]/80 md:text-lg">
-              Taiwan Taipei Original Pot prepares its chicken according to old
-              world cooking methods, ensuring the maximum flavour and
-              authenticity for Vancouver diners to enjoy.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <OrderButton size="lg" />
-              <OutlineButton href="/menu">View Menu</OutlineButton>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-3 border border-[#1d418f]/30" aria-hidden="true" />
-            <img
-              src="/images/home-hero-01.jpg"
-              alt="TTOP signature chicken pot"
-              width={1200}
-              height={900}
-              className="relative block aspect-[4/3] w-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       {/* PATHWAYS */}
       <Section tone="white">
