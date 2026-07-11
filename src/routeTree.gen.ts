@@ -9,15 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SchoolLunchRouteImport } from './routes/school-lunch'
 import { Route as MontessoriRouteImport } from './routes/montessori'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as FrozeznFoodsRouteImport } from './routes/frozezn-foods'
 import { Route as FrozenFoodsRouteImport } from './routes/frozen-foods'
+import { Route as Contact2RouteImport } from './routes/contact-2'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CateringRouteImport } from './routes/catering'
+import { Route as AboutUs3RouteImport } from './routes/about-us-3'
+import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SchoolLunchRoute = SchoolLunchRouteImport.update({
   id: '/school-lunch',
   path: '/school-lunch',
@@ -33,9 +43,19 @@ const MenuRoute = MenuRouteImport.update({
   path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FrozeznFoodsRoute = FrozeznFoodsRouteImport.update({
+  id: '/frozezn-foods',
+  path: '/frozezn-foods',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FrozenFoodsRoute = FrozenFoodsRouteImport.update({
   id: '/frozen-foods',
   path: '/frozen-foods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Contact2Route = Contact2RouteImport.update({
+  id: '/contact-2',
+  path: '/contact-2',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -46,6 +66,16 @@ const ContactRoute = ContactRouteImport.update({
 const CateringRoute = CateringRouteImport.update({
   id: '/catering',
   path: '/catering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUs3Route = AboutUs3RouteImport.update({
+  id: '/about-us-3',
+  path: '/about-us-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -62,80 +92,122 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-us': typeof AboutUsRoute
+  '/about-us-3': typeof AboutUs3Route
   '/catering': typeof CateringRoute
   '/contact': typeof ContactRoute
+  '/contact-2': typeof Contact2Route
   '/frozen-foods': typeof FrozenFoodsRoute
+  '/frozezn-foods': typeof FrozeznFoodsRoute
   '/menu': typeof MenuRoute
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-us': typeof AboutUsRoute
+  '/about-us-3': typeof AboutUs3Route
   '/catering': typeof CateringRoute
   '/contact': typeof ContactRoute
+  '/contact-2': typeof Contact2Route
   '/frozen-foods': typeof FrozenFoodsRoute
+  '/frozezn-foods': typeof FrozeznFoodsRoute
   '/menu': typeof MenuRoute
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-us': typeof AboutUsRoute
+  '/about-us-3': typeof AboutUs3Route
   '/catering': typeof CateringRoute
   '/contact': typeof ContactRoute
+  '/contact-2': typeof Contact2Route
   '/frozen-foods': typeof FrozenFoodsRoute
+  '/frozezn-foods': typeof FrozeznFoodsRoute
   '/menu': typeof MenuRoute
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/about-us'
+    | '/about-us-3'
     | '/catering'
     | '/contact'
+    | '/contact-2'
     | '/frozen-foods'
+    | '/frozezn-foods'
     | '/menu'
     | '/montessori'
     | '/school-lunch'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/about-us'
+    | '/about-us-3'
     | '/catering'
     | '/contact'
+    | '/contact-2'
     | '/frozen-foods'
+    | '/frozezn-foods'
     | '/menu'
     | '/montessori'
     | '/school-lunch'
+    | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/about-us'
+    | '/about-us-3'
     | '/catering'
     | '/contact'
+    | '/contact-2'
     | '/frozen-foods'
+    | '/frozezn-foods'
     | '/menu'
     | '/montessori'
     | '/school-lunch'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AboutUsRoute: typeof AboutUsRoute
+  AboutUs3Route: typeof AboutUs3Route
   CateringRoute: typeof CateringRoute
   ContactRoute: typeof ContactRoute
+  Contact2Route: typeof Contact2Route
   FrozenFoodsRoute: typeof FrozenFoodsRoute
+  FrozeznFoodsRoute: typeof FrozeznFoodsRoute
   MenuRoute: typeof MenuRoute
   MontessoriRoute: typeof MontessoriRoute
   SchoolLunchRoute: typeof SchoolLunchRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/school-lunch': {
       id: '/school-lunch'
       path: '/school-lunch'
@@ -157,11 +229,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/frozezn-foods': {
+      id: '/frozezn-foods'
+      path: '/frozezn-foods'
+      fullPath: '/frozezn-foods'
+      preLoaderRoute: typeof FrozeznFoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/frozen-foods': {
       id: '/frozen-foods'
       path: '/frozen-foods'
       fullPath: '/frozen-foods'
       preLoaderRoute: typeof FrozenFoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-2': {
+      id: '/contact-2'
+      path: '/contact-2'
+      fullPath: '/contact-2'
+      preLoaderRoute: typeof Contact2RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -176,6 +262,20 @@ declare module '@tanstack/react-router' {
       path: '/catering'
       fullPath: '/catering'
       preLoaderRoute: typeof CateringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-us-3': {
+      id: '/about-us-3'
+      path: '/about-us-3'
+      fullPath: '/about-us-3'
+      preLoaderRoute: typeof AboutUs3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -198,12 +298,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AboutUsRoute: AboutUsRoute,
+  AboutUs3Route: AboutUs3Route,
   CateringRoute: CateringRoute,
   ContactRoute: ContactRoute,
+  Contact2Route: Contact2Route,
   FrozenFoodsRoute: FrozenFoodsRoute,
+  FrozeznFoodsRoute: FrozeznFoodsRoute,
   MenuRoute: MenuRoute,
   MontessoriRoute: MontessoriRoute,
   SchoolLunchRoute: SchoolLunchRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
