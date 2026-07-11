@@ -35,7 +35,7 @@ export function Header() {
           <img
             src="/images/ttop-logo-full.png"
             alt="TTOP Chicken"
-            className="h-11 w-auto sm:h-12"
+            className="h-14 w-auto sm:h-16 lg:h-[68px]"
             width={500}
             height={500}
           />
