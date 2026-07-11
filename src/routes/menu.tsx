@@ -282,26 +282,14 @@ function MenuPage() {
               </a>
             </div>
           </div>
-          <div className="relative grid grid-cols-2 gap-2">
+          <div className="relative">
             <img
-              src="/images/menu/a2-chicken-pot-l.webp"
-              alt="TTOP signature chicken pot"
-              className="col-span-2 aspect-[4/3] w-full object-cover"
+              src="/images/menu-hero-spread.webp"
+              alt="TTOP Chicken bento spread — fried chicken, pork chop, LOBA rice, sides"
+              className="block aspect-[4/3] w-full object-cover"
               loading="eager"
-              width={800}
-              height={600}
-            />
-            <img
-              src="/images/menu/b1-chicken-bento.webp"
-              alt="TTOP chicken bento"
-              className="aspect-square w-full object-cover"
-              loading="lazy"
-            />
-            <img
-              src="/images/menu/c1-loba-rice.webp"
-              alt="LOBA rice bowl"
-              className="aspect-square w-full object-cover"
-              loading="lazy"
+              width={1200}
+              height={900}
             />
           </div>
         </div>
