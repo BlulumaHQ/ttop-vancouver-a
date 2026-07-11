@@ -4,6 +4,7 @@ import { OrderButton, OutlineButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue, Seal } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
 import { ADDRESS, GOOGLE_REVIEWS, HOURS, PHONE, PHONE_TEL, MAP_URL } from "@/lib/site";
+import threeFlavorsAsset from "@/assets/ttop-3-flavors.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -203,10 +204,15 @@ function Home() {
       {/* ABOUT TEASER */}
       <Section tone="cream">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-16">
-          <div className="grid grid-cols-3 gap-2">
-            <img src="/images/food-portrait-01.jpg" alt="TTOP dish" className="aspect-[3/4] w-full object-cover" width={400} height={533} loading="lazy" />
-            <img src="/images/food-portrait-02.jpg" alt="TTOP dish" className="mt-8 aspect-[3/4] w-full object-cover" width={400} height={533} loading="lazy" />
-            <img src="/images/food-portrait-03.jpg" alt="TTOP dish" className="aspect-[3/4] w-full object-cover" width={400} height={533} loading="lazy" />
+          <div>
+            <img
+              src={threeFlavorsAsset.url}
+              alt="TTOP chicken pot three ways"
+              width={800}
+              height={601}
+              loading="lazy"
+              className="w-full object-cover"
+            />
           </div>
           <div>
             <SectionHead eyebrow="A truly unique dining experience" title="Three tastes," chip="A" />
