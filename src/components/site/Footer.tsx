@@ -44,35 +44,29 @@ export function Footer() {
     <footer className="bg-[#1d418f] text-white">
       <DeliveryStrip tone="blue" />
 
-      {/* Compact top: brand + call-to-order on mobile */}
-      <div className="mx-auto max-w-7xl px-5 pb-2 pt-10 lg:px-8 lg:pt-14">
-        <div className="flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
-          <Link to="/" aria-label="TTOP Chicken — home" className="inline-flex items-center gap-3">
-            <img
-              src="/images/ttop-mascot.png"
-              alt=""
-              aria-hidden="true"
-              className="h-11 w-auto"
-            />
-            <span className="font-display text-2xl font-black tracking-tight">
-              TTOP <span className="italic font-medium text-[#ffb6b6]">Chicken</span>
-            </span>
-          </Link>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={`tel:${PHONE_TEL}`}
-              className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white hover:text-[#1d418f]"
-            >
-              📞 {PHONE}
-            </a>
-            <OrderButton size="sm" />
+      {/* --- MOBILE (compact stacked + accordions) --- */}
+      <div className="md:hidden">
+        <div className="mx-auto max-w-7xl px-5 pb-2 pt-10">
+          <div className="flex flex-col items-start gap-5">
+            <Link to="/" aria-label="TTOP Chicken — home" className="inline-flex items-center gap-3">
+              <img src="/images/ttop-mascot.png" alt="" aria-hidden="true" className="h-11 w-auto" />
+              <span className="font-display text-2xl font-black tracking-tight">
+                TTOP <span className="italic font-medium text-[#ffb6b6]">Chicken</span>
+              </span>
+            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={`tel:${PHONE_TEL}`}
+                className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white hover:text-[#1d418f]"
+              >
+                📞 {PHONE}
+              </a>
+              <OrderButton size="sm" />
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Mobile: accordions. Desktop: 3-col grid */}
-      <div className="mx-auto max-w-7xl px-5 py-6 md:grid md:grid-cols-3 md:gap-10 md:py-10 lg:px-8">
-        <MobileAccordion title="Visit">
+        <div className="mx-auto max-w-7xl px-5 py-6">
+          <MobileAccordion title="Visit">
           <a
             href={MAP_URL}
             target="_blank"
@@ -85,10 +79,9 @@ export function Footer() {
           <a href={`mailto:${EMAIL}`} className="mt-2 block text-sm text-white/80 hover:text-white">
             {EMAIL}
           </a>
-        </MobileAccordion>
-
-        <MobileAccordion title="Explore">
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-white/80 md:grid-cols-1">
+          </MobileAccordion>
+          <MobileAccordion title="Explore">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-white/80">
             <li><Link to="/menu" className="hover:text-white">Menu</Link></li>
             <li><Link to="/frozen-foods" className="hover:text-white">Frozen Foods</Link></li>
             <li><Link to="/school-lunch" className="hover:text-white">School Lunch</Link></li>
@@ -97,36 +90,91 @@ export function Footer() {
             <li><Link to="/about" className="hover:text-white">About</Link></li>
             <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
           </ul>
-        </MobileAccordion>
-
-        <MobileAccordion title="Follow">
+          </MobileAccordion>
+          <MobileAccordion title="Follow">
           <div className="flex gap-3">
-            <a
-              href={IG_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"
-            >
-              Instagram
-            </a>
-            <a
-              href={FB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"
-            >
-              Facebook
-            </a>
+              <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]">Instagram</a>
+              <a href={FB_URL} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]">Facebook</a>
           </div>
-        </MobileAccordion>
+          </MobileAccordion>
+        </div>
+      </div>
+
+      {/* --- DESKTOP (editorial 4-column) --- */}
+      <div className="hidden md:block">
+        <div className="mx-auto max-w-7xl px-5 pt-16 lg:px-8">
+          <div className="grid grid-cols-12 gap-10">
+            {/* Brand column */}
+            <div className="col-span-12 lg:col-span-4">
+              <Link to="/" aria-label="TTOP Chicken — home" className="inline-flex items-center gap-3">
+                <img src="/images/ttop-mascot.png" alt="" aria-hidden="true" className="h-14 w-auto" />
+                <span className="font-display text-3xl font-black tracking-tight">
+                  TTOP <span className="italic font-medium text-[#ffb6b6]">Chicken</span>
+                </span>
+              </Link>
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
+                Old-world Taiwanese cooking, brought to Food Street in Richmond. Chicken pots, bentos, and frozen kitchen dishes to take home.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#1d418f]">
+                  <span aria-hidden="true">📞</span> {PHONE}
+                </a>
+                <OrderButton size="sm" />
+              </div>
+            </div>
+
+            {/* Visit column */}
+            <div className="col-span-6 lg:col-span-3">
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">Visit</h4>
+              <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="block text-sm leading-relaxed text-white/85 hover:text-white">
+                {ADDRESS}
+              </a>
+              <p className="mt-3 text-sm text-white/70">{HOURS}</p>
+              <a href={`mailto:${EMAIL}`} className="mt-3 block text-sm text-white/85 hover:text-white">
+                {EMAIL}
+              </a>
+            </div>
+
+            {/* Explore column */}
+            <div className="col-span-6 lg:col-span-3">
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">Explore</h4>
+              <ul className="space-y-2 text-sm text-white/85">
+                <li><Link to="/menu" className="hover:text-white">Menu</Link></li>
+                <li><Link to="/frozen-foods" className="hover:text-white">Frozen Foods</Link></li>
+                <li><Link to="/school-lunch" className="hover:text-white">School Hot Lunch</Link></li>
+                <li><Link to="/montessori" className="hover:text-white">Montessori Meals</Link></li>
+                <li><Link to="/catering" className="hover:text-white">Catering</Link></li>
+                <li><Link to="/about" className="hover:text-white">About</Link></li>
+                <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+              </ul>
+            </div>
+
+            {/* Follow column */}
+            <div className="col-span-12 lg:col-span-2">
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">Follow</h4>
+              <div className="flex flex-col gap-2">
+                <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white">
+                  <span aria-hidden="true">◈</span> Instagram
+                </a>
+                <a href={FB_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white">
+                  <span aria-hidden="true">◈</span> Facebook
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-14 h-px w-full bg-white/15" />
+        </div>
       </div>
 
       <div className="border-t border-white/15">
-        <div className="mx-auto max-w-7xl px-5 py-4 text-center text-[11px] text-white/70 lg:px-8">
-          © 2026 TTOP Chicken. All rights reserved. · Web by{" "}
-          <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Bluluma</a>{" "}
-          · Powered by{" "}
-          <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">SwiftLift</a>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-[11px] text-white/70 md:flex-row lg:px-8">
+          <p>© 2026 TTOP Chicken. All rights reserved.</p>
+          <p>
+            Web by{" "}
+            <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Bluluma</a>{" "}
+            · Powered by{" "}
+            <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">SwiftLift</a>
+          </p>
         </div>
       </div>
     </footer>
