@@ -24,7 +24,7 @@ export function DeliveryStrip({
         >
           Also on your favourite apps
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           {PARTNERS.map((p) => (
             <a
               key={p.name}
@@ -32,12 +32,12 @@ export function DeliveryStrip({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Order TTOP Chicken on ${p.name}`}
-              className="grid h-10 place-items-center opacity-90 transition-opacity hover:opacity-100"
+              className="group grid h-12 w-32 place-items-center rounded-full bg-white px-4 shadow-[0_1px_0_rgba(0,0,0,0.04),0_4px_12px_rgba(29,65,143,0.08)] ring-1 ring-[#1d418f]/10 transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_rgba(0,0,0,0.05),0_8px_18px_rgba(29,65,143,0.15)] sm:h-14 sm:w-36"
             >
               <img
                 src={p.src}
                 alt={`${p.name} logo`}
-                className="h-10 w-auto object-contain"
+                className="max-h-7 w-auto max-w-full object-contain sm:max-h-8"
                 loading="lazy"
               />
             </a>

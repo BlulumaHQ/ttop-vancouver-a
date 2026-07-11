@@ -30,12 +30,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#1d418f]/15 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
+      <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between gap-4 px-5 lg:h-[96px] lg:px-8">
         <Link to="/" aria-label="TTOP Chicken — home" className="flex items-center gap-2">
           <img
             src="/images/ttop-logo-full.png"
             alt="TTOP Chicken"
-            className="h-11 w-auto sm:h-12"
+            className="h-14 w-auto sm:h-16 lg:h-[68px]"
             width={500}
             height={500}
           />
