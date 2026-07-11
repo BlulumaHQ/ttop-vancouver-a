@@ -4,7 +4,6 @@ import { OrderButton, OutlineButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue, Seal } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
 import { ADDRESS, GOOGLE_REVIEWS, HOURS, PHONE, PHONE_TEL, MAP_URL } from "@/lib/site";
-import threeFlavorsAsset from "@/assets/ttop-3-flavors.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Home,
