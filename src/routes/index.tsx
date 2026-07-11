@@ -27,27 +27,27 @@ const HERO_SLIDES = [
         {" "}flavour.<br />Maximum<br />authenticity.
       </>
     ),
-    body: "Taiwan Taipei Original Pot prepares its chicken according to old world cooking methods, ensuring the maximum flavour and authenticity for Vancouver diners to enjoy.",
-    image: "/images/home-hero-01.jpg",
-    imageAlt: "TTOP signature chicken pot",
+    body: "Our signature Chicken Pot is simmered in Hua Diao wine sauce with fresh vegetables, mushrooms and hand-picked add-ons — a bubbling centrepiece that turns any table into a Taiwanese feast.",
+    image: "/images/hero-chicken-pot-spread.webp",
+    imageAlt: "TTOP Hua Diao Chicken Pot with fresh add-ons",
     primaryLabel: "Order Online",
     secondaryHref: "/menu",
     secondaryLabel: "View Menu",
     frame: "blue" as const,
   },
   {
-    eyebrow: "Loyalty Rewards",
-    titleTop: "Every $20",
+    eyebrow: "The Classic Taiwanese Bento",
+    titleTop: "Crispy",
     titleTopItalic: true,
     titleRest: (
       <>
-        {" "}earns<br />a star. Stars<br />never expire.
+        {" "}chicken.<br />Three sides.<br />One bento.
       </>
     ),
-    body: "Redeem in-store for free drinks, rice bowls, bentos and discounts up to $100 off. Ask our team the next time you visit.",
-    image: "/images/promo-high-value-meal.png",
-    imageAlt: "TTOP loyalty rewards",
-    primaryLabel: "Order & Earn Stars",
+    body: "Golden deep-fried chicken leg over jasmine rice with marinated egg, seasonal greens and Taiwanese noodles — the bento that tastes like Taipei lunch hour.",
+    image: "/images/hero-fried-chicken-bento.webp",
+    imageAlt: "Deep-fried chicken leg bento with three Taiwanese sides",
+    primaryLabel: "Order a Bento",
     secondaryHref: "/menu",
     secondaryLabel: "See the Menu",
     frame: "red" as const,
@@ -236,7 +236,7 @@ function Home() {
           <div className="relative order-2 lg:order-1">
             <div className="absolute -inset-3 border border-[#ca3134]/40" aria-hidden="true" />
             <img
-              src="/images/chicken-pot-close-01.jpg"
+              src="/images/chicken-pot-flame.webp"
               alt="TTOP chicken pot close-up"
               width={1200}
               height={900}
