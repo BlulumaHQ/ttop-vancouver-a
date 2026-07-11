@@ -205,7 +205,7 @@ function Home() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-16">
           <div>
             <img
-              src={threeFlavorsAsset.url}
+              src="/images/ttop-3-flavors.png"
               alt="TTOP chicken pot three ways"
               width={800}
               height={601}
