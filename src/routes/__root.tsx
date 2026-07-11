@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,23 +11,22 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+    <div className="flex min-h-[60vh] flex-col">
+      <div className="flex flex-1 items-center justify-center bg-[#faf6ef] px-5 py-24">
+        <div className="max-w-md text-center">
+          <h1 className="font-display text-7xl text-[#1d418f]">404</h1>
+          <p className="mt-4 text-base text-[#17233f]/70">
+            The page you're looking for doesn't exist. Try the menu or head home.
+          </p>
+          <div className="mt-6 flex justify-center gap-3">
+            <a href="/" className="inline-flex items-center rounded-sm border border-[#1d418f] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-[#1d418f] hover:bg-[#1d418f] hover:text-white">Home</a>
+            <a href="/menu" className="inline-flex items-center rounded-sm bg-[#ca3134] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-[#a5262a]">View Menu</a>
+          </div>
         </div>
       </div>
     </div>
@@ -77,14 +76,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Taiwanese Bento & Chicken Pot in Richmond, BC | TTOP Chicken" },
+      { name: "description", content: "TTOP 花雕雞 (Taiwan Taipei Original Pot) serves authentic Taiwanese chicken pot, bentos and street snacks in Richmond, BC — dine in, order online, take home frozen cooked foods, or book our school hot-lunch and Montessori meal programs." },
+      { name: "author", content: "TTOP Chicken" },
+      { property: "og:site_name", content: "TTOP Chicken" },
+      { property: "og:title", content: "Taiwanese Bento & Chicken Pot in Richmond, BC | TTOP Chicken" },
+      { property: "og:description", content: "Authentic Taiwanese chicken pot, bentos and street snacks in Richmond, BC." },
+      { property: "og:locale", content: "en_CA" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -92,6 +92,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -116,11 +119,20 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useEffect(() => {
+    if (typeof window !== "undefined") window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col bg-white">
+        <Header />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </QueryClientProvider>
   );
 }
