@@ -142,7 +142,6 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    color: var(--color-brand-blue);
     letter-spacing: -0.01em;
   }
   .font-display { font-family: var(--font-display); }

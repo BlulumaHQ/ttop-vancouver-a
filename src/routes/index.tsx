@@ -70,9 +70,8 @@ function Home() {
               </span>
             </div>
             <h1 className="font-display text-[44px] font-black leading-[1.02] text-[#1d418f] md:text-[64px] lg:text-[76px]">
-              TTOP Chicken —<br />
-              <em className="font-normal italic text-[#ca3134]">old world</em> flavour,<br />
-              maximum authenticity.
+              <em className="font-normal italic text-[#ca3134]">Old-world</em> flavour.<br />
+              Maximum<br />authenticity.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#17233f]/80 md:text-lg">
               Taiwan Taipei Original Pot prepares its chicken according to old
