@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { OrderButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
-import { Section } from "@/components/site/Section";
+import { Section, SectionHead } from "@/components/site/Section";
+import { PrintedMenuViewer } from "@/components/site/PrintedMenuViewer";
 import { MENU, FROZEN_H, FROZEN_I, type MenuCategory, type MenuItem } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/menu")({
@@ -360,25 +361,95 @@ function MenuPage() {
         </div>
       </Section>
 
-      {/* Loyalty strip */}
-      <Section tone="blue">
-        <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/70">
-              TTOP Loyalty
-            </span>
-            <h2 className="mt-3 font-display text-3xl leading-tight text-white md:text-4xl">
-              Earn 1 star for every $20. Stars never expire.
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/80">
-              Redeem stars in store for free drinks, rice bowls, bentos, and
-              discounts of up to $100 off. One redemption per order — ask our
-              team for details.
-            </p>
-          </div>
-          <OrderButton size="lg" />
-        </div>
+      {/* Printed menu */}
+      <Section tone="cream">
+        <SectionHead
+          eyebrow="Printed menus"
+          title="View Our Printed Menu 實體菜單"
+        />
+        <p className="-mt-6 mb-8 max-w-2xl text-sm text-[#17233f]/75">
+          The same menus we hand you at the restaurant.
+        </p>
+        <PrintedMenuViewer />
       </Section>
+
+      {/* Loyalty program */}
+      <LoyaltySection />
     </>
+  );
+}
+
+/* ---------- Loyalty ---------- */
+
+const REWARDS: { stars: number; reward: string; code?: string }[] = [
+  { stars: 1, reward: "1 canned beverage" },
+  { stars: 3, reward: "1 house blend drink (M)" },
+  { stars: 4, reward: "1 ChuChuBar drink (L)" },
+  { stars: 6, reward: "1 rice bowl", code: "C1–C2" },
+  { stars: 8, reward: "1 deluxe rice bowl", code: "C3–C5" },
+  { stars: 10, reward: "1 bento", code: "B3–B16" },
+  { stars: 20, reward: "$25 off the entire sale" },
+  { stars: 30, reward: "$50 off the entire sale" },
+  { stars: 40, reward: "$75 off the entire sale" },
+  { stars: 50, reward: "$100 off the entire sale" },
+];
+
+function LoyaltySection() {
+  return (
+    <Section tone="white">
+      <SectionHead eyebrow="Rewards" title="TTOP Loyalty Program" />
+      <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-10">
+        {/* How it works */}
+        <div className="border border-[#1d418f]/20 bg-[#1d418f] p-6 text-white md:p-8">
+          <h3 className="font-display text-2xl text-white md:text-3xl">
+            How it Works
+          </h3>
+          <RuleRedBlue className="mt-4 max-w-[140px]" />
+          <ul className="mt-6 space-y-3 text-sm leading-relaxed text-white/90">
+            <li className="flex items-start gap-3">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ffb6b6]" />
+              <span>Earn <strong>1 star</strong> for each <strong>$20</strong> purchase.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ffb6b6]" />
+              <span>Stars <strong>do not expire</strong>.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ffb6b6]" />
+              <span>Only <strong>one redemption per order</strong>.</span>
+            </li>
+          </ul>
+          <p className="mt-6 text-xs italic text-white/70">
+            Redeem in store — ask our team for details.
+          </p>
+        </div>
+
+        {/* Rewards grid */}
+        <div>
+          <h3 className="font-display text-2xl text-[#1d418f] md:text-3xl">
+            Rewards
+          </h3>
+          <RuleRedBlue className="mt-4 max-w-[140px]" />
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {REWARDS.map((r) => (
+              <li
+                key={r.stars}
+                className="flex items-center gap-3 border border-[#1d418f]/20 bg-white p-3"
+              >
+                <span className="inline-flex min-w-[52px] shrink-0 items-baseline justify-center rounded-sm bg-[#ca3134]/10 px-2 py-1 font-display text-lg font-black text-[#ca3134]">
+                  {r.stars}★
+                </span>
+                <span className="flex flex-wrap items-center gap-1.5 text-sm text-[#17233f]">
+                  <span>{r.reward}</span>
+                  {r.code && (
+                    <CodeChip tone="blue" size="sm">{r.code}</CodeChip>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
   );
 }
