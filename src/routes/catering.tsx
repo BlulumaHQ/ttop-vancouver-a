@@ -75,12 +75,15 @@ function CateringPage() {
       </Section>
 
       <Section tone="white" id="inquiry">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-16">
           <div>
-            <SectionHead eyebrow="Send an inquiry" title="Tell us about your order" />
+            <SectionHead eyebrow="Send an inquiry" title="Catering Inquiry" />
             <p className="text-sm leading-relaxed text-[#17233f]/85">
-              A few details help us put together the right plan. We'll get
-              back to you with recommendations, quantities and pickup timing.
+              Submit your details and TTOP will respond to confirm available
+              dishes, quantities, pickup or delivery, and pricing.
+            </p>
+            <p className="mt-4 rounded-sm border-l-4 border-[#ca3134] bg-[#faf6ef] p-4 text-sm text-[#17233f]/85">
+              For large orders, please give us <strong>one week's notice</strong>.
             </p>
             <div className="mt-6 space-y-2 text-sm">
               <div><span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]">Phone</span> <a href={`tel:${PHONE_TEL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]">{PHONE}</a></div>
@@ -89,16 +92,20 @@ function CateringPage() {
           </div>
           <div className="border border-[#1d418f]/20 bg-white p-6 md:p-8">
             <InquiryForm
+              twoColumn
               fields={[
-                { name: "name", label: "Your name", required: true },
-                { name: "company", label: "Company / Group" },
-                { name: "email", label: "Email", type: "email", required: true },
-                { name: "phone", label: "Phone", type: "tel" },
-                { name: "date", label: "Event date" },
-                { name: "headcount", label: "Approx. headcount", type: "number" },
-                { name: "message", label: "Message", type: "textarea" },
+                { name: "name", label: "Full Name", required: true },
+                { name: "organization", label: "Organization or Company" },
+                { name: "email", label: "Email Address", type: "email", required: true },
+                { name: "phone", label: "Phone Number", type: "tel", required: true },
+                { name: "eventDate", label: "Event Date", type: "date", required: true },
+                { name: "guests", label: "Estimated Number of Guests", type: "number", required: true },
+                { name: "fulfillment", label: "Preferred Pickup or Delivery", type: "select", options: ["Pickup", "Delivery"] },
+                { name: "mealType", label: "Type of Meal or Event" },
+                { name: "dietary", label: "Dietary Requirements", full: true },
+                { name: "details", label: "Additional Details", type: "textarea", required: true },
               ]}
-              submitLabel="Send Inquiry"
+              submitLabel="Send Catering Inquiry"
             />
           </div>
         </div>
