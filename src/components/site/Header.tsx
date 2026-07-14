@@ -7,7 +7,7 @@ const NAV = [
   { to: "/menu", label: "Menu" },
   { to: "/frozen-foods", label: "Frozen Foods" },
   {
-    label: "Schools & Daycares",
+    label: "School Programs",
     children: [
       { to: "/school-lunch", label: "School Hot Lunch" },
       { to: "/montessori", label: "Montessori Daily Meals" },
