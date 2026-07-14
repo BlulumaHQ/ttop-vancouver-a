@@ -1,9 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
-import { InquiryForm } from "@/components/site/InquiryForm";
-import { PHONE, PHONE_TEL, EMAIL } from "@/lib/site";
+import { ProgramInquirySection } from "@/components/site/ProgramInquirySection";
+import { PHONE, PHONE_TEL } from "@/lib/site";
 
 export const Route = createFileRoute("/school-lunch")({
   component: SchoolLunchPage,
@@ -204,43 +204,7 @@ function SchoolLunchPage() {
         </div>
       </Section>
 
-      {/* Inquiry */}
-      <Section tone="white" id="inquiry">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-          <div>
-            <SectionHead eyebrow="Book a consultation" title="Start a conversation" />
-            <p className="text-sm leading-relaxed text-[#17233f]/85">
-              Tell us a little about your school and we'll get back to you
-              with a proposed menu, delivery plan and budget. You can also
-              reach us directly at{" "}
-              <a href={`tel:${PHONE_TEL}`} className="text-[#ca3134] underline">{PHONE}</a>{" "}
-              or{" "}
-              <a href={`mailto:${EMAIL}`} className="text-[#ca3134] underline">{EMAIL}</a>.
-            </p>
-            <div className="mt-8 rounded-sm border border-[#1d418f]/20 bg-[#faf6ef] p-6 text-sm text-[#17233f]/85">
-              <div className="text-xs font-bold uppercase tracking-widest text-[#1d418f]">Running a Montessori or daycare?</div>
-              <p className="mt-2">
-                See our <Link to="/montessori" className="text-[#ca3134] underline">Montessori Daily Meals</Link> program.
-              </p>
-            </div>
-          </div>
-          <div className="border border-[#1d418f]/20 bg-white p-6 md:p-8">
-            <InquiryForm
-              fields={[
-                { name: "school", label: "School name", required: true },
-                { name: "contact", label: "Contact name", required: true },
-                { name: "role", label: "Role" },
-                { name: "email", label: "Email", type: "email", required: true },
-                { name: "phone", label: "Phone", type: "tel" },
-                { name: "students", label: "Approx. number of students", type: "number" },
-                { name: "schedule", label: "Preferred schedule", type: "select", options: ["Daily","Weekly","Monthly","Seasonal"] },
-                { name: "message", label: "Message", type: "textarea" },
-              ]}
-              submitLabel="Request a Proposal"
-            />
-          </div>
-        </div>
-      </Section>
+      <ProgramInquirySection defaultProgram="school" />
 
       {/* FAQ */}
       <Section tone="cream">
