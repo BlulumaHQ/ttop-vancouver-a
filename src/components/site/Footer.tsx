@@ -83,7 +83,8 @@ export function Footer() {
           <MobileAccordion title="Explore">
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-white/80">
             <li><Link to="/menu" className="hover:text-white">Menu</Link></li>
-            <li><Link to="/frozen-foods" className="hover:text-white">Frozen Foods</Link></li>
+            <li><Link to="/chuchu-bar" className="hover:text-white">ChuChu Bar</Link></li>
+            <li><Link to="/frozen-foods" className="hover:text-white">Chef-Pacs</Link></li>
             <li><Link to="/school-lunch" className="hover:text-white">School Lunch</Link></li>
             <li><Link to="/montessori" className="hover:text-white">Montessori</Link></li>
             <li><Link to="/catering" className="hover:text-white">Catering</Link></li>
@@ -113,7 +114,7 @@ export function Footer() {
                 </span>
               </Link>
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
-                Old-world Taiwanese cooking, brought to Food Street in Richmond. Chicken pots, bentos, and frozen kitchen dishes to take home.
+                Old-world Taiwanese cooking, brought to Food Street in Richmond. Chicken pots, bentos, and Formosa Chef-Pacs to take home.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#1d418f]">
@@ -140,7 +141,8 @@ export function Footer() {
               <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">Explore</h4>
               <ul className="space-y-2 text-sm text-white/85">
                 <li><Link to="/menu" className="hover:text-white">Menu</Link></li>
-                <li><Link to="/frozen-foods" className="hover:text-white">Frozen Foods</Link></li>
+                <li><Link to="/chuchu-bar" className="hover:text-white">ChuChu Bar</Link></li>
+                <li><Link to="/frozen-foods" className="hover:text-white">Formosa Chef-Pacs</Link></li>
                 <li><Link to="/school-lunch" className="hover:text-white">School Hot Lunch</Link></li>
                 <li><Link to="/montessori" className="hover:text-white">Montessori Meals</Link></li>
                 <li><Link to="/catering" className="hover:text-white">Catering</Link></li>
