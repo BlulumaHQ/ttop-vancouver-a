@@ -160,8 +160,26 @@ export function Footer() {
               </div>
             </div>
 
+            {/* Link columns */}
+            {LINK_GROUPS.map((g) => (
+              <div key={g.title} className="col-span-6 lg:col-span-2">
+                <h4 className="mb-4 whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">{g.title}</h4>
+                <ul className="space-y-2 text-sm text-white/85">
+                  {g.links.map((l) => (
+                    <li key={l.label}>
+                      {"href" in l ? (
+                        <a href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">{l.label}</a>
+                      ) : (
+                        <Link to={l.to} hash={"hash" in l ? l.hash : undefined} className="hover:text-white">{l.label}</Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
             {/* Visit column */}
-            <div className="col-span-6 lg:col-span-3">
+            <div className="col-span-6 lg:col-span-3 lg:col-start-5">
               <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">Visit</h4>
               <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="block text-sm leading-relaxed text-white/85 hover:text-white">
                 {ADDRESS}
@@ -172,16 +190,10 @@ export function Footer() {
               </a>
             </div>
 
-            {/* Explore column */}
+            {/* More column */}
             <div className="col-span-6 lg:col-span-3">
-              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">Explore</h4>
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]">More</h4>
               <ul className="space-y-2 text-sm text-white/85">
-                <li><Link to="/menu" className="hover:text-white">Menu</Link></li>
-                <li><Link to="/chuchu-bar" className="hover:text-white">ChuChu Bar</Link></li>
-                <li><Link to="/frozen-foods" className="hover:text-white">Formosa Chef-Pacs</Link></li>
-                <li><Link to="/school-lunch" className="hover:text-white">School Hot Lunch</Link></li>
-                <li><Link to="/montessori" className="hover:text-white">Montessori Meals</Link></li>
-                <li><Link to="/catering" className="hover:text-white">Catering</Link></li>
                 <li><Link to="/about" className="hover:text-white">About</Link></li>
                 <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
               </ul>
