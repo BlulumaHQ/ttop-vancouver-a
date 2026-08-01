@@ -57,12 +57,13 @@ function AboutPage() {
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#17233f]/85">
               To us, this is more than a restaurant — it is a love letter to
-              our grandmother and our father; it is because of the careful
-              teaching of these giants that we are who we are today.
+              our Grandmother and our Father, the giants whose shoulders that
+              we stand on today.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#17233f]/85">
-              We sincerely invite you to walk with us: honouring the past
-              while rediscovering the flavours that shaped our childhood.
+              We sincerely invite you to join us on this journey of honouring
+              the past while rediscovering the flavours that shaped our
+              childhood.
             </p>
             <div className="mt-6 text-xs font-bold uppercase tracking-widest text-[#ca3134]">
               — Albert & Eric Lee, est. 2014
@@ -122,7 +123,7 @@ function AboutPage() {
             </Link>
             <Link to="/frozen-foods" className="border border-white/25 p-5 text-white hover:bg-white/10">
               <div className="text-xs font-bold uppercase tracking-widest text-white/70">02</div>
-              <div className="mt-2 font-display text-xl">Frozen Foods →</div>
+              <div className="mt-2 font-display text-xl">Formosa Chef-Pacs →</div>
             </Link>
             <Link to="/school-lunch" className="border border-white/25 p-5 text-white hover:bg-white/10">
               <div className="text-xs font-bold uppercase tracking-widest text-white/70">03</div>

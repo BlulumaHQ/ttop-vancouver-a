@@ -37,7 +37,9 @@ const PHASES = [
 const SCHOOLS = [
   "Anderson Elementary", "Cambie Montessori", "Diefenbaker Elementary", "Dixon Elementary",
   "Ferris Elementary", "Laurier Elementary", "Maple Lane Elementary", "Maple Grove Elementary",
-  "McKechnie Elementary", "Newbridge Academy", "Quilchena Elementary", "Spul'u'Kwuks Elementary",
+  "Inspirations Montessori School (IMS)", "Lesco Montessori",
+  "McKechnie Elementary", "Mitchell Elementary", "Newbridge Academy",
+  "Quilchena Elementary", "Spul'u'Kwuks Elementary",
   "St. Anthony Elementary", "St. Helen's Elementary", "Weir Elementary", "Westside Montessori",
 ];
 
