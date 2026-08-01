@@ -220,10 +220,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-[11px] text-white/70 md:flex-row lg:px-8">
           <p>© 2026 TTOP Chicken. All rights reserved.</p>
           <p>
-            Web by{" "}
-            <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Bluluma</a>{" "}
-            · Powered by{" "}
-            <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">SwiftLift</a>
+            <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Web Design by Bluluma</a>
           </p>
         </div>
       </div>
