@@ -3,6 +3,7 @@ import { useState } from "react";
 import { OrderButton, OutlineButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
+import { CatalogueViewer } from "@/components/site/CatalogueViewer";
 import { FROZEN_H, FROZEN_I } from "@/lib/menu-data";
 import { ADDRESS } from "@/lib/site";
 
