@@ -45,8 +45,9 @@ export function PhotoCard({
         {item.image ? (
           <img
             src={item.image}
-            alt={item.name}
+            alt={`${item.name} at TTOP Chicken`}
             loading="lazy"
+            decoding="async"
             width={480}
             height={480}
             className="block aspect-square w-full object-cover"
