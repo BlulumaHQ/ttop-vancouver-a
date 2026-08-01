@@ -334,11 +334,26 @@ export function Header() {
         </div>
       </div>
 
-      {open && (
+      {open && mounted && createPortal(
         <div
           ref={panelRef}
-          className="fixed inset-x-0 bottom-0 top-[88px] z-50 flex flex-col bg-white min-[1100px]:hidden"
+          className="fixed inset-0 z-[100] flex flex-col bg-white min-[1100px]:hidden"
         >
+          <div className="flex h-[88px] shrink-0 items-center justify-between border-b border-[#1d418f]/15 px-5">
+            <Link to="/" aria-label="TTOP Chicken — home" onClick={() => setOpen(false)}>
+              <img src="/images/ttop-logo-full.png" alt="TTOP Chicken" className="h-14 w-auto" />
+            </Link>
+            <button
+              aria-label="Close menu"
+              onClick={() => {
+                setOpen(false);
+                burgerRef.current?.focus();
+              }}
+              className="grid h-11 w-11 place-items-center rounded-sm border border-[#1d418f]/25 text-xl leading-none text-[#1d418f]"
+            >
+              ✕
+            </button>
+          </div>
           <div className="flex-1 overflow-y-auto px-5 py-2">
             {GROUPS.map((g) => (
               <MobileAccordion
@@ -361,7 +376,8 @@ export function Header() {
           <div className="border-t border-[#1d418f]/15 px-5 py-4">
             <OrderButton size="lg" className="w-full justify-center" />
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </header>
   );
