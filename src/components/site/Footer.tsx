@@ -5,6 +5,38 @@ import {
 } from "@/lib/site";
 import { OrderButton } from "./OrderButton";
 import { DeliveryStrip } from "./DeliveryStrip";
+import { ORDER_URL } from "@/lib/site";
+
+const LINK_GROUPS = [
+  {
+    title: "Eat",
+    links: [
+      { to: "/menu", label: "Full Menu" },
+      { to: "/chuchu-bar", label: "ChuChu Bar" },
+      { href: ORDER_URL, label: "Order Online" },
+    ],
+  },
+  {
+    title: "At Home",
+    links: [
+      { to: "/frozen-foods", label: "Formosa Chef-Pacs" },
+      { to: "/frozen-foods", hash: "prep-pacs", label: "Formosa Prep-Pacs" },
+    ],
+  },
+  {
+    title: "Programs",
+    links: [
+      { to: "/school-lunch", label: "School Hot Lunch" },
+      { to: "/montessori", label: "Montessori Meals" },
+      { to: "/catering", label: "Catering & Groups" },
+    ],
+  },
+] as const;
+
+function FooterLinkList() {
+  return null;
+}
+void FooterLinkList;
 
 function MobileAccordion({
   title,
@@ -80,17 +112,26 @@ export function Footer() {
             {EMAIL}
           </a>
           </MobileAccordion>
-          <MobileAccordion title="Explore">
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-white/80">
-            <li><Link to="/menu" className="hover:text-white">Menu</Link></li>
-            <li><Link to="/chuchu-bar" className="hover:text-white">ChuChu Bar</Link></li>
-            <li><Link to="/frozen-foods" className="hover:text-white">Chef-Pacs</Link></li>
-            <li><Link to="/school-lunch" className="hover:text-white">School Lunch</Link></li>
-            <li><Link to="/montessori" className="hover:text-white">Montessori</Link></li>
-            <li><Link to="/catering" className="hover:text-white">Catering</Link></li>
-            <li><Link to="/about" className="hover:text-white">About</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
-          </ul>
+          {LINK_GROUPS.map((g) => (
+            <MobileAccordion key={g.title} title={g.title}>
+              <ul className="space-y-2 text-sm text-white/80">
+                {g.links.map((l) => (
+                  <li key={l.label}>
+                    {"href" in l ? (
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">{l.label}</a>
+                    ) : (
+                      <Link to={l.to} hash={"hash" in l ? l.hash : undefined} className="hover:text-white">{l.label}</Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </MobileAccordion>
+          ))}
+          <MobileAccordion title="More">
+            <ul className="space-y-2 text-sm text-white/80">
+              <li><Link to="/about" className="hover:text-white">About</Link></li>
+              <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+            </ul>
           </MobileAccordion>
           <MobileAccordion title="Follow">
           <div className="flex gap-3">
