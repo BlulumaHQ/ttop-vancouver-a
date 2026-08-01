@@ -33,11 +33,6 @@ const LINK_GROUPS = [
   },
 ] as const;
 
-function FooterLinkList() {
-  return null;
-}
-void FooterLinkList;
-
 function MobileAccordion({
   title,
   children,
