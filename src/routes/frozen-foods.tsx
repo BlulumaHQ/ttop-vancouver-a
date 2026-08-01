@@ -137,7 +137,7 @@ function FrozenFoodsPage() {
         </div>
       </Section>
 
-      <Section tone="cream">
+      <Section tone="cream" id="prep-pacs" className="scroll-mt-[136px]">
         <SectionHead eyebrow="Formosa Prep-Pacs" title="For your own kitchen" chip="I" />
         <div className="grid gap-6 md:grid-cols-3">
           {FROZEN_I.items.map((it) => (
