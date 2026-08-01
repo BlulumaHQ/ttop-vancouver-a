@@ -25,7 +25,7 @@ export const MENU: MenuCategory[] = [
     letter: "A",
     title: "Signature Pot",
     accent: "red",
-    subtitle: "Celery, green pepper, scallion & cilantro included",
+    subtitle: "Celery, red onion, scallion & cilantro included",
     blurb:
       "The dish that put us on Food Street. Boneless chicken slow-simmered in Hua Diao wine sauce, sold as a shareable pot.",
     items: [
@@ -35,7 +35,7 @@ export const MENU: MenuCategory[] = [
       { code: "A4", name: "Spicy XM Chicken Pot", tagline: "Large", price: "60", spicy: true, image: "/images/menu/a2-chicken-pot-l.webp" },
     ],
     notes: [
-      "Pot options — Cook add-ons together (in-pot) or pack them separately (heat at home). Remove celery / green pepper / scallion / cilantro at no charge. Add TTOP Sauce +$1.5 · Add Chili X / XX / XXX +$1.5.",
+      "Pot options — Cook add-ons together (in-pot) or pack them separately (heat at home). Remove celery / red onion / scallion / cilantro at no charge. Add TTOP Sauce +$1.5 · Add Chili X / XX / XXX +$1.5.",
     ],
   },
   {
@@ -72,13 +72,13 @@ export const MENU: MenuCategory[] = [
       {
         label: "Vegetables",
         items: [
-          { code: "", name: "Lettuce Stem", price: "7.5" },
+          { code: "", name: "Celtuce", price: "7.5" },
           { code: "", name: "Taiwanese Cabbage", price: "7" },
           { code: "", name: "Broccoli", price: "7" },
           { code: "", name: "Cauliflower", price: "7" },
           { code: "", name: "Baby Corn", price: "7" },
           { code: "", name: "Celery", price: "6" },
-          { code: "", name: "Green Pepper", price: "6" },
+          { code: "", name: "Red Onion", price: "6" },
           { code: "", name: "Scallion", price: "6" },
           { code: "", name: "Potato", price: "6" },
           { code: "", name: "Cilantro", price: "1" },
@@ -113,27 +113,24 @@ export const MENU: MenuCategory[] = [
     items: [
       { code: "B1", name: "TTOP Chicken", price: "18.5", image: "/images/menu/b1-chicken-bento.webp" },
       { code: "B2", name: "Spicy TTOP Chicken", price: "19.5", spicy: true, image: "/images/menu/b2-spicy-chicken-bento.webp" },
-      { code: "B3", name: "DF Pork Chop", price: "17", image: "/images/menu/b3-df-pork-chop.webp" },
-      { code: "B4", name: "DF Chicken Leg", price: "18.5", image: "/images/menu/b4-df-chicken-leg.webp" },
-      { code: "B5", name: "DF Chicken Nugget", price: "16.5", image: "/images/menu/b5-df-chicken-nugget.webp" },
-      { code: "B6", name: "DF Red Yeast Pork Belly", price: "17", image: "/images/menu/b6-red-yeast-pork.webp" },
+      { code: "B3", name: "Fried Pork Chop", price: "17", image: "/images/menu/b3-df-pork-chop.webp" },
+      { code: "B4", name: "Crispy Chicken Leg", price: "18.5", image: "/images/menu/b4-df-chicken-leg.webp" },
+      { code: "B5", name: "Basil Fried Popcorn Chicken", price: "16.5", image: "/images/menu/b5-df-chicken-nugget.webp" },
+      { code: "B6", name: "Crunchy Red Yeast Pork Belly", price: "17", image: "/images/menu/b6-red-yeast-pork.webp" },
       { code: "B7", name: "OG Stewed Pork Belly", price: "16.5", image: "/images/menu/b7-stewed-pork-belly.webp" },
       { code: "B8", name: "Marinated Pork Chop", price: "17.5", image: "/images/menu/b8-marinated-pork-chop.webp" },
       { code: "B9", name: "Grilled Pork Tenderloin", price: "16.5", image: "/images/menu/b9-grilled-pork-tenderloin.webp" },
       { code: "B10", name: "Taiwanese Sausage", price: "17.5", image: "/images/menu/b10-taiwanese-sausage.webp" },
-      { code: "B11", name: "LOBA", price: "14.75", image: "/images/menu/b11-loba.webp" },
+      { code: "B11", name: "LOBA (Stewed Pork Belly)", price: "14.75", image: "/images/menu/b11-loba.webp" },
       { code: "B12", name: "Shredded Chicken", price: "16.25", image: "/images/menu/b12-shredded-chicken.webp" },
       { code: "B13", name: "Hibachi Berkshire Pork", tagline: "Black Peppercorn / Sukiyaki", price: "16.5", image: "/images/menu/b13-hibachi-pork.webp" },
       { code: "B14", name: "Hibachi Beef", tagline: "Black Peppercorn / Sukiyaki", price: "17", image: "/images/menu/b14-hibachi-beef.webp" },
       { code: "B15", name: "Basil Eggplant Stir-Fry", price: "17.5", veg: true, image: "/images/menu/b15-basil-eggplant.webp" },
       { code: "B16", name: "Vegetarian Chicken Roll", price: "18.5", veg: true, image: "/images/menu/b16-veg-chicken-roll.webp" },
-      { code: "B17", name: "Three Side Dishes", price: "9", image: "/images/menu/b17-three-sides.webp" },
+      { code: "B17", name: "Basic Bento", price: "9", image: "/images/menu/b17-three-sides.webp" },
     ],
     notes: [
       "B3–B17 include rice plus three rotating side dishes.",
-      "TTOP Chicken bentos — celery / green pepper / scallion / cilantro included; remove any at no charge. Add Chili X / XX / XXX +$1.5.",
-      "Popular bento add-ons — AAA Beef $3.5 · Premium Lamb Slices $4 · Berkshire Pork Belly $3 · Lettuce Stem $2.5. Most vegetables & mushrooms $2 · Cilantro $1.",
-      "Also add — Steamed Rice (100g) $1.5 · LOBA Sauce $3 · Spicy Pickled Radish $1.5 · Grilled Pork Tenderloin (2 pcs) $5.5 · Stewed Pork Belly $4 · Sausage (1 link) $5.5 · Marinated Quail Egg (4 pcs) $2 · Pickled Mustard Green $1.5 · Scallion Salt Sauce $1.5 · Black Peppercorn Sauce $2.5.",
     ],
   },
   {
