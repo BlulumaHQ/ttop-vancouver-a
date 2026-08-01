@@ -91,7 +91,7 @@ export const MENU: MenuCategory[] = [
           { code: "", name: "Potato Vermicelli", price: "7" },
           { code: "", name: "Konjac", price: "7" },
           { code: "", name: "Korean Rice Cake", price: "7" },
-          { code: "", name: "DF Chinese Doughnut", price: "5.5" },
+          { code: "", name: "Fried Chinese Doughnut", price: "5.5" },
         ],
       },
       {
@@ -155,7 +155,7 @@ export const MENU: MenuCategory[] = [
       { code: "D1", name: "Basil Fried Popcorn Chicken", price: "11" },
       { code: "D2", name: "Fried Fish Cake", price: "10", image: "/images/menu/d2-df-fish-cake.webp" },
       { code: "D3", name: "Fried Squid Ball", tagline: "4 pcs / 8 pcs", price: "6 / 10", image: "/images/menu/d3-df-squid-ball.webp" },
-      { code: "D4", name: "DF Tofu", price: "10", veg: true, image: "/images/menu/d4-df-tofu.webp" },
+      { code: "D4", name: "Fried Tofu", price: "10", veg: true, image: "/images/menu/d4-df-tofu.webp" },
       { code: "D5", name: "Taro Fries", price: "9", veg: true },
       { code: "D6", name: "Wok Wok Fries", tagline: "Pepper / Chili / Plum Powder", price: "7", veg: true, image: "/images/menu/d6-wok-fries.webp" },
       { code: "D7", name: "Crispy Chicken Leg", tagline: "2 pcs", price: "9.5", image: "/images/menu/d7-df-chicken-leg.webp" },
