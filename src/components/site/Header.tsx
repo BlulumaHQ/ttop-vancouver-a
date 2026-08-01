@@ -5,7 +5,8 @@ import { OrderButton } from "./OrderButton";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/menu", label: "Menu" },
-  { to: "/frozen-foods", label: "Frozen Foods" },
+  { to: "/chuchu-bar", label: "ChuChu Bar" },
+  { to: "/frozen-foods", label: "Formosa Chef-Pacs" },
   {
     label: "School Programs",
     children: [

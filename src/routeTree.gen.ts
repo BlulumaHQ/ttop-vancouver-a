@@ -17,6 +17,7 @@ import { Route as FrozeznFoodsRouteImport } from './routes/frozezn-foods'
 import { Route as FrozenFoodsRouteImport } from './routes/frozen-foods'
 import { Route as Contact2RouteImport } from './routes/contact-2'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChuchuBarRouteImport } from './routes/chuchu-bar'
 import { Route as CateringRouteImport } from './routes/catering'
 import { Route as AboutUs3RouteImport } from './routes/about-us-3'
 import { Route as AboutUsRouteImport } from './routes/about-us'
@@ -63,6 +64,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChuchuBarRoute = ChuchuBarRouteImport.update({
+  id: '/chuchu-bar',
+  path: '/chuchu-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CateringRoute = CateringRouteImport.update({
   id: '/catering',
   path: '/catering',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/about-us': typeof AboutUsRoute
   '/about-us-3': typeof AboutUs3Route
   '/catering': typeof CateringRoute
+  '/chuchu-bar': typeof ChuchuBarRoute
   '/contact': typeof ContactRoute
   '/contact-2': typeof Contact2Route
   '/frozen-foods': typeof FrozenFoodsRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/about-us': typeof AboutUsRoute
   '/about-us-3': typeof AboutUs3Route
   '/catering': typeof CateringRoute
+  '/chuchu-bar': typeof ChuchuBarRoute
   '/contact': typeof ContactRoute
   '/contact-2': typeof Contact2Route
   '/frozen-foods': typeof FrozenFoodsRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/about-us': typeof AboutUsRoute
   '/about-us-3': typeof AboutUs3Route
   '/catering': typeof CateringRoute
+  '/chuchu-bar': typeof ChuchuBarRoute
   '/contact': typeof ContactRoute
   '/contact-2': typeof Contact2Route
   '/frozen-foods': typeof FrozenFoodsRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/about-us-3'
     | '/catering'
+    | '/chuchu-bar'
     | '/contact'
     | '/contact-2'
     | '/frozen-foods'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/about-us-3'
     | '/catering'
+    | '/chuchu-bar'
     | '/contact'
     | '/contact-2'
     | '/frozen-foods'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/about-us-3'
     | '/catering'
+    | '/chuchu-bar'
     | '/contact'
     | '/contact-2'
     | '/frozen-foods'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   AboutUsRoute: typeof AboutUsRoute
   AboutUs3Route: typeof AboutUs3Route
   CateringRoute: typeof CateringRoute
+  ChuchuBarRoute: typeof ChuchuBarRoute
   ContactRoute: typeof ContactRoute
   Contact2Route: typeof Contact2Route
   FrozenFoodsRoute: typeof FrozenFoodsRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chuchu-bar': {
+      id: '/chuchu-bar'
+      path: '/chuchu-bar'
+      fullPath: '/chuchu-bar'
+      preLoaderRoute: typeof ChuchuBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/catering': {
       id: '/catering'
       path: '/catering'
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutUsRoute: AboutUsRoute,
   AboutUs3Route: AboutUs3Route,
   CateringRoute: CateringRoute,
+  ChuchuBarRoute: ChuchuBarRoute,
   ContactRoute: ContactRoute,
   Contact2Route: Contact2Route,
   FrozenFoodsRoute: FrozenFoodsRoute,
@@ -313,3 +334,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

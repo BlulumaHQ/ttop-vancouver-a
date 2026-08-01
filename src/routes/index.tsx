@@ -140,11 +140,11 @@ const PATHWAYS = [
   },
   {
     code: "02",
-    title: "Frozen Cooked Foods",
+    title: "Formosa Chef-Pacs",
     accent: "TTOP at Home",
     body: "Restaurant dishes, vacuum-packed and frozen. Heat, eat, done.",
     to: "/frozen-foods",
-    cta: "Shop Frozen Foods",
+    cta: "Shop Formosa Chef-Pacs",
   },
   {
     code: "03",
@@ -252,22 +252,20 @@ function Home() {
           <div className="order-1 lg:order-2">
             <SectionHead eyebrow="From our kitchen to yours" title="TTOP Chicken Pot" chip="H1" />
             <p className="text-base leading-relaxed text-[#17233f]/85">
-              We transform the essence of traditional Taiwanese cuisine into
-              every pot of our aromatic Chicken Pot. Top-quality, fresh chicken
-              is gently marinated in our exclusive Hua Diao wine sauce to
-              preserve its natural tenderness, then masterfully cooked into an
-              unforgettable layering of flavours — a rich broth intermingled
-              with fresh vegetables, every sip bursting with the fragrance of
-              Hua Diao.
+              Top-quality, fresh boneless chicken thigh is gently marinated in
+              our exclusive Hua Diao wine sauce to preserve its natural
+              tenderness, then masterfully Wok-Fried into an unforgettable
+              layering of flavours. A rich sauce intermingled with fresh
+              vegetables, every bite bursting with the fragrance of Hua Diao
+              wine.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#17233f]/85">
-              This traditional Taiwanese delicacy is now available for easy
-              enjoyment at home. Our Frozen Cooked Foods — TTOP Chicken Pot
-              (Frozen) — perfectly captures the classic taste. Simply heat it
-              up, and recreate this nostalgic classic right at your table.
+              Our Formosa Chef-Pac, frozen TTOP Chicken Pot, lets you easily
+              recreate our signature dish at the comfort of your own home.
+              Simply heat it up, and you're ready to feast!
             </p>
             <div className="mt-6">
-              <OutlineButton href="/frozen-foods">Shop Frozen Foods</OutlineButton>
+              <OutlineButton href="/frozen-foods">Shop Formosa Chef-Pacs</OutlineButton>
             </div>
           </div>
         </div>

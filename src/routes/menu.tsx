@@ -3,7 +3,13 @@ import { OrderButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
 import { PrintedMenuViewer } from "@/components/site/PrintedMenuViewer";
-import { MENU, FROZEN_H, FROZEN_I, type MenuCategory, type MenuItem } from "@/lib/menu-data";
+import { BentoAddOns } from "@/components/site/BentoAddOns";
+import {
+  AddOnGroups,
+  CompactList,
+  PhotoGrid,
+} from "@/components/site/MenuGrid";
+import { MENU, FROZEN_H, FROZEN_I } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/menu")({
   component: MenuPage,
@@ -19,229 +25,7 @@ export const Route = createFileRoute("/menu")({
   }),
 });
 
-/* ---------- Presentational bits ---------- */
-
-function accentClasses(cat: MenuCategory) {
-  const isRed = cat.accent === "red";
-  return {
-    chip: isRed ? ("red" as const) : ("blue" as const),
-    heading: isRed ? "text-[#ca3134]" : "text-[#1d418f]",
-    band: isRed ? "bg-[#ca3134]" : "bg-[#1d418f]",
-    price: isRed ? "text-[#ca3134]" : "text-[#1d418f]",
-  };
-}
-
-function PhotoPlaceholder({ code }: { code: string }) {
-  return (
-    <div
-      className="grid aspect-square w-full place-items-center bg-[#faf6ef]"
-      aria-hidden="true"
-      style={{
-        backgroundImage:
-          "repeating-linear-gradient(45deg, transparent 0 12px, rgba(29,65,143,0.05) 12px 24px)",
-      }}
-    >
-      <span className="font-display text-3xl font-black tracking-wider text-[#1d418f]/25">
-        {code || "TTOP"}
-      </span>
-    </div>
-  );
-}
-
-function PhotoCard({ item, cat }: { item: MenuItem; cat: MenuCategory }) {
-  const cls = accentClasses(cat);
-  return (
-    <article className="group relative flex flex-col overflow-hidden border border-[#1d418f]/12 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
-      <div className="relative">
-        {item.image ? (
-          <img
-            src={item.image}
-            alt={item.name}
-            loading="lazy"
-            width={480}
-            height={480}
-            className="block aspect-square w-full object-cover"
-          />
-        ) : (
-          <PhotoPlaceholder code={item.code} />
-        )}
-        {item.code && (
-          <div className="absolute left-2 top-2">
-            <CodeChip tone={cls.chip} size="sm">
-              {item.code}
-            </CodeChip>
-          </div>
-        )}
-        <div className="absolute right-2 top-2 flex gap-1">
-          {item.spicy && (
-            <span
-              className="inline-flex h-6 items-center rounded-sm bg-white/90 px-1.5 text-[10px] font-bold uppercase tracking-wider text-[#ca3134] shadow-sm"
-              title="Spicy"
-            >
-              🌶 Spicy
-            </span>
-          )}
-          {item.veg && (
-            <span
-              className="inline-flex h-6 items-center rounded-sm bg-white/90 px-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1d418f] shadow-sm"
-              title="Vegetarian"
-            >
-              V
-            </span>
-          )}
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col gap-1 p-3">
-        <h3 className="font-display text-[15px] font-semibold leading-snug text-[#17233f]">
-          {item.name}
-        </h3>
-        {item.tagline && (
-          <p className="text-[11px] italic text-[#17233f]/60">{item.tagline}</p>
-        )}
-        {item.note && (
-          <p className="text-[11px] text-[#17233f]/60">{item.note}</p>
-        )}
-        <div className={`mt-auto pt-2 font-display tabular text-lg font-bold ${cls.price}`}>
-          ${item.price}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function CompactRow({ item, cat }: { item: MenuItem; cat: MenuCategory }) {
-  const cls = accentClasses(cat);
-  return (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-3 border-b border-dashed border-[#1d418f]/12 py-2.5 last:border-b-0">
-      {item.code ? (
-        <CodeChip tone={cls.chip} size="sm">
-          {item.code}
-        </CodeChip>
-      ) : (
-        <span className="inline-block h-1 w-1 rounded-full bg-[#1d418f]/30" />
-      )}
-      <div className="min-w-0">
-        <div className="text-[14px] font-semibold text-[#17233f]">
-          {item.spicy && <span className="mr-1 text-[#ca3134]">🌶</span>}
-          {item.veg && (
-            <span className="mr-1 rounded-sm bg-[#1d418f]/10 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#1d418f]">
-              V
-            </span>
-          )}
-          {item.name}
-        </div>
-        {(item.tagline || item.note) && (
-          <div className="text-[11px] italic text-[#17233f]/60">
-            {item.tagline}
-            {item.tagline && item.note ? " · " : ""}
-            {item.note}
-          </div>
-        )}
-      </div>
-      <span className={`tabular text-right text-[14px] font-bold ${cls.price}`}>
-        ${item.price}
-      </span>
-    </div>
-  );
-}
-
-function CategoryHeader({ cat }: { cat: MenuCategory }) {
-  const cls = accentClasses(cat);
-  return (
-    <div className="mb-6 flex items-end gap-4">
-      <CodeChip tone={cls.chip} size="lg">
-        {cat.letter}
-      </CodeChip>
-      <div className="flex-1">
-        <h2 className={`font-display text-2xl leading-none md:text-3xl ${cls.heading}`}>
-          {cat.title}
-        </h2>
-        {cat.subtitle && (
-          <p className="mt-1 text-xs italic text-[#17233f]/60">{cat.subtitle}</p>
-        )}
-        {cat.blurb && (
-          <p className="mt-2 max-w-2xl text-sm text-[#17233f]/75">{cat.blurb}</p>
-        )}
-      </div>
-    </div>
-  );
-}
-
-/* Photo grid — compact, 2 cols on mobile, up to 5 on desktop */
-function PhotoGrid({ cat }: { cat: MenuCategory }) {
-  return (
-    <section id={cat.letter.replace("+", "")} className="scroll-mt-24">
-      <CategoryHeader cat={cat} />
-      <RuleRedBlue className="mb-5" />
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
-        {cat.items.map((it) => (
-          <PhotoCard key={`${cat.letter}-${it.code}-${it.name}-${it.tagline ?? ""}`} item={it} cat={cat} />
-        ))}
-      </div>
-      {cat.notes && (
-        <ul className="mt-5 space-y-1.5 border-l-2 border-[#1d418f]/25 pl-4 text-xs leading-relaxed text-[#17233f]/70">
-          {cat.notes.map((n, i) => (
-            <li key={i}>{n}</li>
-          ))}
-        </ul>
-      )}
-    </section>
-  );
-}
-
-/* Add-on toppings — grouped columns, no photos */
-function AddOnGroups({ cat }: { cat: MenuCategory }) {
-  if (!cat.groups) return null;
-  return (
-    <section id={cat.letter.replace("+", "")} className="scroll-mt-24 bg-[#faf6ef] p-6 md:p-10">
-      <CategoryHeader cat={cat} />
-      <RuleRedBlue className="mb-6" />
-      <div className="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-        {cat.groups.map((g) => (
-          <div key={g.label}>
-            <h3 className="mb-2 font-display text-sm font-bold uppercase tracking-wider text-[#ca3134]">
-              {g.label}
-            </h3>
-            <div>
-              {g.items.map((it, i) => (
-                <CompactRow key={`${g.label}-${i}`} item={it} cat={cat} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* Compact list — used for D / E where photos are missing */
-function CompactList({ cat }: { cat: MenuCategory }) {
-  return (
-    <section id={cat.letter.replace("+", "")} className="scroll-mt-24">
-      <CategoryHeader cat={cat} />
-      <RuleRedBlue className="mb-5" />
-      <div className="grid gap-x-8 gap-y-1 md:grid-cols-2">
-        {cat.items.map((it, i) => (
-          <CompactRow key={`${cat.letter}-${i}`} item={it} cat={cat} />
-        ))}
-      </div>
-      {cat.notes && (
-        <ul className="mt-5 space-y-1.5 border-l-2 border-[#1d418f]/25 pl-4 text-xs leading-relaxed text-[#17233f]/70">
-          {cat.notes.map((n, i) => (
-            <li key={i}>{n}</li>
-          ))}
-        </ul>
-      )}
-    </section>
-  );
-}
-
 function MenuPage() {
-  const anchors: { code: string; label: string }[] = [
-    { code: "A", label: "Pot" },
-    { code: "A", label: "Add-ons" }, // A+ shares anchor visual with A section? we use separate anchor:
-  ];
-  // Rebuild anchors properly:
   const NAV: { code: string; label: string }[] = [
     { code: "A", label: "Pot" },
     { code: "AAdd", label: "Add-ons" },
@@ -249,13 +33,11 @@ function MenuPage() {
     { code: "C", label: "Rice Bowls" },
     { code: "D", label: "À La Carte" },
     { code: "E", label: "Side Dish" },
-    { code: "F", label: "Drinks" },
-    { code: "H", label: "Frozen Cooked" },
-    { code: "I", label: "Frozen Raw" },
+    { code: "H", label: "Chef-Pac" },
+    { code: "I", label: "Prep-Pac" },
   ];
 
   const findCat = (letter: string) => MENU.find((m) => m.letter === letter)!;
-  void anchors; // silence unused
 
   return (
     <>
@@ -323,11 +105,44 @@ function MenuPage() {
           <div id="AAdd">
             <AddOnGroups cat={findCat("A+")} />
           </div>
-          <PhotoGrid cat={findCat("B")} />
+          <PhotoGrid
+            cat={findCat("B")}
+            renderFooter={(it) =>
+              it.code === "B17" || Number(it.code.slice(1)) >= 3 ? (
+                <BentoAddOns />
+              ) : null
+            }
+          />
           <PhotoGrid cat={findCat("C")} />
           <CompactList cat={findCat("D")} />
           <CompactList cat={findCat("E")} />
-          <PhotoGrid cat={findCat("F")} />
+
+          {/* ChuChu Bar promo band (drinks moved to their own page) */}
+          <section className="border border-[#1d418f]/20 bg-[#faf6ef] p-6 md:p-10">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <div className="mb-3 flex items-center gap-3">
+                  <RuleRedBlue className="w-12" />
+                  <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#ca3134]">
+                    Drinks
+                  </span>
+                </div>
+                <h2 className="font-display text-3xl leading-tight text-[#1d418f] md:text-4xl">
+                  ChuChu Bar
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-[#17233f]/80">
+                  Signature milk teas, Taiwanese classics and our natural
+                  vinegar cube drinks.
+                </p>
+              </div>
+              <Link
+                to="/chuchu-bar"
+                className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#ca3134] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a]"
+              >
+                View ChuChu Bar
+              </Link>
+            </div>
+          </section>
 
           {/* Frozen cooked + raw */}
           <div className="bg-[#faf6ef] p-6 md:p-10">
@@ -354,7 +169,7 @@ function MenuPage() {
 
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#1d418f]/20 pt-8">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#17233f]/60">
-              🌶 Spicy · V Vegetarian · DF Deep-Fried · OG Old-School
+              🌶 Spicy · V Vegetarian · OG Old-School
             </span>
             <OrderButton size="lg" />
           </div>

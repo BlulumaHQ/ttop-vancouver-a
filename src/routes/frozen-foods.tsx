@@ -3,6 +3,7 @@ import { useState } from "react";
 import { OrderButton, OutlineButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
+import { CatalogueViewer } from "@/components/site/CatalogueViewer";
 import { FROZEN_H, FROZEN_I } from "@/lib/menu-data";
 import { ADDRESS } from "@/lib/site";
 
@@ -10,9 +11,9 @@ export const Route = createFileRoute("/frozen-foods")({
   component: FrozenFoodsPage,
   head: () => ({
     meta: [
-      { title: "Frozen Cooked Foods | TTOP Chicken" },
+      { title: "Formosa Chef-Pacs | TTOP Chicken" },
       { name: "description", content: "TTOP at Home — restaurant dishes vacuum-packed and frozen the day they're cooked. Chicken pot, beef noodle, LOBA sauce and more, available in Richmond, BC." },
-      { property: "og:title", content: "Frozen Cooked Foods | TTOP Chicken" },
+      { property: "og:title", content: "Formosa Chef-Pacs | TTOP Chicken" },
       { property: "og:description", content: "Restaurant dishes, vacuum-packed and frozen the day they're cooked." },
       { property: "og:url", content: "/frozen-foods" },
       { property: "og:image", content: "/images/frozen-og-01.jpg" },
@@ -100,7 +101,7 @@ function FrozenFoodsPage() {
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">TTOP at Home</span>
             </div>
             <h1 className="font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
-              Frozen<br /><em className="italic text-[#ca3134]">Cooked</em> Foods
+              Formosa<br /><em className="italic text-[#ca3134]">Chef</em>-Pacs
             </h1>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
               Restaurant dishes, vacuum-packed and frozen the day they're cooked. Heat, eat, done.
@@ -113,13 +114,13 @@ function FrozenFoodsPage() {
           </div>
           <div className="relative">
             <div className="absolute -inset-3 border border-[#1d418f]/30" aria-hidden="true" />
-            <img src="/images/frozen-hero-01.jpg" alt="TTOP frozen products" width={1200} height={900} className="relative block aspect-[4/3] w-full object-cover" />
+            <img src="/images/frozen-hero-01.jpg" alt="TTOP Formosa Chef-Pacs products" width={1200} height={900} className="relative block aspect-[4/3] w-full object-cover" />
           </div>
         </div>
       </section>
 
       <Section tone="white">
-        <SectionHead eyebrow="Frozen Cooked" title="Ready in minutes" chip="H" />
+        <SectionHead eyebrow="Formosa Chef-Pacs" title="Ready in minutes" chip="H" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {FROZEN_H.items.map((it) => (
             <ProductCard
@@ -137,7 +138,7 @@ function FrozenFoodsPage() {
       </Section>
 
       <Section tone="cream">
-        <SectionHead eyebrow="Frozen Raw" title="For your own kitchen" chip="I" />
+        <SectionHead eyebrow="Formosa Prep-Pacs" title="For your own kitchen" chip="I" />
         <div className="grid gap-6 md:grid-cols-3">
           {FROZEN_I.items.map((it) => (
             <ProductCard
@@ -153,15 +154,14 @@ function FrozenFoodsPage() {
         </div>
 
         {/* Catalogue aside */}
-        <div className="mt-14 grid gap-6 border-t border-[#1d418f]/20 pt-10 lg:grid-cols-[1fr_2fr] lg:items-center">
-          <img src="/images/frozen-catalogue-01.jpg" alt="TTOP frozen catalogue" className="block w-full max-w-xs border border-[#1d418f]/20" width={500} height={700} loading="lazy" />
+        <div className="mt-14 grid gap-6 border-t border-[#1d418f]/20 pt-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+          <CatalogueViewer />
           <div>
-            <h3 className="font-display text-2xl text-[#1d418f]">The full frozen catalogue</h3>
+            <h3 className="font-display text-2xl text-[#1d418f]">The full Chef-Pac catalogue</h3>
             <p className="mt-3 text-sm leading-relaxed text-[#17233f]/80">
               Prefer the printed lookbook? Every dish above appears in TTOP's
               own bilingual product catalogue with weights, portions and
-              suggested serving ideas. Ask us for a copy in store, or just
-              come talk to us — we love recommending pairings.
+              suggested serving ideas. Tap any page to view it full screen.
             </p>
           </div>
         </div>
@@ -193,7 +193,7 @@ function FrozenFoodsPage() {
 
       {/* FAQ */}
       <Section tone="cream">
-        <SectionHead eyebrow="Good to know" title="Frozen FAQ" />
+        <SectionHead eyebrow="Good to know" title="Chef-Pac FAQ" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
           {FAQS.map((f, i) => (
             <div key={i}>

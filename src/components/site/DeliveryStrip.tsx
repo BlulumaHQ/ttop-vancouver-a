@@ -1,7 +1,19 @@
 const PARTNERS = [
-  { name: "DoorDash", src: "/images/delivery/doordash.png", href: "https://www.doordash.com" },
-  { name: "Uber Eats", src: "/images/delivery/ubereats.png", href: "https://www.ubereats.com" },
-  { name: "Fantuan", src: "/images/delivery/fantuan.jpg", href: "https://fantuanorder.com" },
+  {
+    name: "DoorDash",
+    src: "/images/delivery/doordash.png",
+    href: "https://www.doordash.com/store/ttop-%E8%8A%B1%E9%9B%95%E9%9B%9E-richmond-27547541/30803547/",
+  },
+  {
+    name: "Uber Eats",
+    src: "/images/delivery/ubereats.png",
+    href: "https://www.ubereats.com/ca/store/ttop-%E8%8A%B1%E9%9B%95%E9%9B%9E-taiwan-taipei-original-pot/IPPBfU8PVayIuoqrmo3oBA?diningMode=DELIVERY&surfaceName=",
+  },
+  {
+    name: "Fantuan",
+    src: "/images/delivery/fantuan.jpg",
+    href: "https://www.fantuanorder.com/zh-CN/store/ttop-taiwan-taipei-original-pot/ca-1216448102",
+  },
 ];
 
 export function DeliveryStrip({
