@@ -169,7 +169,7 @@ function MenuPage() {
 
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#1d418f]/20 pt-8">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#17233f]/60">
-              🌶 Spicy · V Vegetarian · DF Deep-Fried · OG Old-School
+              🌶 Spicy · V Vegetarian · OG Old-School
             </span>
             <OrderButton size="lg" />
           </div>
