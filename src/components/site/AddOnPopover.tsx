@@ -1,7 +1,17 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { BENTO_ADDONS } from "@/lib/menu-data";
+import type { AddOnBlock } from "@/lib/menu-data";
 
-export function BentoAddOns() {
+export function AddOnPopover({
+  blocks,
+  label = "+ Add-ons",
+  image,
+  imageAlt,
+}: {
+  blocks: AddOnBlock[];
+  label?: string;
+  image?: string;
+  imageAlt?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
@@ -14,7 +24,7 @@ export function BentoAddOns() {
     if (!btn) return;
     const r = btn.getBoundingClientRect();
     const width = Math.min(320, window.innerWidth - 24);
-    const height = Math.min(340, window.innerHeight - 24);
+    const height = Math.min(360, window.innerHeight - 24);
     let left = r.left + r.width / 2 - width / 2;
     left = Math.max(12, Math.min(left, window.innerWidth - width - 12));
     let top = r.bottom + 8;
@@ -60,6 +70,8 @@ export function BentoAddOns() {
     };
   }, [open]);
 
+  if (!image && blocks.length === 0) return null;
+
   return (
     <>
       <button
@@ -82,7 +94,7 @@ export function BentoAddOns() {
         }}
         className="inline-flex shrink-0 items-center rounded-sm border border-[#1d418f]/25 bg-white px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white"
       >
-        + Add-ons
+        {label}
       </button>
 
       {open && pos && (
@@ -90,7 +102,7 @@ export function BentoAddOns() {
           ref={panelRef}
           id={panelId}
           role="dialog"
-          aria-label="Bento add-ons"
+          aria-label={label}
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={hide}
           style={{
@@ -98,16 +110,46 @@ export function BentoAddOns() {
             left: pos.left,
             width: "min(320px, calc(100vw - 24px))",
           }}
-          className="fixed z-[80] max-h-[340px] overflow-auto rounded-md border border-[#1d418f]/20 bg-white p-4 text-left shadow-[6px_6px_0_0_rgba(29,65,143,0.15)]"
+          className="fixed z-[80] max-h-[360px] overflow-auto rounded-md border border-[#1d418f]/20 bg-white p-4 text-left shadow-[6px_6px_0_0_rgba(29,65,143,0.15)]"
         >
-          {BENTO_ADDONS.map((b) => (
+          {image && (
+            <img
+              src={image}
+              alt={imageAlt ?? ""}
+              loading="lazy"
+              decoding="async"
+              width={320}
+              height={320}
+              className={`block aspect-square w-full rounded-sm object-cover ${blocks.length ? "mb-3" : ""}`}
+            />
+          )}
+          {blocks.map((b) => (
             <div key={b.label} className="mb-3 last:mb-0">
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#ca3134]">
                 {b.label}
               </div>
-              <p className="mt-1 text-[12px] leading-relaxed text-[#17233f]/80">
-                {b.body}
-              </p>
+              {b.note && (
+                <p className="mt-1 text-[12px] leading-relaxed text-[#17233f]/80">
+                  {b.note}
+                </p>
+              )}
+              {b.lines && (
+                <ul className="mt-1.5">
+                  {b.lines.map((l) => (
+                    <li
+                      key={l.name}
+                      className="flex items-baseline justify-between gap-3 border-b border-dashed border-[#1d418f]/12 py-1 last:border-b-0"
+                    >
+                      <span className="text-[12px] text-[#17233f]/85">{l.name}</span>
+                      {l.price && (
+                        <span className="tabular text-[12px] font-bold text-[#ca3134]">
+                          ${l.price}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>

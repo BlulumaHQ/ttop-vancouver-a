@@ -226,7 +226,7 @@ function Home() {
             </p>
             <p className="mt-4 text-base leading-relaxed text-[#17233f]/85">
               Join us for a Taiwanese food adventure and let us show you what
-              authenticity means to us in the heart of Food Street in Richmond.
+              authenticity means to us. Where it all began — Alexandra Food Street, Richmond.
             </p>
             <div className="mt-6">
               <OutlineButton href="/about">Our Story</OutlineButton>
@@ -319,7 +319,7 @@ function Home() {
       <Section tone="white">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
-            <SectionHead eyebrow="Visit us" title="Food Street, Richmond" />
+            <SectionHead eyebrow="Visit us" title="Cambie Road, Richmond" />
             <dl className="space-y-3 text-sm text-[#17233f]/85">
               <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Address</dt>
                 <dd><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">{ADDRESS}</a></dd></div>

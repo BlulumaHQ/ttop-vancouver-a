@@ -3,13 +3,53 @@ import { OrderButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
 import { PrintedMenuViewer } from "@/components/site/PrintedMenuViewer";
-import { BentoAddOns } from "@/components/site/BentoAddOns";
+import { AddOnPopover } from "@/components/site/AddOnPopover";
 import {
   AddOnGroups,
   CompactList,
   PhotoGrid,
 } from "@/components/site/MenuGrid";
-import { MENU, FROZEN_H, FROZEN_I } from "@/lib/menu-data";
+import {
+  MENU,
+  FROZEN_H,
+  FROZEN_I,
+  ADDON_INCLUDED,
+  ADDON_POPULAR,
+  ADDON_ALSO_ADD,
+} from "@/lib/menu-data";
+import type { AddOnBlock, MenuItem } from "@/lib/menu-data";
+
+const D_SPICY_POWDER = ["D1", "D2", "D3", "D7", "D8", "D9", "D10", "D11"];
+const D_CHILI = ["D19", "D20", "D21", "D22"];
+
+function dBlocks(code: string): AddOnBlock[] {
+  if (D_SPICY_POWDER.includes(code))
+    return [{ label: "Add-on", lines: [{ name: "Add Spicy Powder", price: "1" }] }];
+  if (D_CHILI.includes(code))
+    return [
+      { label: "Add-on", lines: [{ name: "Add Chili X / XX / XXX", price: "1.5" }] },
+    ];
+  return [];
+}
+
+function dLabel(code: string, hasImage: boolean) {
+  if (D_SPICY_POWDER.includes(code)) return hasImage ? "Photo + Spicy" : "+ Spicy";
+  if (D_CHILI.includes(code)) return hasImage ? "Photo + Chili" : "+ Chili";
+  return "Photo";
+}
+
+function renderDTrailing(item: MenuItem) {
+  const blocks = dBlocks(item.code);
+  if (!item.image && blocks.length === 0) return null;
+  return (
+    <AddOnPopover
+      blocks={blocks}
+      label={dLabel(item.code, Boolean(item.image))}
+      image={item.image}
+      imageAlt={`${item.name} at TTOP Chicken`}
+    />
+  );
+}
 
 export const Route = createFileRoute("/menu")({
   component: MenuPage,
@@ -107,14 +147,18 @@ function MenuPage() {
           </div>
           <PhotoGrid
             cat={findCat("B")}
-            renderFooter={(it) =>
-              it.code === "B17" || Number(it.code.slice(1)) >= 3 ? (
-                <BentoAddOns />
-              ) : null
-            }
+            renderFooter={(it) => (
+              <AddOnPopover
+                blocks={
+                  it.code === "B1" || it.code === "B2"
+                    ? [ADDON_INCLUDED, ADDON_POPULAR, ADDON_ALSO_ADD]
+                    : [ADDON_ALSO_ADD]
+                }
+              />
+            )}
           />
           <PhotoGrid cat={findCat("C")} />
-          <CompactList cat={findCat("D")} />
+          <CompactList cat={findCat("D")} renderTrailing={renderDTrailing} />
           <CompactList cat={findCat("E")} />
 
           {/* ChuChu Bar promo band (drinks moved to their own page) */}
@@ -128,7 +172,7 @@ function MenuPage() {
                   </span>
                 </div>
                 <h2 className="font-display text-3xl leading-tight text-[#1d418f] md:text-4xl">
-                  ChuChu Bar
+                  ChuChu Bar + Refreshments
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-[#17233f]/80">
                   Signature milk teas, Taiwanese classics and our natural
@@ -139,7 +183,7 @@ function MenuPage() {
                 to="/chuchu-bar"
                 className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#ca3134] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a]"
               >
-                View ChuChu Bar
+                View Drinks Menu
               </Link>
             </div>
           </section>
@@ -199,7 +243,7 @@ function MenuPage() {
 const REWARDS: { stars: number; reward: string; code?: string }[] = [
   { stars: 1, reward: "1 canned beverage" },
   { stars: 3, reward: "1 house blend drink (M)" },
-  { stars: 4, reward: "1 ChuChuBar drink (L)" },
+  { stars: 4, reward: "1 ChuChu Bar drink (L)" },
   { stars: 6, reward: "1 rice bowl", code: "C1–C2" },
   { stars: 8, reward: "1 deluxe rice bowl", code: "C3–C5" },
   { stars: 10, reward: "1 bento", code: "B3–B16" },

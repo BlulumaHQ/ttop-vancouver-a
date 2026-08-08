@@ -100,7 +100,15 @@ export function PhotoCard({
   );
 }
 
-export function CompactRow({ item, cat }: { item: MenuItem; cat: MenuCategory }) {
+export function CompactRow({
+  item,
+  cat,
+  trailing,
+}: {
+  item: MenuItem;
+  cat: MenuCategory;
+  trailing?: ReactNode;
+}) {
   const cls = accentClasses(cat);
   return (
     <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-3 border-b border-dashed border-[#1d418f]/12 py-2.5 last:border-b-0">
@@ -112,7 +120,8 @@ export function CompactRow({ item, cat }: { item: MenuItem; cat: MenuCategory })
         <span className="inline-block h-1 w-1 rounded-full bg-[#1d418f]/30" />
       )}
       <div className="min-w-0">
-        <div className="text-[14px] font-semibold text-[#17233f]">
+        <div className="flex flex-wrap items-center gap-1.5 text-[14px] font-semibold text-[#17233f]">
+          <span>
           {item.spicy && <span className="mr-1 text-[#ca3134]">🌶</span>}
           {item.veg && (
             <span className="mr-1 rounded-sm bg-[#1d418f]/10 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#1d418f]">
@@ -120,6 +129,8 @@ export function CompactRow({ item, cat }: { item: MenuItem; cat: MenuCategory })
             </span>
           )}
           {item.name}
+          </span>
+          {trailing}
         </div>
         {(item.tagline || item.note) && (
           <div className="text-[11px] italic text-[#17233f]/60">
@@ -197,14 +208,25 @@ export function PhotoGrid({
 }
 
 /* Compact list — used where photos are missing */
-export function CompactList({ cat }: { cat: MenuCategory }) {
+export function CompactList({
+  cat,
+  renderTrailing,
+}: {
+  cat: MenuCategory;
+  renderTrailing?: (item: MenuItem) => ReactNode;
+}) {
   return (
     <section id={cat.letter.replace("+", "")} className="scroll-mt-24">
       <CategoryHeader cat={cat} />
       <RuleRedBlue className="mb-5" />
       <div className="grid gap-x-8 gap-y-1 md:grid-cols-2">
         {cat.items.map((it, i) => (
-          <CompactRow key={`${cat.letter}-${i}`} item={it} cat={cat} />
+          <CompactRow
+            key={`${cat.letter}-${i}`}
+            item={it}
+            cat={cat}
+            trailing={renderTrailing?.(it)}
+          />
         ))}
       </div>
       <CategoryNotes notes={cat.notes} />

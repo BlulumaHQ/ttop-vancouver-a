@@ -150,7 +150,7 @@ export function Footer() {
                 </span>
               </Link>
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
-                Old-world Taiwanese cooking, brought to Food Street in Richmond. Chicken pots, bentos, and Formosa Chef-Pacs to take home.
+                Old-world Taiwanese cooking, born on Alexandra Food Street in Richmond. Chicken pots, bentos, and Formosa Chef-Pacs to take home.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#1d418f]">

@@ -27,7 +27,7 @@ export const MENU: MenuCategory[] = [
     accent: "red",
     subtitle: "Celery, red onion, scallion & cilantro included",
     blurb:
-      "The dish that put us on Food Street. Boneless chicken slow-simmered in Hua Diao wine sauce, sold as a shareable pot.",
+      "The dish that made our name on Alexandra Food Street. Boneless chicken slow-simmered in Hua Diao wine sauce, sold as a shareable pot.",
     items: [
       { code: "A1", name: "TTOP Chicken Pot", tagline: "Small", price: "38", image: "/images/menu/a1-chicken-pot-s.webp" },
       { code: "A2", name: "TTOP Chicken Pot", tagline: "Large", price: "58", image: "/images/menu/a2-chicken-pot-l.webp" },
@@ -125,7 +125,7 @@ export const MENU: MenuCategory[] = [
       { code: "B12", name: "Shredded Chicken", price: "16.25", image: "/images/menu/b12-shredded-chicken.webp" },
       { code: "B13", name: "Hibachi Berkshire Pork", tagline: "Black Peppercorn / Sukiyaki", price: "16.5", image: "/images/menu/b13-hibachi-pork.webp" },
       { code: "B14", name: "Hibachi Beef", tagline: "Black Peppercorn / Sukiyaki", price: "17", image: "/images/menu/b14-hibachi-beef.webp" },
-      { code: "B15", name: "Basil Eggplant Stir-Fry", price: "17.5", veg: true, image: "/images/menu/b15-basil-eggplant.webp" },
+      { code: "B15", name: "Wok-fry Basil Eggplant", price: "17.5", veg: true, image: "/images/menu/b15-basil-eggplant.webp" },
       { code: "B16", name: "Vegetarian Chicken Roll", price: "18.5", veg: true, image: "/images/menu/b16-veg-chicken-roll.webp" },
       { code: "B17", name: "Basic Bento", price: "9", image: "/images/menu/b17-three-sides.webp" },
     ],
@@ -155,7 +155,7 @@ export const MENU: MenuCategory[] = [
       { code: "D1", name: "Basil Fried Popcorn Chicken", price: "11" },
       { code: "D2", name: "Fried Fish Cake", price: "10", image: "/images/menu/d2-df-fish-cake.webp" },
       { code: "D3", name: "Fried Squid Ball", tagline: "4 pcs / 8 pcs", price: "6 / 10", image: "/images/menu/d3-df-squid-ball.webp" },
-      { code: "D4", name: "Fried Tofu", price: "10", veg: true, image: "/images/menu/d4-df-tofu.webp" },
+      { code: "D4", name: "Crunchy Mini Tofu Nuggets", price: "10", veg: true, image: "/images/menu/d4-df-tofu.webp" },
       { code: "D5", name: "Taro Fries", price: "9", veg: true },
       { code: "D6", name: "Wok Wok Fries", tagline: "Pepper / Chili / Plum Powder", price: "7", veg: true, image: "/images/menu/d6-wok-fries.webp" },
       { code: "D7", name: "Crispy Chicken Leg", tagline: "2 pcs", price: "9.5", image: "/images/menu/d7-df-chicken-leg.webp" },
@@ -170,8 +170,8 @@ export const MENU: MenuCategory[] = [
       { code: "D16", name: "Marinated Quail Eggs", tagline: "12 pcs", price: "6", image: "/images/menu/d16-quail-eggs.webp" },
       { code: "D17", name: "Steamed Rice", tagline: "250g", price: "2.5", image: "/images/menu/d17-plain-rice.webp" },
       { code: "D18", name: "Taro Biscuit", tagline: "1 / 2 / 3 / 4 pcs", price: "4.5 / 8.5 / 12 / 15.5", image: "/images/menu/d18-taro-biscuit.webp" },
-      { code: "D19", name: "Basil Eggplant Stir-Fry", price: "13", veg: true, image: "/images/menu/d19-basil-eggplant.webp" },
-      { code: "D20", name: "Stir-Fry Taiwanese Cabbage", price: "13", veg: true, image: "/images/menu/d20-stir-fry-cabbage.webp" },
+      { code: "D19", name: "Wok-fry Basil Eggplant", price: "13", veg: true, image: "/images/menu/d19-basil-eggplant.webp" },
+      { code: "D20", name: "Wok-fry Taiwanese Cabbage", price: "13", veg: true, image: "/images/menu/d20-stir-fry-cabbage.webp" },
       { code: "D21", name: "Hibachi Berkshire Pork", tagline: "Black Peppercorn / Sukiyaki", price: "15" },
       { code: "D22", name: "Hibachi Beef", tagline: "Black Peppercorn / Sukiyaki", price: "15.5" },
       { code: "D23", name: "Gua Bao", tagline: "Contains peanuts", price: "7.99", image: "/images/menu/d23-gua-bao.webp" },
@@ -191,39 +191,61 @@ export const MENU: MenuCategory[] = [
   },
 ];
 
-/* Bento add-on details — surfaced in the per-card popover on the Menu page. */
-export const BENTO_ADDONS: { label: string; body: string }[] = [
-  {
-    label: "Included",
-    body: "Celery / red onion / scallion / cilantro. Remove any at no charge. Add Chili X / XX / XXX +$1.5.",
-  },
-  {
-    label: "Popular add-ons",
-    body: "AAA Beef $3.5 · Premium Lamb Slices $4 · Berkshire Pork Belly $3 · Celtuce $2.5 · Most vegetables & mushrooms $2 · Cilantro $1.",
-  },
-  {
-    label: "Also add",
-    body: "Steamed Rice (250g) $2.5 · LOBA Sauce $3 · Spicy Pickled Radish $1.5 · Grilled Pork Tenderloin (2 pcs) $5.5 · Stewed Pork Belly $4 · Sausage (1 link) $5.5 · Marinated Quail Egg (4 pcs) $2 · Pickled Mustard Green $1.5 · Scallion Salt Sauce $1.5 · Black Peppercorn Sauce $2.5.",
-  },
-];
+/* Add-on blocks — surfaced in the per-card popover on the Menu page. */
+export type AddOnLine = { name: string; price?: string };
+export type AddOnBlock = { label: string; note?: string; lines?: AddOnLine[] };
+
+export const ADDON_INCLUDED: AddOnBlock = {
+  label: "Included",
+  note: "Celery / red onion / scallion / cilantro. Remove any at no charge. Add Chili X / XX / XXX +$1.5.",
+};
+
+export const ADDON_POPULAR: AddOnBlock = {
+  label: "Popular add-ons",
+  lines: [
+    { name: "AAA Beef", price: "3.5" },
+    { name: "Premium Lamb Slices", price: "4" },
+    { name: "Berkshire Pork Belly", price: "3" },
+    { name: "Celtuce", price: "2.5" },
+    { name: "Most vegetables & mushrooms", price: "2" },
+    { name: "Cilantro", price: "1" },
+  ],
+};
+
+export const ADDON_ALSO_ADD: AddOnBlock = {
+  label: "Also add",
+  lines: [
+    { name: "Steamed Rice (250g)", price: "2.5" },
+    { name: "LOBA Sauce", price: "3" },
+    { name: "Spicy Pickled Daikon", price: "1.5" },
+    { name: "Grilled Pork Tenderloin (2 pcs)", price: "5.5" },
+    { name: "Stewed Pork Belly", price: "4" },
+    { name: "Sausage (1 link)", price: "5.5" },
+    { name: "Marinated Quail Egg (4 pcs)", price: "2" },
+    { name: "Pickled Mustard Green", price: "1.5" },
+    { name: "Scallion Salt Sauce", price: "1.5" },
+    { name: "Black Peppercorn Sauce", price: "2.5" },
+  ],
+};
 
 /* ChuChu Bar — vinegar cubes + drinks (own page at /chuchu-bar) */
 export const VINEGAR_G: MenuCategory = {
   letter: "G",
-  title: "Vinegar Cubes",
+  title: "ChuChu Bar Organic Vinegar Cubes",
   subtitle: "新醋感天然醋飲",
   accent: "red",
   items: [
     { code: "G1", name: "Honey Apple Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
     { code: "G2", name: "Lychee Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
     { code: "G3", name: "Cranberry Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
+    { code: "G4", name: "Peach Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
   ],
   notes: ["Add Chia Seed +$1 · Add Aloe Vera +$1"],
 };
 
 export const DRINKS_F: MenuCategory = {
   letter: "F",
-  title: "Drinks",
+  title: "Refreshments",
   accent: "blue",
   items: [
     { code: "F1", name: "Signature Milk Tea", tagline: "M / L / Hot", price: "5 / 10 / 5.5", image: "/images/drinks/f1-signature-milk-tea.webp" },
