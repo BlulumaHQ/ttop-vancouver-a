@@ -208,14 +208,25 @@ export function PhotoGrid({
 }
 
 /* Compact list — used where photos are missing */
-export function CompactList({ cat }: { cat: MenuCategory }) {
+export function CompactList({
+  cat,
+  renderTrailing,
+}: {
+  cat: MenuCategory;
+  renderTrailing?: (item: MenuItem) => ReactNode;
+}) {
   return (
     <section id={cat.letter.replace("+", "")} className="scroll-mt-24">
       <CategoryHeader cat={cat} />
       <RuleRedBlue className="mb-5" />
       <div className="grid gap-x-8 gap-y-1 md:grid-cols-2">
         {cat.items.map((it, i) => (
-          <CompactRow key={`${cat.letter}-${i}`} item={it} cat={cat} />
+          <CompactRow
+            key={`${cat.letter}-${i}`}
+            item={it}
+            cat={cat}
+            trailing={renderTrailing?.(it)}
+          />
         ))}
       </div>
       <CategoryNotes notes={cat.notes} />
