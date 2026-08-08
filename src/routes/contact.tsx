@@ -43,7 +43,7 @@ function ContactPage() {
       <Section tone="cream">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHead eyebrow="Visit" title="Food Street, Richmond" />
+            <SectionHead eyebrow="Visit" title="Cambie Road, Richmond" />
             <dl className="space-y-4 text-sm text-[#17233f]/85">
               <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Address</dt>
                 <dd><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">{ADDRESS}</a></dd></div>

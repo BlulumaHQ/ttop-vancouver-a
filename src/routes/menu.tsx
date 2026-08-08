@@ -172,7 +172,7 @@ function MenuPage() {
                   </span>
                 </div>
                 <h2 className="font-display text-3xl leading-tight text-[#1d418f] md:text-4xl">
-                  ChuChu Bar
+                  ChuChu Bar + Refreshments
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-[#17233f]/80">
                   Signature milk teas, Taiwanese classics and our natural
@@ -183,7 +183,7 @@ function MenuPage() {
                 to="/chuchu-bar"
                 className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#ca3134] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a]"
               >
-                View ChuChu Bar
+                View Drinks Menu
               </Link>
             </div>
           </section>
@@ -243,7 +243,7 @@ function MenuPage() {
 const REWARDS: { stars: number; reward: string; code?: string }[] = [
   { stars: 1, reward: "1 canned beverage" },
   { stars: 3, reward: "1 house blend drink (M)" },
-  { stars: 4, reward: "1 ChuChuBar drink (L)" },
+  { stars: 4, reward: "1 ChuChu Bar drink (L)" },
   { stars: 6, reward: "1 rice bowl", code: "C1–C2" },
   { stars: 8, reward: "1 deluxe rice bowl", code: "C3–C5" },
   { stars: 10, reward: "1 bento", code: "B3–B16" },

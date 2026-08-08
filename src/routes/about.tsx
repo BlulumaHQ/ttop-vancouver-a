@@ -104,7 +104,7 @@ function AboutPage() {
             chicken that have been cooked to the perfect combination of
             softness and tenderness. Join us at TTOP for a Taiwanese food
             adventure and let us show you what we like to eat and what
-            authenticity means to us in the heart of Food Street in Richmond.
+            authenticity means to us. Where it all began — Alexandra Food Street, Richmond.
           </p>
         </div>
       </Section>
