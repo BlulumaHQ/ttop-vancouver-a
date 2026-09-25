@@ -39,6 +39,12 @@ const PHASES = [
   { n: "3", t: "Easy Recovery", accent: "After lunch", d: "Sustainable packaging, zero food waste, respectful of the prepared environment." },
 ];
 
+const MEAL_PLANS = [
+  { month: "June 2026", href: "/downloads/montessori-meal-plan-2026-06.pdf" },
+  { month: "July 2026", href: "/downloads/montessori-meal-plan-2026-07.pdf" },
+  { month: "August 2026", href: "/downloads/montessori-meal-plan-2026-08.pdf" },
+];
+
 function MontessoriPage() {
   return (
     <>
@@ -119,6 +125,26 @@ function MontessoriPage() {
               <h3 className="mt-4 font-display text-2xl text-[#1d418f]">{p.t}</h3>
               <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]">{p.accent}</p>
               <p className="mt-4 text-sm text-[#17233f]/80">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Sample meal plans */}
+      <Section tone="cream">
+        <SectionHead eyebrow="Real menus" title="Sample Monthly Meal Plans" />
+        <p className="-mt-6 mb-8 max-w-2xl text-sm text-[#17233f]/75">
+          See examples of how our Montessori and daycare meal programs are planned throughout the month. Menus may vary based on scheduling, availability and individual program requirements.
+        </p>
+        <div className="grid gap-4 md:grid-cols-3">
+          {MEAL_PLANS.map((m, i) => (
+            <div key={m.href} className="flex flex-col border border-[#1d418f]/15 bg-white p-6 transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
+              <span className={`text-xs font-bold uppercase tracking-[0.28em] ${i % 2 ? "text-[#1d418f]" : "text-[#ca3134]"}`}>Monthly meal plan</span>
+              <h3 className="mt-2 font-display text-3xl text-[#1d418f]">{m.month}</h3>
+              <p className="mt-2 text-sm text-[#17233f]/70">PDF sample</p>
+              <a href={m.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#ca3134] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a]">
+                View Meal Plan
+              </a>
             </div>
           ))}
         </div>

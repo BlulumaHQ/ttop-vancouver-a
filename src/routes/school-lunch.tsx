@@ -60,6 +60,17 @@ const FAQS = [
   { q: "Is there menu variety?", a: "Yes. Menus rotate regularly, and in every four-week cycle students see at least 20 different colours of natural whole foods (our Rainbow Index)." },
 ];
 
+const HOT_LUNCH_PHOTOS = [
+  ["classic-steamed-chicken-mushroom-rice-bowl", "Classic Steamed Chicken & Mushroom Rice Bowl"],
+  ["harvest-tomato-stewed-beef-rice-bowl", "Harvest Tomato Stewed Beef Rice Bowl"],
+  ["popcorn-chicken-egg-sub", "Popcorn Chicken & Egg Sub"],
+  ["lions-head-meatball-casserole-rice-bowl", "Lion's Head Meatball Casserole Rice Bowl"],
+  ["soy-glazed-chicken-cutlet-rice-bowl", "Soy Glazed Chicken Cutlet Rice Bowl"],
+  ["pork-tenderloin-egg-sub", "Pork Tenderloin & Egg Sub"],
+  ["sweet-sour-pork-rice-bowl", "Sweet & Sour Pork Rice Bowl"],
+  ["soy-glazed-chicken-sub", "Soy Glazed Chicken Sub"],
+].map(([f, name]) => ({ src: `/images/hot-lunch/${f}.webp`, name }));
+
 function SchoolLunchPage() {
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -148,6 +159,22 @@ function SchoolLunchPage() {
             <span className="font-display text-2xl italic text-[#ffb6b6]">20</span>{" "}
             different colours of natural whole foods.
           </p>
+        </div>
+      </Section>
+
+      {/* Hot lunch photos */}
+      <Section tone="white">
+        <SectionHead eyebrow="From our kitchen" title="A Look at Our Hot Lunches" />
+        <p className="-mt-6 mb-8 max-w-2xl text-sm text-[#17233f]/75">
+          Real meals prepared for our school lunch programs — balanced, comforting and made for busy school days.
+        </p>
+        <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
+          {HOT_LUNCH_PHOTOS.map((p) => (
+            <figure key={p.src} className="group overflow-hidden border border-[#1d418f]/12 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
+              <img src={p.src} alt={p.name} loading="lazy" decoding="async" width={675} height={900} className="block aspect-[3/4] w-full object-cover" />
+              <figcaption className="p-3 font-display text-[14px] font-semibold leading-snug text-[#17233f]">{p.name}</figcaption>
+            </figure>
+          ))}
         </div>
       </Section>
 
