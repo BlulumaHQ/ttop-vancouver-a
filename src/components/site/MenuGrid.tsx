@@ -41,7 +41,7 @@ export function PhotoCard({
   const cls = accentClasses(cat);
   return (
     <article className="group relative flex flex-col overflow-hidden border border-[#1d418f]/12 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
-      <div className="relative">
+      <div className={`relative ${item.soldOut ? "[&>img]:opacity-45 [&>img]:grayscale" : ""}`}>
         {item.image ? (
           <img
             src={item.image}
@@ -54,6 +54,13 @@ export function PhotoCard({
           />
         ) : (
           <PhotoPlaceholder code={item.code} />
+        )}
+        {item.soldOut && (
+          <div className="absolute inset-0 grid place-items-center">
+            <span className="-rotate-6 border-2 border-[#ca3134] bg-white/95 px-3 py-1 font-display text-sm font-black uppercase tracking-[0.2em] text-[#ca3134] shadow-sm">
+              Sold Out
+            </span>
+          </div>
         )}
         {item.code && (
           <div className="absolute left-2 top-2">
@@ -90,7 +97,7 @@ export function PhotoCard({
         )}
         {item.note && <p className="text-[11px] text-[#17233f]/60">{item.note}</p>}
         <div className="mt-auto flex items-end justify-between gap-2 pt-2">
-          <span className={`font-display tabular text-lg font-bold ${cls.price}`}>
+          <span className={`font-display tabular text-lg font-bold ${item.soldOut ? "text-[#17233f]/40 line-through" : cls.price}`}>
             ${item.price}
           </span>
           {footer}

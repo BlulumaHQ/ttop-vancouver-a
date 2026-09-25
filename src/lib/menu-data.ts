@@ -7,6 +7,7 @@ export type MenuItem = {
   note?: string;
   image?: string;
   tagline?: string;
+  soldOut?: boolean;
 };
 
 export type MenuCategory = {
@@ -235,10 +236,11 @@ export const VINEGAR_G: MenuCategory = {
   subtitle: "新醋感天然醋飲",
   accent: "red",
   items: [
-    { code: "G1", name: "Honey Apple Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
-    { code: "G2", name: "Lychee Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
-    { code: "G3", name: "Cranberry Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
-    { code: "G4", name: "Peach Vinegar Cube", tagline: "M / L", price: "6.5 / 7" },
+    { code: "G1", name: "Honey Apple Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g1-honey-apple-vinegar-cube.webp" },
+    { code: "G2", name: "Lychee Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g2-lychee-vinegar-cube.webp" },
+    { code: "G3", name: "Cranberry Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g3-cranberry-vinegar-cube.webp" },
+    { code: "G4", name: "Peach Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g4-peach-vinegar-cube.webp" },
+    { code: "G5", name: "Red Grape Vinegar Cube", tagline: "Sold out until further notice", price: "6.5 / 7", image: "/images/drinks/g5-red-grape-vinegar-cube.webp", soldOut: true },
   ],
   notes: ["Add Chia Seed +$1 · Add Aloe Vera +$1"],
 };
@@ -252,10 +254,10 @@ export const DRINKS_F: MenuCategory = {
     { code: "F2", name: "Deluxe Dark Plum Juice", tagline: "M / L", price: "5 / 10", image: "/images/drinks/f2-deluxe-dark-plum-juice.webp" },
     { code: "F3", name: "YoYo Pomelo Tea", tagline: "M / L / Hot", price: "5 / 10 / 5.5", image: "/images/drinks/f3-yoyo-pomelo-tea.webp" },
     { code: "F4", name: "Honey Lemon Aloe Chia", tagline: "M / L", price: "5 / 10", image: "/images/drinks/f4-honey-lemon-aloe-chia.webp" },
-    { code: "F5", name: "Pop", tagline: "Coke, Diet Coke, Sprite, Ginger Ale, Nestea", price: "2" },
-    { code: "F6", name: "HeySong Sarsaparilla", price: "3" },
-    { code: "F7", name: "Apple Sidra", price: "3" },
-    { code: "F8", name: "JDB Herbal Tea", price: "3" },
+    { code: "F5", name: "Pop", tagline: "Coke, Diet Coke, Sprite, Ginger Ale, Nestea", price: "2", image: "/images/drinks/f5-pop.webp" },
+    { code: "F6", name: "HeySong Sarsaparilla", price: "3", image: "/images/drinks/f6-heysong-sarsaparilla.webp" },
+    { code: "F7", name: "Apple Sidra", price: "3", image: "/images/drinks/f7-apple-sidra.webp" },
+    { code: "F8", name: "JDB Herbal Tea", price: "3", image: "/images/drinks/f8-jdb-herbal-tea.webp" },
   ],
 };
 
