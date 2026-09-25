@@ -240,7 +240,7 @@ export const VINEGAR_G: MenuCategory = {
     { code: "G2", name: "Lychee Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g2-lychee-vinegar-cube.webp" },
     { code: "G3", name: "Cranberry Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g3-cranberry-vinegar-cube.webp" },
     { code: "G4", name: "Peach Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g4-peach-vinegar-cube.webp" },
-    { code: "G5", name: "Red Grape Vinegar Cube", tagline: "Sold out until further notice", price: "6.5 / 7", image: "/images/drinks/g5-red-grape-vinegar-cube.webp", soldOut: true },
+    { code: "G5", name: "Red Grape Vinegar Cube", tagline: "M / L", price: "6.5 / 7", image: "/images/drinks/g5-red-grape-vinegar-cube.webp" },
   ],
   notes: ["Add Chia Seed +$1 · Add Aloe Vera +$1"],
 };
