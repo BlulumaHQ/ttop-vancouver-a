@@ -45,6 +45,14 @@ const MEAL_PLANS = [
   { month: "August 2026", href: "/downloads/montessori-meal-plan-2026-08.pdf" },
 ];
 
+const REFERENCE_PHOTOS = [
+  ["classic-steamed-chicken-mushroom-rice-bowl", "Classic Steamed Chicken & Mushroom Rice Bowl"],
+  ["popcorn-chicken-egg-sub", "Popcorn Chicken & Egg Sub"],
+  ["lions-head-meatball-casserole-rice-bowl", "Lion's Head Meatball Casserole Rice Bowl"],
+  ["soy-glazed-chicken-cutlet-rice-bowl", "Soy Glazed Chicken Cutlet Rice Bowl"],
+].map(([f, name]) => ({ src: `/images/hot-lunch/${f}.webp`, name }));
+
+
 function MontessoriPage() {
   return (
     <>
@@ -149,6 +157,29 @@ function MontessoriPage() {
           ))}
         </div>
       </Section>
+
+      {/* Reference photos + menu philosophy */}
+      <Section tone="white">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div>
+            <h2 className="font-display text-4xl leading-[1.05] text-[#1d418f] md:text-5xl">
+              Thoughtfully Made for Young Palates
+            </h2>
+            <RuleRedBlue className="mt-6 max-w-[220px]" />
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-[#17233f]/85 md:text-lg">
+              With over 60 menu items designed specifically for children, we take flavor, texture, protein, and vegetables seriously, not just nutrition. Every dish is built around how young palates actually experience food: balanced seasoning, approachable textures, and combinations that invite curiosity instead of resistance. Our goal isn't just a meal kids will eat. It's food that helps them explore, develop a taste for real ingredients, and build eating habits that last well beyond the lunch table.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            {REFERENCE_PHOTOS.map((p) => (
+              <figure key={p.src} className="overflow-hidden border border-[#1d418f]/12 bg-white">
+                <img src={p.src} alt={`${p.name} at TTOP Chicken`} loading="lazy" decoding="async" width={675} height={900} className="block aspect-[3/4] w-full object-cover" />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </Section>
+
 
       <Section tone="blue">
         <div className="mx-auto max-w-3xl text-center">
