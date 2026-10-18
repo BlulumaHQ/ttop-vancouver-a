@@ -9,79 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SchoolLunchRouteImport } from './routes/school-lunch'
-import { Route as MontessoriRouteImport } from './routes/montessori'
-import { Route as MenuRouteImport } from './routes/menu'
-import { Route as FrozeznFoodsRouteImport } from './routes/frozezn-foods'
-import { Route as FrozenFoodsRouteImport } from './routes/frozen-foods'
-import { Route as Contact2RouteImport } from './routes/contact-2'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ChuchuBarRouteImport } from './routes/chuchu-bar'
-import { Route as CateringRouteImport } from './routes/catering'
-import { Route as AboutUs3RouteImport } from './routes/about-us-3'
-import { Route as AboutUsRouteImport } from './routes/about-us'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AboutUsRouteImport } from './routes/about-us'
+import { Route as AboutUs3RouteImport } from './routes/about-us-3'
+import { Route as CateringRouteImport } from './routes/catering'
+import { Route as ChuchuBarRouteImport } from './routes/chuchu-bar'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as Contact2RouteImport } from './routes/contact-2'
+import { Route as FrozenFoodsRouteImport } from './routes/frozen-foods'
+import { Route as FrozeznFoodsRouteImport } from './routes/frozezn-foods'
+import { Route as MenuRouteImport } from './routes/menu'
+import { Route as MontessoriRouteImport } from './routes/montessori'
+import { Route as SchoolLunchRouteImport } from './routes/school-lunch'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SchoolLunchRoute = SchoolLunchRouteImport.update({
-  id: '/school-lunch',
-  path: '/school-lunch',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MontessoriRoute = MontessoriRouteImport.update({
-  id: '/montessori',
-  path: '/montessori',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MenuRoute = MenuRouteImport.update({
-  id: '/menu',
-  path: '/menu',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FrozeznFoodsRoute = FrozeznFoodsRouteImport.update({
-  id: '/frozezn-foods',
-  path: '/frozezn-foods',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FrozenFoodsRoute = FrozenFoodsRouteImport.update({
-  id: '/frozen-foods',
-  path: '/frozen-foods',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Contact2Route = Contact2RouteImport.update({
-  id: '/contact-2',
-  path: '/contact-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChuchuBarRoute = ChuchuBarRouteImport.update({
-  id: '/chuchu-bar',
-  path: '/chuchu-bar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CateringRoute = CateringRouteImport.update({
-  id: '/catering',
-  path: '/catering',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutUs3Route = AboutUs3RouteImport.update({
-  id: '/about-us-3',
-  path: '/about-us-3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutUsRoute = AboutUsRouteImport.update({
-  id: '/about-us',
-  path: '/about-us',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -89,9 +34,64 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUs3Route = AboutUs3RouteImport.update({
+  id: '/about-us-3',
+  path: '/about-us-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CateringRoute = CateringRouteImport.update({
+  id: '/catering',
+  path: '/catering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChuchuBarRoute = ChuchuBarRouteImport.update({
+  id: '/chuchu-bar',
+  path: '/chuchu-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Contact2Route = Contact2RouteImport.update({
+  id: '/contact-2',
+  path: '/contact-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrozenFoodsRoute = FrozenFoodsRouteImport.update({
+  id: '/frozen-foods',
+  path: '/frozen-foods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrozeznFoodsRoute = FrozeznFoodsRouteImport.update({
+  id: '/frozezn-foods',
+  path: '/frozezn-foods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MontessoriRoute = MontessoriRouteImport.update({
+  id: '/montessori',
+  path: '/montessori',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SchoolLunchRoute = SchoolLunchRouteImport.update({
+  id: '/school-lunch',
+  path: '/school-lunch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -214,88 +214,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/school-lunch': {
-      id: '/school-lunch'
-      path: '/school-lunch'
-      fullPath: '/school-lunch'
-      preLoaderRoute: typeof SchoolLunchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/montessori': {
-      id: '/montessori'
-      path: '/montessori'
-      fullPath: '/montessori'
-      preLoaderRoute: typeof MontessoriRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/menu': {
-      id: '/menu'
-      path: '/menu'
-      fullPath: '/menu'
-      preLoaderRoute: typeof MenuRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/frozezn-foods': {
-      id: '/frozezn-foods'
-      path: '/frozezn-foods'
-      fullPath: '/frozezn-foods'
-      preLoaderRoute: typeof FrozeznFoodsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/frozen-foods': {
-      id: '/frozen-foods'
-      path: '/frozen-foods'
-      fullPath: '/frozen-foods'
-      preLoaderRoute: typeof FrozenFoodsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact-2': {
-      id: '/contact-2'
-      path: '/contact-2'
-      fullPath: '/contact-2'
-      preLoaderRoute: typeof Contact2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chuchu-bar': {
-      id: '/chuchu-bar'
-      path: '/chuchu-bar'
-      fullPath: '/chuchu-bar'
-      preLoaderRoute: typeof ChuchuBarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/catering': {
-      id: '/catering'
-      path: '/catering'
-      fullPath: '/catering'
-      preLoaderRoute: typeof CateringRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about-us-3': {
-      id: '/about-us-3'
-      path: '/about-us-3'
-      fullPath: '/about-us-3'
-      preLoaderRoute: typeof AboutUs3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about-us': {
-      id: '/about-us'
-      path: '/about-us'
-      fullPath: '/about-us'
-      preLoaderRoute: typeof AboutUsRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -305,11 +228,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-us-3': {
+      id: '/about-us-3'
+      path: '/about-us-3'
+      fullPath: '/about-us-3'
+      preLoaderRoute: typeof AboutUs3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catering': {
+      id: '/catering'
+      path: '/catering'
+      fullPath: '/catering'
+      preLoaderRoute: typeof CateringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chuchu-bar': {
+      id: '/chuchu-bar'
+      path: '/chuchu-bar'
+      fullPath: '/chuchu-bar'
+      preLoaderRoute: typeof ChuchuBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-2': {
+      id: '/contact-2'
+      path: '/contact-2'
+      fullPath: '/contact-2'
+      preLoaderRoute: typeof Contact2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/frozen-foods': {
+      id: '/frozen-foods'
+      path: '/frozen-foods'
+      fullPath: '/frozen-foods'
+      preLoaderRoute: typeof FrozenFoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/frozezn-foods': {
+      id: '/frozezn-foods'
+      path: '/frozezn-foods'
+      fullPath: '/frozezn-foods'
+      preLoaderRoute: typeof FrozeznFoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/montessori': {
+      id: '/montessori'
+      path: '/montessori'
+      fullPath: '/montessori'
+      preLoaderRoute: typeof MontessoriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/school-lunch': {
+      id: '/school-lunch'
+      path: '/school-lunch'
+      fullPath: '/school-lunch'
+      preLoaderRoute: typeof SchoolLunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
