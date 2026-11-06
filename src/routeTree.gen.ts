@@ -23,6 +23,24 @@ import { Route as MenuRouteImport } from './routes/menu'
 import { Route as MontessoriRouteImport } from './routes/montessori'
 import { Route as SchoolLunchRouteImport } from './routes/school-lunch'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ZhCnIndexRouteImport } from './routes/zh-cn.index'
+import { Route as ZhCnAboutRouteImport } from './routes/zh-cn.about'
+import { Route as ZhCnCateringRouteImport } from './routes/zh-cn.catering'
+import { Route as ZhCnChuchuBarRouteImport } from './routes/zh-cn.chuchu-bar'
+import { Route as ZhCnContactRouteImport } from './routes/zh-cn.contact'
+import { Route as ZhCnFrozenFoodsRouteImport } from './routes/zh-cn.frozen-foods'
+import { Route as ZhCnMenuRouteImport } from './routes/zh-cn.menu'
+import { Route as ZhCnMontessoriRouteImport } from './routes/zh-cn.montessori'
+import { Route as ZhCnSchoolLunchRouteImport } from './routes/zh-cn.school-lunch'
+import { Route as ZhTwIndexRouteImport } from './routes/zh-tw.index'
+import { Route as ZhTwAboutRouteImport } from './routes/zh-tw.about'
+import { Route as ZhTwCateringRouteImport } from './routes/zh-tw.catering'
+import { Route as ZhTwChuchuBarRouteImport } from './routes/zh-tw.chuchu-bar'
+import { Route as ZhTwContactRouteImport } from './routes/zh-tw.contact'
+import { Route as ZhTwFrozenFoodsRouteImport } from './routes/zh-tw.frozen-foods'
+import { Route as ZhTwMenuRouteImport } from './routes/zh-tw.menu'
+import { Route as ZhTwMontessoriRouteImport } from './routes/zh-tw.montessori'
+import { Route as ZhTwSchoolLunchRouteImport } from './routes/zh-tw.school-lunch'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -94,6 +112,96 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhCnIndexRoute = ZhCnIndexRouteImport.update({
+  id: '/zh-cn/',
+  path: '/zh-cn/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnAboutRoute = ZhCnAboutRouteImport.update({
+  id: '/zh-cn/about',
+  path: '/zh-cn/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnCateringRoute = ZhCnCateringRouteImport.update({
+  id: '/zh-cn/catering',
+  path: '/zh-cn/catering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnChuchuBarRoute = ZhCnChuchuBarRouteImport.update({
+  id: '/zh-cn/chuchu-bar',
+  path: '/zh-cn/chuchu-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnContactRoute = ZhCnContactRouteImport.update({
+  id: '/zh-cn/contact',
+  path: '/zh-cn/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnFrozenFoodsRoute = ZhCnFrozenFoodsRouteImport.update({
+  id: '/zh-cn/frozen-foods',
+  path: '/zh-cn/frozen-foods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnMenuRoute = ZhCnMenuRouteImport.update({
+  id: '/zh-cn/menu',
+  path: '/zh-cn/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnMontessoriRoute = ZhCnMontessoriRouteImport.update({
+  id: '/zh-cn/montessori',
+  path: '/zh-cn/montessori',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhCnSchoolLunchRoute = ZhCnSchoolLunchRouteImport.update({
+  id: '/zh-cn/school-lunch',
+  path: '/zh-cn/school-lunch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwIndexRoute = ZhTwIndexRouteImport.update({
+  id: '/zh-tw/',
+  path: '/zh-tw/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwAboutRoute = ZhTwAboutRouteImport.update({
+  id: '/zh-tw/about',
+  path: '/zh-tw/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwCateringRoute = ZhTwCateringRouteImport.update({
+  id: '/zh-tw/catering',
+  path: '/zh-tw/catering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwChuchuBarRoute = ZhTwChuchuBarRouteImport.update({
+  id: '/zh-tw/chuchu-bar',
+  path: '/zh-tw/chuchu-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwContactRoute = ZhTwContactRouteImport.update({
+  id: '/zh-tw/contact',
+  path: '/zh-tw/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwFrozenFoodsRoute = ZhTwFrozenFoodsRouteImport.update({
+  id: '/zh-tw/frozen-foods',
+  path: '/zh-tw/frozen-foods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwMenuRoute = ZhTwMenuRouteImport.update({
+  id: '/zh-tw/menu',
+  path: '/zh-tw/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwMontessoriRoute = ZhTwMontessoriRouteImport.update({
+  id: '/zh-tw/montessori',
+  path: '/zh-tw/montessori',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwSchoolLunchRoute = ZhTwSchoolLunchRouteImport.update({
+  id: '/zh-tw/school-lunch',
+  path: '/zh-tw/school-lunch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -110,6 +218,24 @@ export interface FileRoutesByFullPath {
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/zh-cn/about': typeof ZhCnAboutRoute
+  '/zh-cn/catering': typeof ZhCnCateringRoute
+  '/zh-cn/chuchu-bar': typeof ZhCnChuchuBarRoute
+  '/zh-cn/contact': typeof ZhCnContactRoute
+  '/zh-cn/frozen-foods': typeof ZhCnFrozenFoodsRoute
+  '/zh-cn/menu': typeof ZhCnMenuRoute
+  '/zh-cn/montessori': typeof ZhCnMontessoriRoute
+  '/zh-cn/school-lunch': typeof ZhCnSchoolLunchRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/catering': typeof ZhTwCateringRoute
+  '/zh-tw/chuchu-bar': typeof ZhTwChuchuBarRoute
+  '/zh-tw/contact': typeof ZhTwContactRoute
+  '/zh-tw/frozen-foods': typeof ZhTwFrozenFoodsRoute
+  '/zh-tw/menu': typeof ZhTwMenuRoute
+  '/zh-tw/montessori': typeof ZhTwMontessoriRoute
+  '/zh-tw/school-lunch': typeof ZhTwSchoolLunchRoute
+  '/zh-cn/': typeof ZhCnIndexRoute
+  '/zh-tw/': typeof ZhTwIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +252,24 @@ export interface FileRoutesByTo {
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/zh-cn/about': typeof ZhCnAboutRoute
+  '/zh-cn/catering': typeof ZhCnCateringRoute
+  '/zh-cn/chuchu-bar': typeof ZhCnChuchuBarRoute
+  '/zh-cn/contact': typeof ZhCnContactRoute
+  '/zh-cn/frozen-foods': typeof ZhCnFrozenFoodsRoute
+  '/zh-cn/menu': typeof ZhCnMenuRoute
+  '/zh-cn/montessori': typeof ZhCnMontessoriRoute
+  '/zh-cn/school-lunch': typeof ZhCnSchoolLunchRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/catering': typeof ZhTwCateringRoute
+  '/zh-tw/chuchu-bar': typeof ZhTwChuchuBarRoute
+  '/zh-tw/contact': typeof ZhTwContactRoute
+  '/zh-tw/frozen-foods': typeof ZhTwFrozenFoodsRoute
+  '/zh-tw/menu': typeof ZhTwMenuRoute
+  '/zh-tw/montessori': typeof ZhTwMontessoriRoute
+  '/zh-tw/school-lunch': typeof ZhTwSchoolLunchRoute
+  '/zh-cn': typeof ZhCnIndexRoute
+  '/zh-tw': typeof ZhTwIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +287,24 @@ export interface FileRoutesById {
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/zh-cn/about': typeof ZhCnAboutRoute
+  '/zh-cn/catering': typeof ZhCnCateringRoute
+  '/zh-cn/chuchu-bar': typeof ZhCnChuchuBarRoute
+  '/zh-cn/contact': typeof ZhCnContactRoute
+  '/zh-cn/frozen-foods': typeof ZhCnFrozenFoodsRoute
+  '/zh-cn/menu': typeof ZhCnMenuRoute
+  '/zh-cn/montessori': typeof ZhCnMontessoriRoute
+  '/zh-cn/school-lunch': typeof ZhCnSchoolLunchRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/catering': typeof ZhTwCateringRoute
+  '/zh-tw/chuchu-bar': typeof ZhTwChuchuBarRoute
+  '/zh-tw/contact': typeof ZhTwContactRoute
+  '/zh-tw/frozen-foods': typeof ZhTwFrozenFoodsRoute
+  '/zh-tw/menu': typeof ZhTwMenuRoute
+  '/zh-tw/montessori': typeof ZhTwMontessoriRoute
+  '/zh-tw/school-lunch': typeof ZhTwSchoolLunchRoute
+  '/zh-cn/': typeof ZhCnIndexRoute
+  '/zh-tw/': typeof ZhTwIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +323,24 @@ export interface FileRouteTypes {
     | '/montessori'
     | '/school-lunch'
     | '/sitemap.xml'
+    | '/zh-cn/about'
+    | '/zh-cn/catering'
+    | '/zh-cn/chuchu-bar'
+    | '/zh-cn/contact'
+    | '/zh-cn/frozen-foods'
+    | '/zh-cn/menu'
+    | '/zh-cn/montessori'
+    | '/zh-cn/school-lunch'
+    | '/zh-tw/about'
+    | '/zh-tw/catering'
+    | '/zh-tw/chuchu-bar'
+    | '/zh-tw/contact'
+    | '/zh-tw/frozen-foods'
+    | '/zh-tw/menu'
+    | '/zh-tw/montessori'
+    | '/zh-tw/school-lunch'
+    | '/zh-cn/'
+    | '/zh-tw/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +357,24 @@ export interface FileRouteTypes {
     | '/montessori'
     | '/school-lunch'
     | '/sitemap.xml'
+    | '/zh-cn/about'
+    | '/zh-cn/catering'
+    | '/zh-cn/chuchu-bar'
+    | '/zh-cn/contact'
+    | '/zh-cn/frozen-foods'
+    | '/zh-cn/menu'
+    | '/zh-cn/montessori'
+    | '/zh-cn/school-lunch'
+    | '/zh-tw/about'
+    | '/zh-tw/catering'
+    | '/zh-tw/chuchu-bar'
+    | '/zh-tw/contact'
+    | '/zh-tw/frozen-foods'
+    | '/zh-tw/menu'
+    | '/zh-tw/montessori'
+    | '/zh-tw/school-lunch'
+    | '/zh-cn'
+    | '/zh-tw'
   id:
     | '__root__'
     | '/'
@@ -193,6 +391,24 @@ export interface FileRouteTypes {
     | '/montessori'
     | '/school-lunch'
     | '/sitemap.xml'
+    | '/zh-cn/about'
+    | '/zh-cn/catering'
+    | '/zh-cn/chuchu-bar'
+    | '/zh-cn/contact'
+    | '/zh-cn/frozen-foods'
+    | '/zh-cn/menu'
+    | '/zh-cn/montessori'
+    | '/zh-cn/school-lunch'
+    | '/zh-tw/about'
+    | '/zh-tw/catering'
+    | '/zh-tw/chuchu-bar'
+    | '/zh-tw/contact'
+    | '/zh-tw/frozen-foods'
+    | '/zh-tw/menu'
+    | '/zh-tw/montessori'
+    | '/zh-tw/school-lunch'
+    | '/zh-cn/'
+    | '/zh-tw/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -210,6 +426,24 @@ export interface RootRouteChildren {
   MontessoriRoute: typeof MontessoriRoute
   SchoolLunchRoute: typeof SchoolLunchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ZhCnAboutRoute: typeof ZhCnAboutRoute
+  ZhCnCateringRoute: typeof ZhCnCateringRoute
+  ZhCnChuchuBarRoute: typeof ZhCnChuchuBarRoute
+  ZhCnContactRoute: typeof ZhCnContactRoute
+  ZhCnFrozenFoodsRoute: typeof ZhCnFrozenFoodsRoute
+  ZhCnMenuRoute: typeof ZhCnMenuRoute
+  ZhCnMontessoriRoute: typeof ZhCnMontessoriRoute
+  ZhCnSchoolLunchRoute: typeof ZhCnSchoolLunchRoute
+  ZhTwAboutRoute: typeof ZhTwAboutRoute
+  ZhTwCateringRoute: typeof ZhTwCateringRoute
+  ZhTwChuchuBarRoute: typeof ZhTwChuchuBarRoute
+  ZhTwContactRoute: typeof ZhTwContactRoute
+  ZhTwFrozenFoodsRoute: typeof ZhTwFrozenFoodsRoute
+  ZhTwMenuRoute: typeof ZhTwMenuRoute
+  ZhTwMontessoriRoute: typeof ZhTwMontessoriRoute
+  ZhTwSchoolLunchRoute: typeof ZhTwSchoolLunchRoute
+  ZhCnIndexRoute: typeof ZhCnIndexRoute
+  ZhTwIndexRoute: typeof ZhTwIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -312,6 +546,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh-cn/': {
+      id: '/zh-cn/'
+      path: '/zh-cn'
+      fullPath: '/zh-cn/'
+      preLoaderRoute: typeof ZhCnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/about': {
+      id: '/zh-cn/about'
+      path: '/zh-cn/about'
+      fullPath: '/zh-cn/about'
+      preLoaderRoute: typeof ZhCnAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/catering': {
+      id: '/zh-cn/catering'
+      path: '/zh-cn/catering'
+      fullPath: '/zh-cn/catering'
+      preLoaderRoute: typeof ZhCnCateringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/chuchu-bar': {
+      id: '/zh-cn/chuchu-bar'
+      path: '/zh-cn/chuchu-bar'
+      fullPath: '/zh-cn/chuchu-bar'
+      preLoaderRoute: typeof ZhCnChuchuBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/contact': {
+      id: '/zh-cn/contact'
+      path: '/zh-cn/contact'
+      fullPath: '/zh-cn/contact'
+      preLoaderRoute: typeof ZhCnContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/frozen-foods': {
+      id: '/zh-cn/frozen-foods'
+      path: '/zh-cn/frozen-foods'
+      fullPath: '/zh-cn/frozen-foods'
+      preLoaderRoute: typeof ZhCnFrozenFoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/menu': {
+      id: '/zh-cn/menu'
+      path: '/zh-cn/menu'
+      fullPath: '/zh-cn/menu'
+      preLoaderRoute: typeof ZhCnMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/montessori': {
+      id: '/zh-cn/montessori'
+      path: '/zh-cn/montessori'
+      fullPath: '/zh-cn/montessori'
+      preLoaderRoute: typeof ZhCnMontessoriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-cn/school-lunch': {
+      id: '/zh-cn/school-lunch'
+      path: '/zh-cn/school-lunch'
+      fullPath: '/zh-cn/school-lunch'
+      preLoaderRoute: typeof ZhCnSchoolLunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/': {
+      id: '/zh-tw/'
+      path: '/zh-tw'
+      fullPath: '/zh-tw/'
+      preLoaderRoute: typeof ZhTwIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/about': {
+      id: '/zh-tw/about'
+      path: '/zh-tw/about'
+      fullPath: '/zh-tw/about'
+      preLoaderRoute: typeof ZhTwAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/catering': {
+      id: '/zh-tw/catering'
+      path: '/zh-tw/catering'
+      fullPath: '/zh-tw/catering'
+      preLoaderRoute: typeof ZhTwCateringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/chuchu-bar': {
+      id: '/zh-tw/chuchu-bar'
+      path: '/zh-tw/chuchu-bar'
+      fullPath: '/zh-tw/chuchu-bar'
+      preLoaderRoute: typeof ZhTwChuchuBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/contact': {
+      id: '/zh-tw/contact'
+      path: '/zh-tw/contact'
+      fullPath: '/zh-tw/contact'
+      preLoaderRoute: typeof ZhTwContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/frozen-foods': {
+      id: '/zh-tw/frozen-foods'
+      path: '/zh-tw/frozen-foods'
+      fullPath: '/zh-tw/frozen-foods'
+      preLoaderRoute: typeof ZhTwFrozenFoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/menu': {
+      id: '/zh-tw/menu'
+      path: '/zh-tw/menu'
+      fullPath: '/zh-tw/menu'
+      preLoaderRoute: typeof ZhTwMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/montessori': {
+      id: '/zh-tw/montessori'
+      path: '/zh-tw/montessori'
+      fullPath: '/zh-tw/montessori'
+      preLoaderRoute: typeof ZhTwMontessoriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/school-lunch': {
+      id: '/zh-tw/school-lunch'
+      path: '/zh-tw/school-lunch'
+      fullPath: '/zh-tw/school-lunch'
+      preLoaderRoute: typeof ZhTwSchoolLunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -330,6 +690,24 @@ const rootRouteChildren: RootRouteChildren = {
   MontessoriRoute: MontessoriRoute,
   SchoolLunchRoute: SchoolLunchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ZhCnAboutRoute: ZhCnAboutRoute,
+  ZhCnCateringRoute: ZhCnCateringRoute,
+  ZhCnChuchuBarRoute: ZhCnChuchuBarRoute,
+  ZhCnContactRoute: ZhCnContactRoute,
+  ZhCnFrozenFoodsRoute: ZhCnFrozenFoodsRoute,
+  ZhCnMenuRoute: ZhCnMenuRoute,
+  ZhCnMontessoriRoute: ZhCnMontessoriRoute,
+  ZhCnSchoolLunchRoute: ZhCnSchoolLunchRoute,
+  ZhTwAboutRoute: ZhTwAboutRoute,
+  ZhTwCateringRoute: ZhTwCateringRoute,
+  ZhTwChuchuBarRoute: ZhTwChuchuBarRoute,
+  ZhTwContactRoute: ZhTwContactRoute,
+  ZhTwFrozenFoodsRoute: ZhTwFrozenFoodsRoute,
+  ZhTwMenuRoute: ZhTwMenuRoute,
+  ZhTwMontessoriRoute: ZhTwMontessoriRoute,
+  ZhTwSchoolLunchRoute: ZhTwSchoolLunchRoute,
+  ZhCnIndexRoute: ZhCnIndexRoute,
+  ZhTwIndexRoute: ZhTwIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
