@@ -12,7 +12,7 @@ export function translateText(text: string, locale: Locale): string {
   const trimmed = text.replace(/\s+/g, " ").trim();
   const dictionary = dictionaries[locale];
   const translated = dictionary?.[trimmed];
-  if (translated) return text.match(/^\s*/)?.[0] + translated + (text.match(/\s*$/)?.[0] ?? "");
+  if (translated) return (text.match(/^\s*/)?.[0] ?? "") + translated + (text.match(/\s*$/)?.[0] ?? "");
   return text;
 }
 

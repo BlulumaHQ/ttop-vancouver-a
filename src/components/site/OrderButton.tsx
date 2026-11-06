@@ -30,7 +30,7 @@ export function OrderButton({
 }
 
 export function OutlineButton({
-  href,
+  href: destination,
   children,
   className = "",
 }: {
@@ -41,7 +41,7 @@ export function OutlineButton({
   const { t, href } = useSiteLanguage();
   return (
     <a
-      href={href(href)}
+      href={href(destination)}
       className={`inline-flex items-center gap-2 rounded-sm border border-[#1d418f] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white ${className}`}
     >
       <LocalizedText value={children} />
