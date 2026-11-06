@@ -21,6 +21,11 @@ export function SiteLanguageProvider({ children }: { children: ReactNode }) {
   return <LocaleContext.Provider value={localeFromPath(pathname)}>{children}</LocaleContext.Provider>;
 }
 
+export function LocalizedText({ value }: { value: ReactNode }) {
+  const locale = useContext(LocaleContext);
+  return <>{typeof value === "string" ? translateText(value, locale) : value}</>;
+}
+
 export function useSiteLanguage() {
   const locale = useContext(LocaleContext);
   const t = <T,>(value: T): T => {

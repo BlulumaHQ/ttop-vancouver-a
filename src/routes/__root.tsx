@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { TopBar } from "@/components/site/TopBar";
+import { SiteLanguageProvider } from "@/lib/i18n";
+import { localeFromPath } from "@/lib/locale";
 
 function NotFoundComponent() {
   return (
@@ -106,8 +108,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <html lang="en">
+    <html lang={localeFromPath(pathname)}>
       <head>
         <HeadContent />
       </head>
@@ -128,6 +131,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SiteLanguageProvider>
       <div className="flex min-h-screen flex-col bg-white">
         <TopBar />
         <Header />
@@ -136,6 +140,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
+      </SiteLanguageProvider>
     </QueryClientProvider>
   );
 }
