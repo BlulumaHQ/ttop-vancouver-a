@@ -1,17 +1,21 @@
+import doordashAsset from "@/assets/delivery/doordash.png.asset.json";
+import ubereatsAsset from "@/assets/delivery/ubereats.png.asset.json";
+import fantuanAsset from "@/assets/delivery/fantuan.png.asset.json";
+
 const PARTNERS = [
   {
     name: "DoorDash",
-    src: "/images/delivery/doordash.png",
+    src: doordashAsset.url,
     href: "https://www.doordash.com/store/ttop-%E8%8A%B1%E9%9B%95%E9%9B%9E-richmond-27547541/30803547/",
   },
   {
     name: "Uber Eats",
-    src: "/images/delivery/ubereats.png",
+    src: ubereatsAsset.url,
     href: "https://www.ubereats.com/ca/store/ttop-%E8%8A%B1%E9%9B%95%E9%9B%9E-taiwan-taipei-original-pot/IPPBfU8PVayIuoqrmo3oBA?diningMode=DELIVERY&surfaceName=",
   },
   {
     name: "Fantuan",
-    src: "/images/delivery/fantuan.png",
+    src: fantuanAsset.url,
     href: "https://www.fantuanorder.com/zh-CN/store/ttop-taiwan-taipei-original-pot/ca-1216448102",
   },
 ];
