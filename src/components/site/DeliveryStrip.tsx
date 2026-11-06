@@ -11,7 +11,7 @@ const PARTNERS = [
   },
   {
     name: "Fantuan",
-    src: "/images/delivery/fantuan.jpg",
+    src: "/images/delivery/fantuan.png",
     href: "https://www.fantuanorder.com/zh-CN/store/ttop-taiwan-taipei-original-pot/ca-1216448102",
   },
 ];
@@ -44,12 +44,12 @@ export function DeliveryStrip({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Order TTOP Chicken on ${p.name}`}
-              className="group grid h-12 w-32 place-items-center rounded-full bg-white px-4 shadow-[0_1px_0_rgba(0,0,0,0.04),0_4px_12px_rgba(29,65,143,0.08)] ring-1 ring-[#1d418f]/10 transition-all hover:-translate-y-0.5 hover:shadow-[0_2px_0_rgba(0,0,0,0.05),0_8px_18px_rgba(29,65,143,0.15)] sm:h-14 sm:w-36"
+              className="grid h-12 w-12 place-items-center transition-transform duration-200 hover:-translate-y-0.5 sm:h-14 sm:w-14"
             >
               <img
                 src={p.src}
                 alt={`${p.name} logo`}
-                className="max-h-7 w-auto max-w-full object-contain sm:max-h-8"
+                className="h-full w-full object-contain"
                 loading="lazy"
               />
             </a>
