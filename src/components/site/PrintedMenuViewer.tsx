@@ -1,3 +1,4 @@
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { useEffect, useRef, useState } from "react";
 import { CodeChip } from "./CodeChip";
 
@@ -36,6 +37,7 @@ const MENUS: PrintedMenu[] = [
 ];
 
 export function PrintedMenuViewer() {
+  const { t, href } = useSiteLanguage();
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [side, setSide] = useState<"front" | "back">("front");
   const [zoom, setZoom] = useState(false);
@@ -69,7 +71,7 @@ export function PrintedMenuViewer() {
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2">
-        {MENUS.map((m, i) => (
+        <LocalizedText value={MENUS.map((m, i) => (
           <button
             key={m.id}
             type="button"
@@ -79,36 +81,34 @@ export function PrintedMenuViewer() {
             <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#faf6ef]">
               <img
                 src={m.front}
-                alt={`${m.title} — front cover`}
+                alt={t(`${m.title} — front cover`)}
                 loading="lazy"
                 className="block h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
               />
               <div className="absolute left-2 top-2">
                 <CodeChip tone={m.accent} size="sm">
-                  {m.accent === "red" ? "R" : "B"}
+                  <LocalizedText value={m.accent === "red" ? "R" : "B"} />
                 </CodeChip>
               </div>
             </div>
             <div className="flex items-center justify-between gap-3 p-4">
               <div className="min-w-0">
                 <h3 className={`font-display text-xl leading-tight ${m.accent === "red" ? "text-[#ca3134]" : "text-[#1d418f]"}`}>
-                  {m.title}
+                  <LocalizedText value={m.title} />
                 </h3>
-                <p className="mt-0.5 text-xs italic text-[#17233f]/60">{m.chinese}</p>
+                <p className="mt-0.5 text-xs italic text-[#17233f]/60"><LocalizedText value={m.chinese} /></p>
               </div>
-              <span className="shrink-0 text-xs font-bold uppercase tracking-widest text-[#ca3134]">
-                View →
-              </span>
+              <span className="shrink-0 text-xs font-bold uppercase tracking-widest text-[#ca3134]"><LocalizedText value={" View → "} /></span>
             </div>
           </button>
-        ))}
+        ))} />
       </div>
 
-      {current && (
+      <LocalizedText value={current && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`${current.title} — ${imgLabel}`}
+          aria-label={t(`${current.title} — ${imgLabel}`)}
           className="fixed inset-0 z-[100] flex flex-col bg-black/90"
           onClick={() => setOpenIdx(null)}
         >
@@ -119,20 +119,18 @@ export function PrintedMenuViewer() {
           >
             <div className="min-w-0">
               <div className="font-display text-base sm:text-lg">
-                {current.title} <span className="text-white/60 italic">{current.chinese}</span>
+                <LocalizedText value={current.title} /> <span className="text-white/60 italic"><LocalizedText value={current.chinese} /></span>
               </div>
               <div className="text-[11px] font-bold uppercase tracking-widest text-white/60">
-                {imgLabel}
+                <LocalizedText value={imgLabel} />
               </div>
             </div>
             <button
               type="button"
-              aria-label="Close"
+              aria-label={t("Close")}
               onClick={() => setOpenIdx(null)}
               className="grid h-10 w-10 place-items-center rounded-sm border border-white/40 text-xl text-white hover:bg-white hover:text-[#1d418f]"
-            >
-              ✕
-            </button>
+            ><LocalizedText value={" ✕ "} /></button>
           </div>
 
           {/* Image area */}
@@ -154,25 +152,21 @@ export function PrintedMenuViewer() {
             {/* Prev/Next arrows */}
             <button
               type="button"
-              aria-label="Front"
+              aria-label={t("Front")}
               onClick={(e) => { e.stopPropagation(); setSide("front"); setZoom(false); }}
               className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-sm border border-white/40 bg-black/40 px-3 py-2 text-sm text-white hover:bg-white hover:text-[#1d418f] sm:block"
-            >
-              ←
-            </button>
+            ><LocalizedText value={" ← "} /></button>
             <button
               type="button"
-              aria-label="Back"
+              aria-label={t("Back")}
               onClick={(e) => { e.stopPropagation(); setSide("back"); setZoom(false); }}
               className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-sm border border-white/40 bg-black/40 px-3 py-2 text-sm text-white hover:bg-white hover:text-[#1d418f] sm:block"
-            >
-              →
-            </button>
+            ><LocalizedText value={" → "} /></button>
 
             <div className="flex min-h-full items-start justify-center p-4">
               <img
                 src={img}
-                alt={`${current.title} — ${imgLabel}`}
+                alt={t(`${current.title} — ${imgLabel}`)}
                 onClick={() => setZoom((z) => !z)}
                 className={`select-none transition-transform duration-200 ${
                   zoom
@@ -197,9 +191,7 @@ export function PrintedMenuViewer() {
                   ? "bg-white text-[#1d418f]"
                   : "border border-white/40 text-white hover:bg-white/10"
               }`}
-            >
-              Front
-            </button>
+            ><LocalizedText value={" Front "} /></button>
             <button
               type="button"
               onClick={() => { setSide("back"); setZoom(false); }}
@@ -208,12 +200,10 @@ export function PrintedMenuViewer() {
                   ? "bg-white text-[#1d418f]"
                   : "border border-white/40 text-white hover:bg-white/10"
               }`}
-            >
-              Back
-            </button>
+            ><LocalizedText value={" Back "} /></button>
           </div>
         </div>
-      )}
+      )} />
     </>
   );
 }

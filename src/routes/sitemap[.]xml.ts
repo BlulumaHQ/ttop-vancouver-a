@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "";
+const BASE_URL = "https://instant-client-ready.lovable.app";
 
 const PATHS = ["/", "/menu", "/chuchu-bar", "/frozen-foods", "/school-lunch", "/montessori", "/catering", "/about", "/contact"];
 
@@ -9,7 +9,8 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const urls = PATHS.map(
+        const allPaths = [...PATHS, ...["zh-tw", "zh-cn"].flatMap((locale) => PATHS.map((path) => `/${locale}${path}`))];
+        const urls = allPaths.map(
           (p) =>
             `  <url>\n    <loc>${BASE_URL}${p}</loc>\n    <changefreq>weekly</changefreq>\n  </url>`,
         );

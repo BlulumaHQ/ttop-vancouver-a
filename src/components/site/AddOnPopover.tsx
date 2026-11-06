@@ -1,3 +1,4 @@
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { useEffect, useId, useRef, useState } from "react";
 import type { AddOnBlock } from "@/lib/menu-data";
 
@@ -12,6 +13,7 @@ export function AddOnPopover({
   image?: string;
   imageAlt?: string;
 }) {
+  const { t, href } = useSiteLanguage();
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
@@ -94,15 +96,15 @@ export function AddOnPopover({
         }}
         className="inline-flex shrink-0 items-center rounded-sm border border-[#1d418f]/25 bg-white px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white"
       >
-        {label}
+        <LocalizedText value={label} />
       </button>
 
-      {open && pos && (
+      <LocalizedText value={open && pos && (
         <div
           ref={panelRef}
           id={panelId}
           role="dialog"
-          aria-label={label}
+          aria-label={t(label)}
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={hide}
           style={{
@@ -112,48 +114,47 @@ export function AddOnPopover({
           }}
           className="fixed z-[80] max-h-[360px] overflow-auto rounded-md border border-[#1d418f]/20 bg-white p-4 text-left shadow-[6px_6px_0_0_rgba(29,65,143,0.15)]"
         >
-          {image && (
+          <LocalizedText value={image && (
             <img
               src={image}
-              alt={imageAlt ?? ""}
+              alt={t(imageAlt ?? "")}
               loading="lazy"
               decoding="async"
               width={320}
               height={320}
               className={`block aspect-square w-full rounded-sm object-cover ${blocks.length ? "mb-3" : ""}`}
             />
-          )}
-          {blocks.map((b) => (
+          )} />
+          <LocalizedText value={blocks.map((b) => (
             <div key={b.label} className="mb-3 last:mb-0">
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#ca3134]">
-                {b.label}
+                <LocalizedText value={b.label} />
               </div>
-              {b.note && (
+              <LocalizedText value={b.note && (
                 <p className="mt-1 text-[12px] leading-relaxed text-[#17233f]/80">
-                  {b.note}
+                  <LocalizedText value={b.note} />
                 </p>
-              )}
-              {b.lines && (
+              )} />
+              <LocalizedText value={b.lines && (
                 <ul className="mt-1.5">
-                  {b.lines.map((l) => (
+                  <LocalizedText value={b.lines.map((l) => (
                     <li
                       key={l.name}
                       className="flex items-baseline justify-between gap-3 border-b border-dashed border-[#1d418f]/12 py-1 last:border-b-0"
                     >
-                      <span className="text-[12px] text-[#17233f]/85">{l.name}</span>
-                      {l.price && (
-                        <span className="tabular text-[12px] font-bold text-[#ca3134]">
-                          ${l.price}
+                      <span className="text-[12px] text-[#17233f]/85"><LocalizedText value={l.name} /></span>
+                      <LocalizedText value={l.price && (
+                        <span className="tabular text-[12px] font-bold text-[#ca3134]"><LocalizedText value={" $"} /><LocalizedText value={l.price} />
                         </span>
-                      )}
+                      )} />
                     </li>
-                  ))}
+                  ))} />
                 </ul>
-              )}
+              )} />
             </div>
-          ))}
+          ))} />
         </div>
-      )}
+      )} />
     </>
   );
 }

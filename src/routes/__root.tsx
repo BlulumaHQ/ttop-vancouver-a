@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { TopBar } from "@/components/site/TopBar";
+import { SiteLanguageProvider } from "@/lib/i18n";
+import { localeFromPath } from "@/lib/locale";
 
 function NotFoundComponent() {
   return (
@@ -96,6 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" },
     ],
   }),
@@ -106,8 +109,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <html lang="en">
+    <html lang={localeFromPath(pathname)}>
       <head>
         <HeadContent />
       </head>
@@ -128,6 +132,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SiteLanguageProvider>
       <div className="flex min-h-screen flex-col bg-white">
         <TopBar />
         <Header />
@@ -136,6 +141,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
+      </SiteLanguageProvider>
     </QueryClientProvider>
   );
 }
