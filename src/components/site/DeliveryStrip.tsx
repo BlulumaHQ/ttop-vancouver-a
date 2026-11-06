@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import doordashAsset from "@/assets/delivery/doordash.png.asset.json";
 import ubereatsAsset from "@/assets/delivery/ubereats.png.asset.json";
 import fantuanAsset from "@/assets/delivery/fantuan.png.asset.json";
@@ -37,11 +38,9 @@ export function DeliveryStrip({
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-5 py-8 sm:flex-row sm:justify-between lg:px-8">
         <p
           className={`text-[11px] font-bold uppercase tracking-[0.28em] ${labelColor}`}
-        >
-          Also on your favourite apps
-        </p>
+        ><LocalizedText value={" Also on your favourite apps "} /></p>
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          {PARTNERS.map((p) => (
+          <LocalizedText value={PARTNERS.map((p) => (
             <a
               key={p.name}
               href={p.href}
@@ -57,7 +56,7 @@ export function DeliveryStrip({
                 loading="lazy"
               />
             </a>
-          ))}
+          ))} />
         </div>
       </div>
     </section>

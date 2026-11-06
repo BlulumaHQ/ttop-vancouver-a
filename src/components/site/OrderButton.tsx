@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import { ORDER_URL } from "@/lib/site";
 
 export function OrderButton({
@@ -21,8 +22,8 @@ export function OrderButton({
       rel="noopener noreferrer"
       className={`inline-flex items-center gap-2 rounded-sm bg-[#ca3134] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a] ${sizes[size]} ${className}`}
     >
-      <span aria-hidden="true">→</span>
-      <span>{children}</span>
+      <span aria-hidden="true"><LocalizedText value={"→"} /></span>
+      <span><LocalizedText value={children} /></span>
     </a>
   );
 }
@@ -41,7 +42,7 @@ export function OutlineButton({
       href={href}
       className={`inline-flex items-center gap-2 rounded-sm border border-[#1d418f] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white ${className}`}
     >
-      {children}
+      <LocalizedText value={children} />
     </a>
   );
 }

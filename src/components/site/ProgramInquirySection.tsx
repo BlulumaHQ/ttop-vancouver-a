@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import { Section, SectionHead } from "./Section";
 import { InquiryForm } from "./InquiryForm";
 import { PHONE, PHONE_TEL, EMAIL } from "@/lib/site";
@@ -22,21 +23,18 @@ export function ProgramInquirySection({ defaultProgram }: { defaultProgram: Prog
             eyebrow="Contact us"
             title="Discuss a Meal Program for Your School or Centre"
           />
-          <p className="text-sm leading-relaxed text-[#17233f]/85">
-            Tell us about your school or centre and we'll get back to you to
-            plan the details.
-          </p>
+          <p className="text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={" Tell us about your school or centre and we'll get back to you to plan the details. "} /></p>
           <div className="mt-6 space-y-2 text-sm">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]">Phone</span>{" "}
+              <span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]"><LocalizedText value={"Phone"} /></span><LocalizedText value={" "} />
               <a href={`tel:${PHONE_TEL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]">
-                {PHONE}
+                <LocalizedText value={PHONE} />
               </a>
             </div>
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]">Email</span>{" "}
+              <span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]"><LocalizedText value={"Email"} /></span><LocalizedText value={" "} />
               <a href={`mailto:${EMAIL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]">
-                {EMAIL}
+                <LocalizedText value={EMAIL} />
               </a>
             </div>
           </div>

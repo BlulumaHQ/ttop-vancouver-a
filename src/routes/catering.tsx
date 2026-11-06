@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { LocalizedText, Link } from "@/lib/i18n";
+import { createFileRoute } from "@tanstack/react-router";
 import { OrderButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
 import { Section, SectionHead } from "@/components/site/Section";
@@ -26,21 +27,14 @@ function CateringPage() {
         <div className="mx-auto max-w-4xl px-5 py-20 text-center lg:px-8 lg:py-28">
           <div className="flex items-center justify-center gap-3">
             <RuleRedBlue className="w-14" />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">Catering & Groups</span>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]"><LocalizedText value={"Catering & Groups"} /></span>
             <RuleRedBlue className="w-14" />
           </div>
-          <h1 className="mt-6 font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
-            Catering &<br />
-            <em className="italic text-[#ca3134]">Group Orders</em>
+          <h1 className="mt-6 font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl"><LocalizedText value={" Catering &"} /><br />
+            <em className="italic text-[#ca3134]"><LocalizedText value={"Group Orders"} /></em>
           </h1>
-          <p className="mt-4 font-display italic text-lg tracking-wider text-[#1d418f]/70">
-            One week's notice for large parties.
-          </p>
-          <p className="mt-8 text-lg text-[#17233f]/85">
-            Bentos, chicken pots and Taiwanese street snacks for your team or
-            event. Companies and groups welcome — for large orders, please
-            give us one week's notice.
-          </p>
+          <p className="mt-4 font-display italic text-lg tracking-wider text-[#1d418f]/70"><LocalizedText value={" One week's notice for large parties. "} /></p>
+          <p className="mt-8 text-lg text-[#17233f]/85"><LocalizedText value={" Bentos, chicken pots and Taiwanese street snacks for your team or event. Companies and groups welcome — for large orders, please give us one week's notice. "} /></p>
         </div>
       </section>
 
@@ -48,27 +42,19 @@ function CateringPage() {
         <SectionHead eyebrow="Two ways to order" title="How it works" />
         <div className="grid gap-6 md:grid-cols-2">
           <div className="border border-[#1d418f]/20 bg-white p-8">
-            <CodeChip tone="blue" size="lg">01</CodeChip>
-            <h3 className="mt-4 font-display text-2xl text-[#1d418f]">Smaller group orders</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/85">
-              For a small team or a lunch drop, order straight through Order
-              Online — the same ChatChefs system we use every day, with pickup
-              and delivery. Browse the{" "}
-              <Link to="/menu" className="text-[#ca3134] underline">full menu</Link>{" "}first if you want to plan.
-            </p>
+            <CodeChip tone="blue" size="lg"><LocalizedText value={"01"} /></CodeChip>
+            <h3 className="mt-4 font-display text-2xl text-[#1d418f]"><LocalizedText value={"Smaller group orders"} /></h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={" For a small team or a lunch drop, order straight through Order Online — the same ChatChefs system we use every day, with pickup and delivery. Browse the"} /><LocalizedText value={" "} />
+              <Link to="/menu" className="text-[#ca3134] underline"><LocalizedText value={"full menu"} /></Link><LocalizedText value={" "} /><LocalizedText value={"first if you want to plan. "} /></p>
             <div className="mt-6"><OrderButton /></div>
           </div>
           <div className="border border-[#1d418f]/20 bg-white p-8">
-            <CodeChip tone="blue" size="lg">02</CodeChip>
-            <h3 className="mt-4 font-display text-2xl text-[#1d418f]">Large or custom orders</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/85">
-              For a bigger group or an event, please contact us at least one
-              week ahead and we'll plan it with you — quantities, timing,
-              packaging and pickup.
-            </p>
+            <CodeChip tone="blue" size="lg"><LocalizedText value={"02"} /></CodeChip>
+            <h3 className="mt-4 font-display text-2xl text-[#1d418f]"><LocalizedText value={"Large or custom orders"} /></h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={" For a bigger group or an event, please contact us at least one week ahead and we'll plan it with you — quantities, timing, packaging and pickup. "} /></p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#inquiry" className="inline-flex items-center rounded-sm bg-[#ca3134] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:bg-[#a5262a]">Send an Inquiry</a>
-              <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center rounded-sm border border-[#1d418f] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] hover:bg-[#1d418f] hover:text-white">Call {PHONE}</a>
+              <a href="#inquiry" className="inline-flex items-center rounded-sm bg-[#ca3134] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:bg-[#a5262a]"><LocalizedText value={"Send an Inquiry"} /></a>
+              <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center rounded-sm border border-[#1d418f] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] hover:bg-[#1d418f] hover:text-white"><LocalizedText value={"Call "} /><LocalizedText value={PHONE} /></a>
             </div>
           </div>
         </div>
@@ -78,16 +64,11 @@ function CateringPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-16">
           <div>
             <SectionHead eyebrow="Send an inquiry" title="Catering Inquiry" />
-            <p className="text-sm leading-relaxed text-[#17233f]/85">
-              Submit your details and TTOP will respond to confirm available
-              dishes, quantities, pickup or delivery, and pricing.
-            </p>
-            <p className="mt-4 rounded-sm border-l-4 border-[#ca3134] bg-[#faf6ef] p-4 text-sm text-[#17233f]/85">
-              For large orders, please give us <strong>one week's notice</strong>.
-            </p>
+            <p className="text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={" Submit your details and TTOP will respond to confirm available dishes, quantities, pickup or delivery, and pricing. "} /></p>
+            <p className="mt-4 rounded-sm border-l-4 border-[#ca3134] bg-[#faf6ef] p-4 text-sm text-[#17233f]/85"><LocalizedText value={" For large orders, please give us "} /><strong><LocalizedText value={"one week's notice"} /></strong><LocalizedText value={". "} /></p>
             <div className="mt-6 space-y-2 text-sm">
-              <div><span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]">Phone</span> <a href={`tel:${PHONE_TEL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]">{PHONE}</a></div>
-              <div><span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]">Email</span> <a href={`mailto:${EMAIL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]">{EMAIL}</a></div>
+              <div><span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]"><LocalizedText value={"Phone"} /></span> <a href={`tel:${PHONE_TEL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]"><LocalizedText value={PHONE} /></a></div>
+              <div><span className="text-xs font-bold uppercase tracking-widest text-[#1d418f]"><LocalizedText value={"Email"} /></span> <a href={`mailto:${EMAIL}`} className="ml-2 text-[#17233f]/85 hover:text-[#ca3134]"><LocalizedText value={EMAIL} /></a></div>
             </div>
           </div>
           <div className="border border-[#1d418f]/20 bg-white p-6 md:p-8">

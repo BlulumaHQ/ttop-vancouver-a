@@ -1,4 +1,5 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { LocalizedText, Link } from "@/lib/i18n";
+import { useRouterState } from "@tanstack/react-router";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { OrderButton } from "./OrderButton";
@@ -126,23 +127,23 @@ function DesktopGroup({
         }`}
       >
         <span className="relative whitespace-nowrap">
-          {group.label}
-          {active && (
+          <LocalizedText value={group.label} />
+          <LocalizedText value={active && (
             <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-[#ca3134]" />
-          )}
+          )} />
         </span>
         <Chevron open={open} />
       </button>
 
       {/* hover-tolerance bridge */}
-      {open && <div className="absolute left-0 top-full h-3 w-full" />}
+      <LocalizedText value={open && <div className="absolute left-0 top-full h-3 w-full" />} />
 
-      {open && (
+      <LocalizedText value={open && (
         <ul
           id={`dd-${group.id}`}
           className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[240px] rounded-sm border border-[#1d418f]/15 bg-white py-2 shadow-[0_12px_30px_-12px_rgba(29,65,143,0.35)]"
         >
-          {group.items.map((c, idx) => (
+          <LocalizedText value={group.items.map((c, idx) => (
             <li key={c.label}>
               <Link
                 data-dd-item
@@ -163,12 +164,12 @@ function DesktopGroup({
                 }}
                 className="block whitespace-nowrap px-4 py-3 text-left text-sm font-medium text-[#17233f] hover:bg-[#faf6ef] hover:text-[#1d418f]"
               >
-                {c.label}
+                <LocalizedText value={c.label} />
               </Link>
             </li>
-          ))}
+          ))} />
         </ul>
-      )}
+      )} />
     </div>
   );
 }
@@ -192,27 +193,27 @@ function MobileAccordion({
         className="flex min-h-[52px] w-full items-center justify-between py-3 text-left"
       >
         <span className="whitespace-nowrap text-sm font-bold uppercase tracking-wide text-[#17233f]">
-          {group.label}
+          <LocalizedText value={group.label} />
         </span>
         <span className="text-[#1d418f]">
           <Chevron open={open} />
         </span>
       </button>
-      {open && (
+      <LocalizedText value={open && (
         <ul id={`m-${group.id}`} className="pb-2">
-          {group.items.map((c) => (
+          <LocalizedText value={group.items.map((c) => (
             <li key={c.label}>
               <Link
                 to={c.to}
                 hash={c.hash}
                 className="flex min-h-[44px] items-center pl-4 text-sm font-semibold text-[#1d418f]"
               >
-                {c.label}
+                <LocalizedText value={c.label} />
               </Link>
             </li>
-          ))}
+          ))} />
         </ul>
-      )}
+      )} />
     </div>
   );
 }
@@ -293,7 +294,7 @@ export function Header() {
         </Link>
 
         <nav ref={navRef} className="hidden items-center gap-1 min-[1100px]:flex">
-          {GROUPS.map((g) => (
+          <LocalizedText value={GROUPS.map((g) => (
             <DesktopGroup
               key={g.id}
               group={g}
@@ -301,8 +302,8 @@ export function Header() {
               setOpenId={setOpenId}
               pathname={pathname}
             />
-          ))}
-          {PLAIN.map((item) => (
+          ))} />
+          <LocalizedText value={PLAIN.map((item) => (
             <Link
               key={item.to}
               to={item.to}
@@ -311,19 +312,19 @@ export function Header() {
               }`}
             >
               <span className="relative">
-                {item.label}
-                {isActive(item.to) && (
+                <LocalizedText value={item.label} />
+                <LocalizedText value={isActive(item.to) && (
                   <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-[#ca3134]" />
-                )}
+                )} />
               </span>
             </Link>
-          ))}
+          ))} />
         </nav>
 
         <div className="flex items-center gap-2">
           <OrderButton size="sm" className="!px-3 sm:!px-4">
-            <span className="sm:hidden">Order</span>
-            <span className="hidden sm:inline">Order Online</span>
+            <span className="sm:hidden"><LocalizedText value={"Order"} /></span>
+            <span className="hidden sm:inline"><LocalizedText value={"Order Online"} /></span>
           </OrderButton>
           <button
             ref={burgerRef}
@@ -332,12 +333,12 @@ export function Header() {
             className="ml-1 grid h-10 w-10 place-items-center rounded-sm border border-[#1d418f]/25 text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white min-[1100px]:hidden"
             onClick={() => setOpen((v) => !v)}
           >
-            <span className="text-xl leading-none">{open ? "✕" : "≡"}</span>
+            <span className="text-xl leading-none"><LocalizedText value={open ? "✕" : "≡"} /></span>
           </button>
         </div>
       </div>
 
-      {open && mounted && createPortal(
+      <LocalizedText value={open && mounted && createPortal(
         <div
           ref={panelRef}
           className="fixed inset-0 z-[100] flex flex-col bg-white min-[1100px]:hidden"
@@ -353,35 +354,33 @@ export function Header() {
                 burgerRef.current?.focus();
               }}
               className="grid h-11 w-11 place-items-center rounded-sm border border-[#1d418f]/25 text-xl leading-none text-[#1d418f]"
-            >
-              ✕
-            </button>
+            ><LocalizedText value={" ✕ "} /></button>
           </div>
           <div className="flex-1 overflow-y-auto px-5 py-2">
-            {GROUPS.map((g) => (
+            <LocalizedText value={GROUPS.map((g) => (
               <MobileAccordion
                 key={g.id}
                 group={g}
                 open={acc === g.id}
                 onToggle={() => setAcc(acc === g.id ? null : g.id)}
               />
-            ))}
-            {PLAIN.map((item) => (
+            ))} />
+            <LocalizedText value={PLAIN.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 className="flex min-h-[52px] items-center border-b border-[#1d418f]/10 text-sm font-bold uppercase tracking-wide text-[#17233f]"
               >
-                {item.label}
+                <LocalizedText value={item.label} />
               </Link>
-            ))}
+            ))} />
           </div>
           <div className="border-t border-[#1d418f]/15 px-5 py-4">
             <OrderButton size="lg" className="w-full justify-center" />
           </div>
         </div>,
         document.body,
-      )}
+      )} />
     </header>
   );
 }

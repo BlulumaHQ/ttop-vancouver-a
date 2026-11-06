@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { LocalizedText, Link } from "@/lib/i18n";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { OrderButton, OutlineButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
@@ -49,7 +50,7 @@ function ProductCard({
   return (
     <article className={`group flex flex-col overflow-hidden border ${ring} bg-white transition-shadow hover:shadow-[6px_6px_0_0_#1d418f]`}>
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#faf6ef]">
-        {image ? (
+        <LocalizedText value={image ? (
           <img
             src={image}
             alt={name}
@@ -57,26 +58,23 @@ function ProductCard({
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="grid h-full place-items-center text-xs uppercase tracking-widest text-[#1d418f]/40">
-            Photo coming soon
-          </div>
-        )}
+          <div className="grid h-full place-items-center text-xs uppercase tracking-widest text-[#1d418f]/40"><LocalizedText value={" Photo coming soon "} /></div>
+        )} />
         <span className="absolute left-3 top-3">
-          <CodeChip tone={tone}>{code}</CodeChip>
+          <CodeChip tone={tone}><LocalizedText value={code} /></CodeChip>
         </span>
-        <span className="absolute right-3 top-3 rounded-sm bg-white/95 px-2.5 py-1 font-display text-lg font-bold tabular text-[#ca3134] shadow-sm">
-          ${price}
+        <span className="absolute right-3 top-3 rounded-sm bg-white/95 px-2.5 py-1 font-display text-lg font-bold tabular text-[#ca3134] shadow-sm"><LocalizedText value={" $"} /><LocalizedText value={price} />
         </span>
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-lg leading-tight text-[#1d418f]">{name}</h3>
-        {note && (
+        <h3 className="font-display text-lg leading-tight text-[#1d418f]"><LocalizedText value={name} /></h3>
+        <LocalizedText value={note && (
           <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#17233f]/55">
-            {note}
+            <LocalizedText value={note} />
           </p>
-        )}
+        )} />
         <p className="mt-3 flex-1 text-sm leading-relaxed text-[#17233f]/80">
-          {description}
+          <LocalizedText value={description} />
         </p>
       </div>
     </article>
@@ -98,19 +96,15 @@ function FrozenFoodsPage() {
           <div>
             <div className="mb-4 flex items-center gap-3">
               <RuleRedBlue className="w-14" />
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">TTOP at Home</span>
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]"><LocalizedText value={"TTOP at Home"} /></span>
             </div>
-            <h1 className="font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
-              Formosa<br /><em className="italic text-[#ca3134]">Chef</em>-Pacs
-            </h1>
-            <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
-              Restaurant dishes, vacuum-packed and frozen the day they're cooked. Heat, eat, done.
-            </p>
+            <h1 className="font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl"><LocalizedText value={" Formosa"} /><br /><em className="italic text-[#ca3134]"><LocalizedText value={"Chef"} /></em><LocalizedText value={"-Pacs "} /></h1>
+            <p className="mt-6 max-w-xl text-lg text-[#17233f]/85"><LocalizedText value={" Restaurant dishes, vacuum-packed and frozen the day they're cooked. Heat, eat, done. "} /></p>
             <div className="mt-8 flex flex-wrap gap-3">
               <OrderButton size="lg" />
-              <OutlineButton href="/contact">Visit in Store</OutlineButton>
+              <OutlineButton href="/contact"><LocalizedText value={"Visit in Store"} /></OutlineButton>
             </div>
-            <p className="mt-4 text-xs text-[#17233f]/60">Also available in store — {ADDRESS}.</p>
+            <p className="mt-4 text-xs text-[#17233f]/60"><LocalizedText value={"Also available in store — "} /><LocalizedText value={ADDRESS} /><LocalizedText value={"."} /></p>
           </div>
           <div className="relative">
             <div className="absolute -inset-3 border border-[#1d418f]/30" aria-hidden="true" />
@@ -122,7 +116,7 @@ function FrozenFoodsPage() {
       <Section tone="white">
         <SectionHead eyebrow="Formosa Chef-Pacs" title="Ready in minutes" chip="H" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {FROZEN_H.items.map((it) => (
+          <LocalizedText value={FROZEN_H.items.map((it) => (
             <ProductCard
               key={it.code}
               code={it.code}
@@ -133,14 +127,14 @@ function FrozenFoodsPage() {
               image={it.image}
               tone="blue"
             />
-          ))}
+          ))} />
         </div>
       </Section>
 
       <Section tone="cream" id="prep-pacs" className="scroll-mt-[136px]">
         <SectionHead eyebrow="Formosa Prep-Pacs" title="For your own kitchen" chip="I" />
         <div className="grid gap-6 md:grid-cols-3">
-          {FROZEN_I.items.map((it) => (
+          <LocalizedText value={FROZEN_I.items.map((it) => (
             <ProductCard
               key={it.code}
               code={it.code}
@@ -150,19 +144,15 @@ function FrozenFoodsPage() {
               image={it.image}
               tone="red"
             />
-          ))}
+          ))} />
         </div>
 
         {/* Catalogue aside */}
         <div className="mt-14 grid gap-6 border-t border-[#1d418f]/20 pt-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
           <CatalogueViewer />
           <div>
-            <h3 className="font-display text-2xl text-[#1d418f]">The full Chef-Pac catalogue</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/80">
-              Prefer the printed lookbook? Every dish above appears in TTOP's
-              own bilingual product catalogue with weights, portions and
-              suggested serving ideas. Tap any page to view it full screen.
-            </p>
+            <h3 className="font-display text-2xl text-[#1d418f]"><LocalizedText value={"The full Chef-Pac catalogue"} /></h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/80"><LocalizedText value={" Prefer the printed lookbook? Every dish above appears in TTOP's own bilingual product catalogue with weights, portions and suggested serving ideas. Tap any page to view it full screen. "} /></p>
           </div>
         </div>
       </Section>
@@ -171,20 +161,15 @@ function FrozenFoodsPage() {
       <Section tone="white">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="border-l-4 border-[#ca3134] bg-[#faf6ef] p-8">
-            <h3 className="font-display text-2xl text-[#1d418f]">Before you heat it</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/85">
-              For best results, we strongly recommend fully thawing all
-              products before heating or cooking. Suggested times are a
-              reference only — every stove, oven and air fryer behaves a
-              little differently.
-            </p>
+            <h3 className="font-display text-2xl text-[#1d418f]"><LocalizedText value={"Before you heat it"} /></h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={" For best results, we strongly recommend fully thawing all products before heating or cooking. Suggested times are a reference only — every stove, oven and air fryer behaves a little differently. "} /></p>
           </div>
           <div>
-            <h3 className="font-display text-2xl text-[#1d418f]">How to order</h3>
+            <h3 className="font-display text-2xl text-[#1d418f]"><LocalizedText value={"How to order"} /></h3>
             <ol className="mt-4 space-y-4 text-sm text-[#17233f]/85">
-              <li className="flex gap-3"><CodeChip tone="blue">1</CodeChip><span>Order online via ChatChefs for pickup or delivery.</span></li>
-              <li className="flex gap-3"><CodeChip tone="blue">2</CodeChip><span>Or visit us in store at {ADDRESS}.</span></li>
-              <li className="flex gap-3"><CodeChip tone="blue">3</CodeChip><span>Large orders: please give us one week's notice → <Link to="/catering" className="text-[#ca3134] underline">Catering & group orders</Link>.</span></li>
+              <li className="flex gap-3"><CodeChip tone="blue"><LocalizedText value={"1"} /></CodeChip><span><LocalizedText value={"Order online via ChatChefs for pickup or delivery."} /></span></li>
+              <li className="flex gap-3"><CodeChip tone="blue"><LocalizedText value={"2"} /></CodeChip><span><LocalizedText value={"Or visit us in store at "} /><LocalizedText value={ADDRESS} /><LocalizedText value={"."} /></span></li>
+              <li className="flex gap-3"><CodeChip tone="blue"><LocalizedText value={"3"} /></CodeChip><span><LocalizedText value={"Large orders: please give us one week's notice → "} /><Link to="/catering" className="text-[#ca3134] underline"><LocalizedText value={"Catering & group orders"} /></Link><LocalizedText value={"."} /></span></li>
             </ol>
             <div className="mt-6"><OrderButton size="lg" /></div>
           </div>
@@ -195,20 +180,20 @@ function FrozenFoodsPage() {
       <Section tone="cream">
         <SectionHead eyebrow="Good to know" title="Chef-Pac FAQ" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
-          {FAQS.map((f, i) => (
+          <LocalizedText value={FAQS.map((f, i) => (
             <div key={i}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="flex w-full items-center justify-between gap-4 py-5 text-left"
               >
-                <span className="font-display text-lg text-[#1d418f]">{f.q}</span>
-                <span className="text-2xl leading-none text-[#ca3134]">{open === i ? "−" : "+"}</span>
+                <span className="font-display text-lg text-[#1d418f]"><LocalizedText value={f.q} /></span>
+                <span className="text-2xl leading-none text-[#ca3134]"><LocalizedText value={open === i ? "−" : "+"} /></span>
               </button>
-              {open === i && (
-                <p className="pb-5 text-sm leading-relaxed text-[#17233f]/85">{f.a}</p>
-              )}
+              <LocalizedText value={open === i && (
+                <p className="pb-5 text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={f.a} /></p>
+              )} />
             </div>
-          ))}
+          ))} />
         </div>
       </Section>
     </>

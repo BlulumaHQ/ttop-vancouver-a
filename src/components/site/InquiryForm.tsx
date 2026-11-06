@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import { useState } from "react";
 
 export type Field = {
@@ -30,12 +31,12 @@ export function InquiryForm({
       }}
       className={twoColumn ? "grid gap-4 md:grid-cols-2" : "grid gap-4"}
     >
-      {fields.map((f) => (
+      <LocalizedText value={fields.map((f) => (
         <label key={f.name} className={`block ${twoColumn && (f.full || f.type === "textarea") ? "md:col-span-2" : ""}`}>
           <span className="mb-1 block text-xs font-bold uppercase tracking-widest text-[#1d418f]">
-            {f.label}{f.required && <span className="text-[#ca3134]"> *</span>}
+            <LocalizedText value={f.label} /><LocalizedText value={f.required && <span className="text-[#ca3134]"><LocalizedText value={" *"} /></span>} />
           </span>
-          {f.type === "textarea" ? (
+          <LocalizedText value={f.type === "textarea" ? (
             <textarea
               name={f.name}
               required={f.required}
@@ -50,8 +51,8 @@ export function InquiryForm({
               className="w-full rounded-sm border border-[#1d418f]/40 bg-white px-3 py-2.5 text-sm text-[#17233f] focus:border-[#1d418f] focus:outline-none focus:ring-1 focus:ring-[#1d418f]"
               defaultValue={f.defaultValue ?? ""}
             >
-              {!f.defaultValue && <option value="" disabled>Select…</option>}
-              {f.options?.map((o) => <option key={o} value={o}>{o}</option>)}
+              <LocalizedText value={!f.defaultValue && <option value="" disabled><LocalizedText value={"Select…"} /></option>} />
+              <LocalizedText value={f.options?.map((o) => <option key={o} value={o}><LocalizedText value={o} /></option>)} />
             </select>
           ) : (
             <input
@@ -61,22 +62,22 @@ export function InquiryForm({
               defaultValue={f.defaultValue}
               className="w-full rounded-sm border border-[#1d418f]/40 bg-white px-3 py-2.5 text-sm text-[#17233f] focus:border-[#1d418f] focus:outline-none focus:ring-1 focus:ring-[#1d418f]"
             />
-          )}
+          )} />
         </label>
-      ))}
+      ))} />
       <div className={twoColumn ? "md:col-span-2" : ""}>
         <button
           type="submit"
           disabled={sent}
           className="mt-2 inline-flex justify-center rounded-sm bg-[#ca3134] px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a] disabled:opacity-60"
         >
-          {sent ? "Sent ✓" : submitLabel}
+          <LocalizedText value={sent ? "Sent ✓" : submitLabel} />
         </button>
-        {sent && (
+        <LocalizedText value={sent && (
           <div className="mt-4 rounded-sm border-l-4 border-[#1d418f] bg-[#faf6ef] p-4 text-sm text-[#17233f]/85">
-            {successMessage} <span className="italic text-[#17233f]/60">(Front-end demo — no message was actually sent.)</span>
+            <LocalizedText value={successMessage} /> <span className="italic text-[#17233f]/60"><LocalizedText value={"(Front-end demo — no message was actually sent.)"} /></span>
           </div>
-        )}
+        )} />
       </div>
     </form>
   );

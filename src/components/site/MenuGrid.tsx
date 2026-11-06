@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import type { ReactNode } from "react";
 import { CodeChip, RuleRedBlue } from "./CodeChip";
 import type { MenuCategory, MenuItem } from "@/lib/menu-data";
@@ -23,7 +24,7 @@ export function PhotoPlaceholder({ code }: { code: string }) {
       }}
     >
       <span className="font-display text-3xl font-black tracking-wider text-[#1d418f]/25">
-        {code || "TTOP"}
+        <LocalizedText value={code || "TTOP"} />
       </span>
     </div>
   );
@@ -42,7 +43,7 @@ export function PhotoCard({
   return (
     <article className="group relative flex flex-col overflow-hidden border border-[#1d418f]/12 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
       <div className={`relative ${item.soldOut ? "[&>img]:opacity-45 [&>img]:grayscale" : ""}`}>
-        {item.image ? (
+        <LocalizedText value={item.image ? (
           <img
             src={item.image}
             alt={`${item.name} at TTOP Chicken`}
@@ -54,53 +55,46 @@ export function PhotoCard({
           />
         ) : (
           <PhotoPlaceholder code={item.code} />
-        )}
-        {item.soldOut && (
+        )} />
+        <LocalizedText value={item.soldOut && (
           <div className="absolute inset-0 grid place-items-center">
-            <span className="-rotate-6 border-2 border-[#ca3134] bg-white/95 px-3 py-1 font-display text-sm font-black uppercase tracking-[0.2em] text-[#ca3134] shadow-sm">
-              Sold Out
-            </span>
+            <span className="-rotate-6 border-2 border-[#ca3134] bg-white/95 px-3 py-1 font-display text-sm font-black uppercase tracking-[0.2em] text-[#ca3134] shadow-sm"><LocalizedText value={" Sold Out "} /></span>
           </div>
-        )}
-        {item.code && (
+        )} />
+        <LocalizedText value={item.code && (
           <div className="absolute left-2 top-2">
             <CodeChip tone={cls.chip} size="sm">
-              {item.code}
+              <LocalizedText value={item.code} />
             </CodeChip>
           </div>
-        )}
+        )} />
         <div className="absolute right-2 top-2 flex gap-1">
-          {item.spicy && (
+          <LocalizedText value={item.spicy && (
             <span
               className="inline-flex h-6 items-center rounded-sm bg-white/90 px-1.5 text-[10px] font-bold uppercase tracking-wider text-[#ca3134] shadow-sm"
               title="Spicy"
-            >
-              🌶 Spicy
-            </span>
-          )}
-          {item.veg && (
+            ><LocalizedText value={" 🌶 Spicy "} /></span>
+          )} />
+          <LocalizedText value={item.veg && (
             <span
               className="inline-flex h-6 items-center rounded-sm bg-white/90 px-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1d418f] shadow-sm"
               title="Vegetarian"
-            >
-              V
-            </span>
-          )}
+            ><LocalizedText value={" V "} /></span>
+          )} />
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1 p-3">
         <h3 className="font-display text-[15px] font-semibold leading-snug text-[#17233f]">
-          {item.name}
+          <LocalizedText value={item.name} />
         </h3>
-        {item.tagline && (
-          <p className="text-[11px] italic text-[#17233f]/60">{item.tagline}</p>
-        )}
-        {item.note && <p className="text-[11px] text-[#17233f]/60">{item.note}</p>}
+        <LocalizedText value={item.tagline && (
+          <p className="text-[11px] italic text-[#17233f]/60"><LocalizedText value={item.tagline} /></p>
+        )} />
+        <LocalizedText value={item.note && <p className="text-[11px] text-[#17233f]/60"><LocalizedText value={item.note} /></p>} />
         <div className="mt-auto flex items-end justify-between gap-2 pt-2">
-          <span className={`font-display tabular text-lg font-bold ${item.soldOut ? "text-[#17233f]/40 line-through" : cls.price}`}>
-            ${item.price}
+          <span className={`font-display tabular text-lg font-bold ${item.soldOut ? "text-[#17233f]/40 line-through" : cls.price}`}><LocalizedText value={" $"} /><LocalizedText value={item.price} />
           </span>
-          {footer}
+          <LocalizedText value={footer} />
         </div>
       </div>
     </article>
@@ -119,36 +113,33 @@ export function CompactRow({
   const cls = accentClasses(cat);
   return (
     <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-3 border-b border-dashed border-[#1d418f]/12 py-2.5 last:border-b-0">
-      {item.code ? (
+      <LocalizedText value={item.code ? (
         <CodeChip tone={cls.chip} size="sm">
-          {item.code}
+          <LocalizedText value={item.code} />
         </CodeChip>
       ) : (
         <span className="inline-block h-1 w-1 rounded-full bg-[#1d418f]/30" />
-      )}
+      )} />
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-1.5 text-[14px] font-semibold text-[#17233f]">
           <span>
-          {item.spicy && <span className="mr-1 text-[#ca3134]">🌶</span>}
-          {item.veg && (
-            <span className="mr-1 rounded-sm bg-[#1d418f]/10 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#1d418f]">
-              V
-            </span>
-          )}
-          {item.name}
+          <LocalizedText value={item.spicy && <span className="mr-1 text-[#ca3134]"><LocalizedText value={"🌶"} /></span>} />
+          <LocalizedText value={item.veg && (
+            <span className="mr-1 rounded-sm bg-[#1d418f]/10 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#1d418f]"><LocalizedText value={" V "} /></span>
+          )} />
+          <LocalizedText value={item.name} />
           </span>
-          {trailing}
+          <LocalizedText value={trailing} />
         </div>
-        {(item.tagline || item.note) && (
+        <LocalizedText value={(item.tagline || item.note) && (
           <div className="text-[11px] italic text-[#17233f]/60">
-            {item.tagline}
-            {item.tagline && item.note ? " · " : ""}
-            {item.note}
+            <LocalizedText value={item.tagline} />
+            <LocalizedText value={item.tagline && item.note ? " · " : ""} />
+            <LocalizedText value={item.note} />
           </div>
-        )}
+        )} />
       </div>
-      <span className={`tabular text-right text-[14px] font-bold ${cls.price}`}>
-        ${item.price}
+      <span className={`tabular text-right text-[14px] font-bold ${cls.price}`}><LocalizedText value={" $"} /><LocalizedText value={item.price} />
       </span>
     </div>
   );
@@ -159,18 +150,18 @@ export function CategoryHeader({ cat }: { cat: MenuCategory }) {
   return (
     <div className="mb-6 flex items-end gap-4">
       <CodeChip tone={cls.chip} size="lg">
-        {cat.letter}
+        <LocalizedText value={cat.letter} />
       </CodeChip>
       <div className="flex-1">
         <h2 className={`font-display text-2xl leading-none md:text-3xl ${cls.heading}`}>
-          {cat.title}
+          <LocalizedText value={cat.title} />
         </h2>
-        {cat.subtitle && (
-          <p className="mt-1 text-xs italic text-[#17233f]/60">{cat.subtitle}</p>
-        )}
-        {cat.blurb && (
-          <p className="mt-2 max-w-2xl text-sm text-[#17233f]/75">{cat.blurb}</p>
-        )}
+        <LocalizedText value={cat.subtitle && (
+          <p className="mt-1 text-xs italic text-[#17233f]/60"><LocalizedText value={cat.subtitle} /></p>
+        )} />
+        <LocalizedText value={cat.blurb && (
+          <p className="mt-2 max-w-2xl text-sm text-[#17233f]/75"><LocalizedText value={cat.blurb} /></p>
+        )} />
       </div>
     </div>
   );
@@ -180,9 +171,9 @@ export function CategoryNotes({ notes }: { notes?: string[] }) {
   if (!notes?.length) return null;
   return (
     <ul className="mt-5 space-y-1.5 border-l-2 border-[#1d418f]/25 pl-4 text-xs leading-relaxed text-[#17233f]/70">
-      {notes.map((n, i) => (
-        <li key={i}>{n}</li>
-      ))}
+      <LocalizedText value={notes.map((n, i) => (
+        <li key={i}><LocalizedText value={n} /></li>
+      ))} />
     </ul>
   );
 }
@@ -200,14 +191,14 @@ export function PhotoGrid({
       <CategoryHeader cat={cat} />
       <RuleRedBlue className="mb-5" />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
-        {cat.items.map((it) => (
+        <LocalizedText value={cat.items.map((it) => (
           <PhotoCard
             key={`${cat.letter}-${it.code}-${it.name}-${it.tagline ?? ""}`}
             item={it}
             cat={cat}
             footer={renderFooter?.(it)}
           />
-        ))}
+        ))} />
       </div>
       <CategoryNotes notes={cat.notes} />
     </section>
@@ -227,14 +218,14 @@ export function CompactList({
       <CategoryHeader cat={cat} />
       <RuleRedBlue className="mb-5" />
       <div className="grid gap-x-8 gap-y-1 md:grid-cols-2">
-        {cat.items.map((it, i) => (
+        <LocalizedText value={cat.items.map((it, i) => (
           <CompactRow
             key={`${cat.letter}-${i}`}
             item={it}
             cat={cat}
             trailing={renderTrailing?.(it)}
           />
-        ))}
+        ))} />
       </div>
       <CategoryNotes notes={cat.notes} />
     </section>
@@ -252,18 +243,18 @@ export function AddOnGroups({ cat }: { cat: MenuCategory }) {
       <CategoryHeader cat={cat} />
       <RuleRedBlue className="mb-6" />
       <div className="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-        {cat.groups.map((g) => (
+        <LocalizedText value={cat.groups.map((g) => (
           <div key={g.label}>
             <h3 className="mb-2 font-display text-sm font-bold uppercase tracking-wider text-[#ca3134]">
-              {g.label}
+              <LocalizedText value={g.label} />
             </h3>
             <div>
-              {g.items.map((it, i) => (
+              <LocalizedText value={g.items.map((it, i) => (
                 <CompactRow key={`${g.label}-${i}`} item={it} cat={cat} />
-              ))}
+              ))} />
             </div>
           </div>
-        ))}
+        ))} />
       </div>
     </section>
   );

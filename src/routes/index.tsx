@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { LocalizedText, Link } from "@/lib/i18n";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { OrderButton, OutlineButton } from "@/components/site/OrderButton";
 import { CodeChip, RuleRedBlue, Seal } from "@/components/site/CodeChip";
@@ -24,8 +25,7 @@ const HERO_SLIDES = [
     titleTopItalic: true,
     titleRest: (
       <>
-        {" "}flavour.<br />Maximum<br />authenticity.
-      </>
+        <LocalizedText value={" "} /><LocalizedText value={"flavour."} /><br /><LocalizedText value={"Maximum"} /><br /><LocalizedText value={"authenticity. "} /></>
     ),
     body: "Our signature Chicken Pot is simmered in Hua Diao wine sauce with fresh vegetables, mushrooms and hand-picked add-ons — a bubbling centrepiece that turns any table into a Taiwanese feast.",
     image: "/images/hero-chicken-pot-spread.webp",
@@ -41,8 +41,7 @@ const HERO_SLIDES = [
     titleTopItalic: true,
     titleRest: (
       <>
-        {" "}chicken.<br />Three sides.<br />One bento.
-      </>
+        <LocalizedText value={" "} /><LocalizedText value={"chicken."} /><br /><LocalizedText value={"Three sides."} /><br /><LocalizedText value={"One bento. "} /></>
     ),
     body: "Golden deep-fried chicken leg over jasmine rice with marinated egg, seasonal greens and Taiwanese noodles — the bento that tastes like Taipei lunch hour.",
     image: "/images/hero-fried-chicken-bento.webp",
@@ -65,35 +64,33 @@ function HeroSlider() {
     <section className="relative overflow-hidden bg-[#faf6ef]">
       <div className="mx-auto grid max-w-7xl items-stretch gap-10 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-24">
         <div className="pointer-events-none absolute left-2 top-24 hidden lg:block" aria-hidden="true">
-          <div className="font-display text-[11px] font-black leading-[1.1] tracking-[0.5em] text-[#1d418f]/25 [writing-mode:vertical-rl]">
-            HUA · DIAO · CHICKEN
-          </div>
+          <div className="font-display text-[11px] font-black leading-[1.1] tracking-[0.5em] text-[#1d418f]/25 [writing-mode:vertical-rl]"><LocalizedText value={" HUA · DIAO · CHICKEN "} /></div>
         </div>
         <div className="relative flex flex-col justify-center lg:pl-14">
           <div className="mb-6 flex items-center gap-3">
             <RuleRedBlue className="w-16" />
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">
-              {slide.eyebrow}
+              <LocalizedText value={slide.eyebrow} />
             </span>
           </div>
           <h1 className="font-display text-[44px] font-black leading-[1.02] text-[#1d418f] md:text-[64px] lg:text-[76px]">
-            {slide.titleTopItalic ? (
-              <em className="font-normal italic text-[#ca3134]">{slide.titleTop}</em>
+            <LocalizedText value={slide.titleTopItalic ? (
+              <em className="font-normal italic text-[#ca3134]"><LocalizedText value={slide.titleTop} /></em>
             ) : (
               slide.titleTop
-            )}
-            {slide.titleRest}
+            )} />
+            <LocalizedText value={slide.titleRest} />
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-[#17233f]/80 md:text-lg">
-            {slide.body}
+            <LocalizedText value={slide.body} />
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <OrderButton size="lg">{slide.primaryLabel}</OrderButton>
-            <OutlineButton href={slide.secondaryHref}>{slide.secondaryLabel}</OutlineButton>
+            <OrderButton size="lg"><LocalizedText value={slide.primaryLabel} /></OrderButton>
+            <OutlineButton href={slide.secondaryHref}><LocalizedText value={slide.secondaryLabel} /></OutlineButton>
           </div>
           {/* Slide dots */}
           <div className="mt-10 flex items-center gap-3">
-            {HERO_SLIDES.map((_, idx) => (
+            <LocalizedText value={HERO_SLIDES.map((_, idx) => (
               <button
                 key={idx}
                 aria-label={`Go to slide ${idx + 1}`}
@@ -102,9 +99,9 @@ function HeroSlider() {
                   idx === i ? "w-10 bg-[#ca3134]" : "w-6 bg-[#1d418f]/30 hover:bg-[#1d418f]/60"
                 }`}
               />
-            ))}
+            ))} />
             <span className="ml-2 font-display text-xs font-bold tracking-widest text-[#1d418f]/60 tabular">
-              {String(i + 1).padStart(2, "0")} / {String(HERO_SLIDES.length).padStart(2, "0")}
+              <LocalizedText value={String(i + 1).padStart(2, "0")} /><LocalizedText value={" / "} /><LocalizedText value={String(HERO_SLIDES.length).padStart(2, "0")} />
             </span>
           </div>
         </div>
@@ -172,7 +169,7 @@ function Home() {
       <Section tone="white">
         <SectionHead eyebrow="Three ways to enjoy" title="How to TTOP" />
         <div className="grid gap-6 md:grid-cols-3">
-          {PATHWAYS.map((p) => (
+          <LocalizedText value={PATHWAYS.map((p) => (
             <Link
               key={p.code}
               to={p.to}
@@ -180,23 +177,21 @@ function Home() {
             >
               <div>
                 <div className="mb-5 flex items-center gap-3">
-                  <CodeChip tone="blue" size="md">{p.code}</CodeChip>
+                  <CodeChip tone="blue" size="md"><LocalizedText value={p.code} /></CodeChip>
                   <span className="font-display italic text-xs font-semibold uppercase tracking-wider text-[#ca3134]">
-                    {p.accent}
+                    <LocalizedText value={p.accent} />
                   </span>
                 </div>
-                <h3 className="font-display text-2xl leading-tight text-[#1d418f]">{p.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#17233f]/75">{p.body}</p>
+                <h3 className="font-display text-2xl leading-tight text-[#1d418f]"><LocalizedText value={p.title} /></h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#17233f]/75"><LocalizedText value={p.body} /></p>
               </div>
               <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#ca3134] transition-transform group-hover:translate-x-1">
-                {p.cta} →
-              </div>
+                <LocalizedText value={p.cta} /><LocalizedText value={" → "} /></div>
             </Link>
-          ))}
+          ))} />
         </div>
-        <div className="mt-6 text-xs text-[#17233f]/60">
-          Also: <Link to="/montessori" className="underline hover:text-[#1d418f]">Montessori daily meals</Link>{" "}·{" "}
-          <Link to="/catering" className="underline hover:text-[#1d418f]">Catering & group orders</Link>
+        <div className="mt-6 text-xs text-[#17233f]/60"><LocalizedText value={" Also: "} /><Link to="/montessori" className="underline hover:text-[#1d418f]"><LocalizedText value={"Montessori daily meals"} /></Link><LocalizedText value={" "} /><LocalizedText value={"·"} /><LocalizedText value={" "} />
+          <Link to="/catering" className="underline hover:text-[#1d418f]"><LocalizedText value={"Catering & group orders"} /></Link>
         </div>
       </Section>
 
@@ -215,21 +210,10 @@ function Home() {
           </div>
           <div>
             <SectionHead eyebrow="A truly unique dining experience" title="Three tastes," chip="A" />
-            <p className="text-base leading-relaxed text-[#17233f]/85">
-              Our chicken pots offer three different taste sensations all within
-              one pot. From the moment the lid is lifted, you are greeted by the
-              fragrant aroma of Hua Diao wine — a brief insight into the flavour
-              inside. A glimpse reveals a thick, rich sauce full of authentic
-              Taiwanese seasonings that enrobes generous servings of juicy
-              chicken, cooked to the perfect combination of softness and
-              tenderness.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-[#17233f]/85">
-              Join us for a Taiwanese food adventure and let us show you what
-              authenticity means to us. Where it all began — Alexandra Food Street, Richmond.
-            </p>
+            <p className="text-base leading-relaxed text-[#17233f]/85"><LocalizedText value={" Our chicken pots offer three different taste sensations all within one pot. From the moment the lid is lifted, you are greeted by the fragrant aroma of Hua Diao wine — a brief insight into the flavour inside. A glimpse reveals a thick, rich sauce full of authentic Taiwanese seasonings that enrobes generous servings of juicy chicken, cooked to the perfect combination of softness and tenderness. "} /></p>
+            <p className="mt-4 text-base leading-relaxed text-[#17233f]/85"><LocalizedText value={" Join us for a Taiwanese food adventure and let us show you what authenticity means to us. Where it all began — Alexandra Food Street, Richmond. "} /></p>
             <div className="mt-6">
-              <OutlineButton href="/about">Our Story</OutlineButton>
+              <OutlineButton href="/about"><LocalizedText value={"Our Story"} /></OutlineButton>
             </div>
           </div>
         </div>
@@ -251,21 +235,10 @@ function Home() {
           </div>
           <div className="order-1 lg:order-2">
             <SectionHead eyebrow="From our kitchen to yours" title="TTOP Chicken Pot" chip="H1" />
-            <p className="text-base leading-relaxed text-[#17233f]/85">
-              Top-quality, fresh boneless chicken thigh is gently marinated in
-              our exclusive Hua Diao wine sauce to preserve its natural
-              tenderness, then masterfully Wok-Fried into an unforgettable
-              layering of flavours. A rich sauce intermingled with fresh
-              vegetables, every bite bursting with the fragrance of Hua Diao
-              wine.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-[#17233f]/85">
-              Our Formosa Chef-Pac, frozen TTOP Chicken Pot, lets you easily
-              recreate our signature dish at the comfort of your own home.
-              Simply heat it up, and you're ready to feast!
-            </p>
+            <p className="text-base leading-relaxed text-[#17233f]/85"><LocalizedText value={" Top-quality, fresh boneless chicken thigh is gently marinated in our exclusive Hua Diao wine sauce to preserve its natural tenderness, then masterfully Wok-Fried into an unforgettable layering of flavours. A rich sauce intermingled with fresh vegetables, every bite bursting with the fragrance of Hua Diao wine. "} /></p>
+            <p className="mt-4 text-base leading-relaxed text-[#17233f]/85"><LocalizedText value={" Our Formosa Chef-Pac, frozen TTOP Chicken Pot, lets you easily recreate our signature dish at the comfort of your own home. Simply heat it up, and you're ready to feast! "} /></p>
             <div className="mt-6">
-              <OutlineButton href="/frozen-foods">Shop Formosa Chef-Pacs</OutlineButton>
+              <OutlineButton href="/frozen-foods"><LocalizedText value={"Shop Formosa Chef-Pacs"} /></OutlineButton>
             </div>
           </div>
         </div>
@@ -275,22 +248,19 @@ function Home() {
       <Section tone="cream">
         <SectionHead eyebrow="What diners say" title="Real reviews" />
         <div className="grid gap-6 md:grid-cols-2">
-          {REVIEWS.map((r) => (
+          <LocalizedText value={REVIEWS.map((r) => (
             <figure key={r.name} className="relative bg-white p-8 pl-14 shadow-sm">
-              <span aria-hidden="true" className="absolute left-4 top-2 font-display text-6xl leading-none text-[#1d418f]">“</span>
+              <span aria-hidden="true" className="absolute left-4 top-2 font-display text-6xl leading-none text-[#1d418f]"><LocalizedText value={"“"} /></span>
               <blockquote className="text-sm leading-relaxed text-[#17233f]/85">
-                {r.text}
+                <LocalizedText value={r.text} />
               </blockquote>
-              <figcaption className="mt-4 text-xs font-bold uppercase tracking-widest text-[#ca3134]">
-                — {r.name}
+              <figcaption className="mt-4 text-xs font-bold uppercase tracking-widest text-[#ca3134]"><LocalizedText value={" — "} /><LocalizedText value={r.name} />
               </figcaption>
             </figure>
-          ))}
+          ))} />
         </div>
         <div className="mt-8">
-          <a href={GOOGLE_REVIEWS} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold uppercase tracking-wider text-[#1d418f] underline hover:text-[#ca3134]">
-            Read more reviews on Google →
-          </a>
+          <a href={GOOGLE_REVIEWS} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold uppercase tracking-wider text-[#1d418f] underline hover:text-[#ca3134]"><LocalizedText value={" Read more reviews on Google → "} /></a>
         </div>
       </Section>
 
@@ -300,16 +270,10 @@ function Home() {
           <div className="max-w-3xl">
             <div className="mb-4 flex items-center gap-3">
               <Seal className="h-14 w-14" />
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/80">TTOP Loyalty</span>
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/80"><LocalizedText value={"TTOP Loyalty"} /></span>
             </div>
-            <h2 className="font-display text-3xl leading-tight text-white md:text-4xl">
-              Earn 1 star for every <em className="italic text-[#ffb6b6]">$20</em> you spend. Stars never expire.
-            </h2>
-            <p className="mt-3 text-sm text-white/80">
-              Redeem stars in store for free drinks, rice bowls, bentos, and
-              discounts of up to $100 off. One redemption per order — ask our
-              team for details.
-            </p>
+            <h2 className="font-display text-3xl leading-tight text-white md:text-4xl"><LocalizedText value={" Earn 1 star for every "} /><em className="italic text-[#ffb6b6]"><LocalizedText value={"$20"} /></em><LocalizedText value={" you spend. Stars never expire. "} /></h2>
+            <p className="mt-3 text-sm text-white/80"><LocalizedText value={" Redeem stars in store for free drinks, rice bowls, bentos, and discounts of up to $100 off. One redemption per order — ask our team for details. "} /></p>
           </div>
           <OrderButton size="lg" />
         </div>
@@ -321,14 +285,14 @@ function Home() {
           <div>
             <SectionHead eyebrow="Visit us" title="Cambie Road, Richmond" />
             <dl className="space-y-3 text-sm text-[#17233f]/85">
-              <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Address</dt>
-                <dd><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">{ADDRESS}</a></dd></div>
-              <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Hours</dt><dd>{HOURS}</dd></div>
-              <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]">Phone</dt><dd><a className="hover:underline" href={`tel:${PHONE_TEL}`}>{PHONE}</a></dd></div>
+              <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]"><LocalizedText value={"Address"} /></dt>
+                <dd><a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="hover:underline"><LocalizedText value={ADDRESS} /></a></dd></div>
+              <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]"><LocalizedText value={"Hours"} /></dt><dd><LocalizedText value={HOURS} /></dd></div>
+              <div><dt className="text-xs font-bold uppercase tracking-widest text-[#ca3134]"><LocalizedText value={"Phone"} /></dt><dd><a className="hover:underline" href={`tel:${PHONE_TEL}`}><LocalizedText value={PHONE} /></a></dd></div>
             </dl>
             <div className="mt-6 flex flex-wrap gap-3">
               <OrderButton />
-              <OutlineButton href="/contact">Contact Us</OutlineButton>
+              <OutlineButton href="/contact"><LocalizedText value={"Contact Us"} /></OutlineButton>
             </div>
           </div>
           <div className="border border-[#1d418f]/20">

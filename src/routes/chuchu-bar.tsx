@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { OrderButton } from "@/components/site/OrderButton";
 import { RuleRedBlue } from "@/components/site/CodeChip";
@@ -37,23 +38,16 @@ function ChuChuBarPage() {
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-12 lg:px-8 lg:py-16">
           <div>
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-white/70">
-              <RuleRedBlue className="w-12" /> Drinks · ChuChu Bar
-            </div>
+              <RuleRedBlue className="w-12" /><LocalizedText value={" Drinks · ChuChu Bar "} /></div>
             <h1 className="font-display text-4xl leading-[1.02] md:text-5xl lg:text-6xl">
-              <em className="italic text-[#ffb6b6]">ChuChu</em> Bar.
-            </h1>
-            <p className="mt-4 max-w-xl text-white/85">
-              Fresh-brewed teas, Taiwanese classics, and our signature natural
-              vinegar cube drinks.
-            </p>
+              <em className="italic text-[#ffb6b6]"><LocalizedText value={"ChuChu"} /></em><LocalizedText value={" Bar. "} /></h1>
+            <p className="mt-4 max-w-xl text-white/85"><LocalizedText value={" Fresh-brewed teas, Taiwanese classics, and our signature natural vinegar cube drinks. "} /></p>
             <div className="mt-6 flex flex-wrap gap-3">
               <OrderButton size="lg" />
               <a
                 href="#G"
                 className="inline-flex items-center rounded-sm border border-white/40 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"
-              >
-                Jump to drinks ↓
-              </a>
+              ><LocalizedText value={" Jump to drinks ↓ "} /></a>
             </div>
           </div>
           <div className="relative">
@@ -75,9 +69,7 @@ function ChuChuBarPage() {
           <PhotoGrid cat={DRINKS_F} />
 
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#1d418f]/20 pt-8">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#17233f]/60">
-              M Medium · L Large · Hot available on select teas
-            </span>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#17233f]/60"><LocalizedText value={" M Medium · L Large · Hot available on select teas "} /></span>
             <OrderButton size="lg" />
           </div>
         </div>

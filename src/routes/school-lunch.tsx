@@ -1,3 +1,4 @@
+import { LocalizedText } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CodeChip, RuleRedBlue } from "@/components/site/CodeChip";
@@ -80,37 +81,21 @@ function SchoolLunchPage() {
           <div>
             <div className="mb-4 flex items-center gap-3">
               <RuleRedBlue className="w-14" />
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]">School Programs · since 2024</span>
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]"><LocalizedText value={"School Programs · since 2024"} /></span>
             </div>
-            <h1 className="font-display text-[42px] font-black leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl">
-              Nutritious hot lunch for elementary <em className="italic text-[#ca3134]">schools</em>.
-            </h1>
-            <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70">
-              Elementary hot lunch program
-            </p>
-            <p className="mt-6 max-w-xl text-lg text-[#17233f]/85">
-              Weekly, monthly or seasonal ordering · Free delivery · Peanut-free & nut-free menu.
-            </p>
+            <h1 className="font-display text-[42px] font-black leading-[1.02] text-[#1d418f] md:text-6xl lg:text-7xl"><LocalizedText value={" Nutritious hot lunch for elementary "} /><em className="italic text-[#ca3134]"><LocalizedText value={"schools"} /></em><LocalizedText value={". "} /></h1>
+            <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70"><LocalizedText value={" Elementary hot lunch program "} /></p>
+            <p className="mt-6 max-w-xl text-lg text-[#17233f]/85"><LocalizedText value={" Weekly, monthly or seasonal ordering · Free delivery · Peanut-free & nut-free menu. "} /></p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#inquiry" className="inline-flex items-center rounded-sm bg-[#ca3134] px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-[#a5262a]">Book a Consultation</a>
-              <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center rounded-sm border border-[#1d418f] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] hover:bg-[#1d418f] hover:text-white">Call {PHONE}</a>
+              <a href="#inquiry" className="inline-flex items-center rounded-sm bg-[#ca3134] px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-[#a5262a]"><LocalizedText value={"Book a Consultation"} /></a>
+              <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center rounded-sm border border-[#1d418f] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] hover:bg-[#1d418f] hover:text-white"><LocalizedText value={"Call "} /><LocalizedText value={PHONE} /></a>
             </div>
           </div>
           <div className="border border-[#1d418f]/25 bg-[#faf6ef] p-8">
-            <div className="font-display text-5xl leading-tight text-[#1d418f] md:text-6xl">
-              300 <span className="italic font-display text-3xl text-[#ca3134]">students</span>.
-            </div>
-            <div className="mt-2 font-display text-5xl leading-tight text-[#1d418f] md:text-6xl">
-              30 minutes.
-            </div>
-            <div className="mt-2 font-display text-5xl leading-tight text-[#ca3134] md:text-6xl italic">
-              Zero disruption.
-            </div>
-            <p className="mt-6 text-sm text-[#17233f]/80">
-              Yes, it's possible. Since 2024, TTOP has partnered with schools
-              across Greater Vancouver, serving balanced, kid-friendly meals
-              that solve lunchtime for educators — and that students love.
-            </p>
+            <div className="font-display text-5xl leading-tight text-[#1d418f] md:text-6xl"><LocalizedText value={" 300 "} /><span className="italic font-display text-3xl text-[#ca3134]"><LocalizedText value={"students"} /></span><LocalizedText value={". "} /></div>
+            <div className="mt-2 font-display text-5xl leading-tight text-[#1d418f] md:text-6xl"><LocalizedText value={" 30 minutes. "} /></div>
+            <div className="mt-2 font-display text-5xl leading-tight text-[#ca3134] md:text-6xl italic"><LocalizedText value={" Zero disruption. "} /></div>
+            <p className="mt-6 text-sm text-[#17233f]/80"><LocalizedText value={" Yes, it's possible. Since 2024, TTOP has partnered with schools across Greater Vancouver, serving balanced, kid-friendly meals that solve lunchtime for educators — and that students love. "} /></p>
           </div>
         </div>
       </section>
@@ -119,20 +104,20 @@ function SchoolLunchPage() {
       <Section tone="cream">
         <SectionHead eyebrow="How we deliver" title="The zero-friction school lunch" />
         <div className="grid gap-6 md:grid-cols-2">
-          {[
+          <LocalizedText value={[
             ["Classroom-direct delivery","Meals arrive in three-layer insulated thermal bags, sorted by class, so school workflow is never disrupted."],
             ["Precise labelling","Every meal is clearly labelled with class number, student name and meal selection — pickup is exact, every time."],
             ["On-time, reliable promise","Guaranteed on-time delivery so lunch never runs late and the learning rhythm flows."],
             ["Fast, eco-friendly cleanup","Sustainable paper meal boxes designed for teachers and students — cleanup in about 3 minutes."],
           ].map(([t, d], i) => (
             <div key={t} className="flex gap-4 border border-[#1d418f]/15 bg-white p-6">
-              <CodeChip tone="blue" size="md">{String(i + 1).padStart(2, "0")}</CodeChip>
+              <CodeChip tone="blue" size="md"><LocalizedText value={String(i + 1).padStart(2, "0")} /></CodeChip>
               <div>
-                <h3 className="font-display text-xl text-[#1d418f]">{t}</h3>
-                <p className="mt-2 text-sm text-[#17233f]/80">{d}</p>
+                <h3 className="font-display text-xl text-[#1d418f]"><LocalizedText value={t} /></h3>
+                <p className="mt-2 text-sm text-[#17233f]/80"><LocalizedText value={d} /></p>
               </div>
             </div>
-          ))}
+          ))} />
         </div>
       </Section>
 
@@ -140,41 +125,34 @@ function SchoolLunchPage() {
       <Section tone="white">
         <SectionHead eyebrow="We know your priorities" title="What matters to your school" />
         <div className="grid gap-4 md:grid-cols-3">
-          {TRUST.map((t) => (
+          <LocalizedText value={TRUST.map((t) => (
             <div key={t.t} className="border-l-2 border-[#ca3134] bg-[#faf6ef] p-5">
-              <h3 className="font-display text-lg text-[#1d418f]">{t.t}</h3>
-              <p className="mt-1 text-sm text-[#17233f]/80">{t.d}</p>
+              <h3 className="font-display text-lg text-[#1d418f]"><LocalizedText value={t.t} /></h3>
+              <p className="mt-1 text-sm text-[#17233f]/80"><LocalizedText value={t.d} /></p>
             </div>
-          ))}
+          ))} />
         </div>
         <div className="mt-10 border border-[#1d418f]/20 bg-[#1d418f] p-8 text-white md:p-10">
           <div className="flex flex-wrap items-baseline gap-3">
-            <span className="font-display text-4xl md:text-5xl">Rainbow Index</span>
-            <span className="font-display italic text-sm uppercase tracking-widest text-white/70">
-              a colour-based nutrition metric
-            </span>
+            <span className="font-display text-4xl md:text-5xl"><LocalizedText value={"Rainbow Index"} /></span>
+            <span className="font-display italic text-sm uppercase tracking-widest text-white/70"><LocalizedText value={" a colour-based nutrition metric "} /></span>
           </div>
-          <p className="mt-3 max-w-3xl text-white/85">
-            In every four-week cycle, students are exposed to at least{" "}
-            <span className="font-display text-2xl italic text-[#ffb6b6]">20</span>{" "}
-            different colours of natural whole foods.
-          </p>
+          <p className="mt-3 max-w-3xl text-white/85"><LocalizedText value={" In every four-week cycle, students are exposed to at least"} /><LocalizedText value={" "} />
+            <span className="font-display text-2xl italic text-[#ffb6b6]"><LocalizedText value={"20"} /></span><LocalizedText value={" "} /><LocalizedText value={" different colours of natural whole foods. "} /></p>
         </div>
       </Section>
 
       {/* Hot lunch photos */}
       <Section tone="white">
         <SectionHead eyebrow="From our kitchen" title="A Look at Our Hot Lunches" />
-        <p className="-mt-6 mb-8 max-w-2xl text-sm text-[#17233f]/75">
-          Real meals prepared for our school lunch programs — balanced, comforting and made for busy school days.
-        </p>
+        <p className="-mt-6 mb-8 max-w-2xl text-sm text-[#17233f]/75"><LocalizedText value={" Real meals prepared for our school lunch programs — balanced, comforting and made for busy school days. "} /></p>
         <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
-          {HOT_LUNCH_PHOTOS.map((p) => (
+          <LocalizedText value={HOT_LUNCH_PHOTOS.map((p) => (
             <figure key={p.src} className="group overflow-hidden border border-[#1d418f]/12 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
               <img src={p.src} alt={p.name} loading="lazy" decoding="async" width={675} height={900} className="block aspect-[3/4] w-full object-cover" />
-              <figcaption className="p-3 font-display text-[14px] font-semibold leading-snug text-[#17233f]">{p.name}</figcaption>
+              <figcaption className="p-3 font-display text-[14px] font-semibold leading-snug text-[#17233f]"><LocalizedText value={p.name} /></figcaption>
             </figure>
-          ))}
+          ))} />
         </div>
       </Section>
 
@@ -182,11 +160,11 @@ function SchoolLunchPage() {
       <Section tone="cream">
         <SectionHead eyebrow="Trusted by schools across Greater Vancouver since 2024" title="Our school partners" />
         <div className="flex flex-wrap gap-x-6 gap-y-3">
-          {SCHOOLS.map((s) => (
+          <LocalizedText value={SCHOOLS.map((s) => (
             <span key={s} className="border-b-2 border-[#1d418f]/25 pb-1 font-display text-lg text-[#17233f]">
-              {s}
+              <LocalizedText value={s} />
             </span>
-          ))}
+          ))} />
         </div>
       </Section>
 
@@ -194,13 +172,13 @@ function SchoolLunchPage() {
       <Section tone="white">
         <SectionHead eyebrow="Notes from partner schools" title="What educators tell us" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
+          <LocalizedText value={TESTIMONIALS.map((t) => (
             <figure key={t.s} className="relative border border-[#1d418f]/20 bg-white p-6 pt-10">
-              <span aria-hidden="true" className="absolute left-3 top-0 font-display text-6xl leading-none text-[#1d418f]">“</span>
-              <blockquote className="text-sm leading-relaxed text-[#17233f]/85">{t.q}</blockquote>
-              <figcaption className="mt-4 text-xs font-bold uppercase tracking-widest text-[#ca3134]">— {t.s}</figcaption>
+              <span aria-hidden="true" className="absolute left-3 top-0 font-display text-6xl leading-none text-[#1d418f]"><LocalizedText value={"“"} /></span>
+              <blockquote className="text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={t.q} /></blockquote>
+              <figcaption className="mt-4 text-xs font-bold uppercase tracking-widest text-[#ca3134]"><LocalizedText value={"— "} /><LocalizedText value={t.s} /></figcaption>
             </figure>
-          ))}
+          ))} />
         </div>
       </Section>
 
@@ -208,28 +186,24 @@ function SchoolLunchPage() {
       <Section tone="cream">
         <SectionHead eyebrow="How partnership works" title="Three phases, one team" />
         <div className="grid gap-6 md:grid-cols-3">
-          {PHASES.map((p) => (
+          <LocalizedText value={PHASES.map((p) => (
             <div key={p.n} className="border border-[#1d418f]/20 bg-white p-6">
-              <CodeChip tone="blue" size="lg">{p.n}</CodeChip>
-              <h3 className="mt-4 font-display text-2xl text-[#1d418f]">{p.t}</h3>
-              <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]">{p.accent}</p>
-              <p className="mt-4 text-sm text-[#17233f]/80">{p.d}</p>
+              <CodeChip tone="blue" size="lg"><LocalizedText value={p.n} /></CodeChip>
+              <h3 className="mt-4 font-display text-2xl text-[#1d418f]"><LocalizedText value={p.t} /></h3>
+              <p className="mt-1 font-display italic text-xs uppercase tracking-widest text-[#ca3134]"><LocalizedText value={p.accent} /></p>
+              <p className="mt-4 text-sm text-[#17233f]/80"><LocalizedText value={p.d} /></p>
             </div>
-          ))}
+          ))} />
         </div>
       </Section>
 
       {/* Founders promise */}
       <Section tone="blue">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/70">Founders' promise</span>
-          <p className="mt-6 font-display text-2xl leading-snug text-white md:text-3xl">
-            “As first-generation immigrants, we put our reputation into every
-            meal. If our service ever falls short of your school's standards,
-            call us directly — we will personally make it right.”
-          </p>
-          <div className="mt-6 text-xs font-bold uppercase tracking-widest text-white/70">— Albert & Eric Lee</div>
-          <a href={`tel:${PHONE_TEL}`} className="mt-4 inline-block text-white/90 underline">{PHONE}</a>
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/70"><LocalizedText value={"Founders' promise"} /></span>
+          <p className="mt-6 font-display text-2xl leading-snug text-white md:text-3xl"><LocalizedText value={" “As first-generation immigrants, we put our reputation into every meal. If our service ever falls short of your school's standards, call us directly — we will personally make it right.” "} /></p>
+          <div className="mt-6 text-xs font-bold uppercase tracking-widest text-white/70"><LocalizedText value={"— Albert & Eric Lee"} /></div>
+          <a href={`tel:${PHONE_TEL}`} className="mt-4 inline-block text-white/90 underline"><LocalizedText value={PHONE} /></a>
         </div>
       </Section>
 
@@ -239,15 +213,15 @@ function SchoolLunchPage() {
       <Section tone="cream">
         <SectionHead eyebrow="FAQ" title="What administrators ask" />
         <div className="max-w-3xl divide-y divide-[#1d418f]/15 border-y border-[#1d418f]/15">
-          {FAQS.map((f, i) => (
+          <LocalizedText value={FAQS.map((f, i) => (
             <div key={i}>
               <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-4 py-5 text-left">
-                <span className="font-display text-lg text-[#1d418f]">{f.q}</span>
-                <span className="text-2xl leading-none text-[#ca3134]">{open === i ? "−" : "+"}</span>
+                <span className="font-display text-lg text-[#1d418f]"><LocalizedText value={f.q} /></span>
+                <span className="text-2xl leading-none text-[#ca3134]"><LocalizedText value={open === i ? "−" : "+"} /></span>
               </button>
-              {open === i && <p className="pb-5 text-sm leading-relaxed text-[#17233f]/85">{f.a}</p>}
+              <LocalizedText value={open === i && <p className="pb-5 text-sm leading-relaxed text-[#17233f]/85"><LocalizedText value={f.a} /></p>} />
             </div>
-          ))}
+          ))} />
         </div>
       </Section>
     </>
