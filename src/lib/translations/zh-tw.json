@@ -761,7 +761,7 @@
   "01": "01",
   "02": "02",
   "03": "03",
-  ".": ".",
+  ".": "。",
   "·": "·",
   "$": "$",
   "1": "1",
@@ -808,5 +808,9 @@
   "Ordering for a company or group? For large orders, please give us one week's notice. →": "為公司或團體訂餐？大量訂單請提前一週告知。→",
   "Yes, it's possible. Since 2024, TTOP has partnered with schools across Greater Vancouver, serving balanced, kid-friendly meals that solve lunchtime for educators — and that students love.": "沒錯，做得到。自 2024 年起，TTOP 與大溫哥華地區學校合作，提供營養均衡、適合孩子的餐點，幫教育工作者解決午餐安排，也讓學生愛上吃飯。",
   "“As first-generation immigrants, we put our reputation into every meal. If our service ever falls short of your school's standards, call us directly — we will personally make it right.”": "「身為第一代移民，我們把信譽放進每一份餐點。若服務未達貴校標準，請直接打電話給我們 — 我們一定親自處理到好。」",
-  "Tell us about your school or centre and we'll get back to you to plan the details.": "請告訴我們貴校或中心的需求，我們會與您聯絡，一起規劃細節。"
+  "Tell us about your school or centre and we'll get back to you to plan the details.": "請告訴我們貴校或中心的需求，我們會與您聯絡，一起規劃細節。",
+  "Monday–Friday, 11:00 AM – 8:00 PM": "週一至週五，上午 11:00 – 晚上 8:00",
+  "Daily meals make the lunch table": "每日供餐，讓餐桌成為",
+  "an extension of the classroom": "教室的延伸",
+  "Language": "語言"
 }
