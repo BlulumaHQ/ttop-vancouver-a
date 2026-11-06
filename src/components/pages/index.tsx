@@ -44,7 +44,7 @@ const HERO_SLIDES = [
 ];
 
 function HeroSlider() {
-  const { t, href } = useSiteLanguage();
+  const { locale, t, href } = useSiteLanguage();
   const [i, setI] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setI((v) => (v + 1) % HERO_SLIDES.length), 7000);
@@ -65,12 +65,13 @@ function HeroSlider() {
             </span>
           </div>
           <h1 className="font-display text-[44px] font-black leading-[1.02] text-[#1d418f] md:text-[64px] lg:text-[76px]">
-            <LocalizedText value={slide.titleTopItalic ? (
+            {locale !== "en" ? <><em className="font-normal italic text-brand-red">{t(i === 0 ? "Classic Taiwanese flavour" : "Crispy chicken leg")}</em><br />{t(i === 0 ? "Authentic chicken pot" : "A bento with three sides")}</> : <><LocalizedText value={slide.titleTopItalic ? (
               <em className="font-normal italic text-[#ca3134]"><LocalizedText value={slide.titleTop} /></em>
             ) : (
               slide.titleTop
             )} />
             <LocalizedText value={slide.titleRest} />
+            </>}
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-[#17233f]/80 md:text-lg">
             <LocalizedText value={slide.body} />

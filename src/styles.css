@@ -56,6 +56,8 @@
   --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-serif-tc: "Noto Serif TC", "Fraunces", serif;
   --font-sans-tc: "Noto Sans TC", "Schibsted Grotesk", sans-serif;
+  --font-serif-sc: "Noto Serif SC", serif;
+  --font-sans-sc: "Noto Sans SC", sans-serif;
 }
 
 :root {
@@ -173,3 +175,9 @@ html[lang^="zh"] .font-display {
 html[lang^="zh"] [class*="tracking-"] {
   letter-spacing: 0;
 }
+html[lang="zh-CN"] body { font-family: var(--font-sans-sc); }
+html[lang="zh-CN"] h1,
+html[lang="zh-CN"] h2,
+html[lang="zh-CN"] h3,
+html[lang="zh-CN"] h4,
+html[lang="zh-CN"] .font-display { font-family: var(--font-serif-sc); }
