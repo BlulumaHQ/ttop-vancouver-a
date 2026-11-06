@@ -16,7 +16,7 @@ export function ContactPage() {
         <div className="mx-auto max-w-4xl px-5 py-20 text-center lg:px-8 lg:py-24">
           <div className="flex items-center justify-center gap-3">
             <RuleRedBlue className="w-14" />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]"><LocalizedText value={"Get in touch"} /></span>
+            <span className="shrink-0 whitespace-nowrap text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]"><LocalizedText value={"Get in touch"} /></span>
             <RuleRedBlue className="w-14" />
           </div>
           <h1 className="mt-6 font-display text-5xl leading-[1.02] text-[#1d418f] md:text-6xl"><LocalizedText value={" Come say "} /><em className="italic text-[#ca3134]"><LocalizedText value={"hello"} /></em><LocalizedText value={". "} /></h1>

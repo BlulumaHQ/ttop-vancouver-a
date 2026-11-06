@@ -43,7 +43,7 @@ const REFERENCE_PHOTOS = [
 
 
 export function MontessoriPage() {
-  const { t, href } = useSiteLanguage();
+  const { locale, t, href } = useSiteLanguage();
   return (
     <>
       <section className="bg-[#faf6ef]">
@@ -53,7 +53,7 @@ export function MontessoriPage() {
               <RuleRedBlue className="w-14" />
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#ca3134]"><LocalizedText value={"Montessori & Daycare"} /></span>
             </div>
-            <h1 className="font-display text-[40px] font-black leading-[1.03] text-[#1d418f] md:text-[56px] lg:text-[68px]"><LocalizedText value={" Daily meal service that makes the lunch table an "} /><em className="italic text-[#ca3134]"><LocalizedText value={"extension"} /></em><LocalizedText value={" of the classroom. "} /></h1>
+            <h1 className="font-display text-[40px] font-black leading-[1.03] text-[#1d418f] md:text-[56px] lg:text-[68px]">{locale === "en" ? <>Daily meal service that makes the lunch table an <em className="italic text-brand-red">extension</em> of the classroom.</> : <>{t("Daily meals make the lunch table")}<em className="italic text-brand-red">{t("an extension of the classroom")}</em>。</>}</h1>
             <p className="mt-3 font-display italic text-base tracking-wider text-[#1d418f]/70"><LocalizedText value={" Montessori daily meal service "} /></p>
             <p className="mt-6 max-w-xl text-lg text-[#17233f]/85"><LocalizedText value={" The classroom is a prepared environment. Why should the lunch table be any different? "} /></p>
             <div className="mt-8 flex flex-wrap gap-3">
