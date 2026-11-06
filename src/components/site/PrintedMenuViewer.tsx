@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { useEffect, useRef, useState } from "react";
 import { CodeChip } from "./CodeChip";
 
@@ -37,6 +37,7 @@ const MENUS: PrintedMenu[] = [
 ];
 
 export function PrintedMenuViewer() {
+  const { t, href } = useSiteLanguage();
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [side, setSide] = useState<"front" | "back">("front");
   const [zoom, setZoom] = useState(false);
@@ -80,7 +81,7 @@ export function PrintedMenuViewer() {
             <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#faf6ef]">
               <img
                 src={m.front}
-                alt={`${m.title} — front cover`}
+                alt={t(`${m.title} — front cover`)}
                 loading="lazy"
                 className="block h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
               />
@@ -107,7 +108,7 @@ export function PrintedMenuViewer() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`${current.title} — ${imgLabel}`}
+          aria-label={t(`${current.title} — ${imgLabel}`)}
           className="fixed inset-0 z-[100] flex flex-col bg-black/90"
           onClick={() => setOpenIdx(null)}
         >
@@ -126,7 +127,7 @@ export function PrintedMenuViewer() {
             </div>
             <button
               type="button"
-              aria-label="Close"
+              aria-label={t("Close")}
               onClick={() => setOpenIdx(null)}
               className="grid h-10 w-10 place-items-center rounded-sm border border-white/40 text-xl text-white hover:bg-white hover:text-[#1d418f]"
             ><LocalizedText value={" ✕ "} /></button>
@@ -151,13 +152,13 @@ export function PrintedMenuViewer() {
             {/* Prev/Next arrows */}
             <button
               type="button"
-              aria-label="Front"
+              aria-label={t("Front")}
               onClick={(e) => { e.stopPropagation(); setSide("front"); setZoom(false); }}
               className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-sm border border-white/40 bg-black/40 px-3 py-2 text-sm text-white hover:bg-white hover:text-[#1d418f] sm:block"
             ><LocalizedText value={" ← "} /></button>
             <button
               type="button"
-              aria-label="Back"
+              aria-label={t("Back")}
               onClick={(e) => { e.stopPropagation(); setSide("back"); setZoom(false); }}
               className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-sm border border-white/40 bg-black/40 px-3 py-2 text-sm text-white hover:bg-white hover:text-[#1d418f] sm:block"
             ><LocalizedText value={" → "} /></button>
@@ -165,7 +166,7 @@ export function PrintedMenuViewer() {
             <div className="flex min-h-full items-start justify-center p-4">
               <img
                 src={img}
-                alt={`${current.title} — ${imgLabel}`}
+                alt={t(`${current.title} — ${imgLabel}`)}
                 onClick={() => setZoom((z) => !z)}
                 className={`select-none transition-transform duration-200 ${
                   zoom

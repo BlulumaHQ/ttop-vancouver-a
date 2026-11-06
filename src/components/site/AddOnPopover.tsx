@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { useEffect, useId, useRef, useState } from "react";
 import type { AddOnBlock } from "@/lib/menu-data";
 
@@ -13,6 +13,7 @@ export function AddOnPopover({
   image?: string;
   imageAlt?: string;
 }) {
+  const { t, href } = useSiteLanguage();
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
@@ -103,7 +104,7 @@ export function AddOnPopover({
           ref={panelRef}
           id={panelId}
           role="dialog"
-          aria-label={label}
+          aria-label={t(label)}
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={hide}
           style={{
@@ -116,7 +117,7 @@ export function AddOnPopover({
           <LocalizedText value={image && (
             <img
               src={image}
-              alt={imageAlt ?? ""}
+              alt={t(imageAlt ?? "")}
               loading="lazy"
               decoding="async"
               width={320}

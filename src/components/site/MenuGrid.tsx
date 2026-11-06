@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import type { ReactNode } from "react";
 import { CodeChip, RuleRedBlue } from "./CodeChip";
 import type { MenuCategory, MenuItem } from "@/lib/menu-data";
@@ -14,6 +14,7 @@ export function accentClasses(cat: MenuCategory) {
 }
 
 export function PhotoPlaceholder({ code }: { code: string }) {
+  const { t, href } = useSiteLanguage();
   return (
     <div
       className="grid aspect-square w-full place-items-center bg-[#faf6ef]"
@@ -39,6 +40,7 @@ export function PhotoCard({
   cat: MenuCategory;
   footer?: ReactNode;
 }) {
+  const { t, href } = useSiteLanguage();
   const cls = accentClasses(cat);
   return (
     <article className="group relative flex flex-col overflow-hidden border border-[#1d418f]/12 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]">
@@ -46,7 +48,7 @@ export function PhotoCard({
         <LocalizedText value={item.image ? (
           <img
             src={item.image}
-            alt={`${item.name} at TTOP Chicken`}
+            alt={t(`${item.name} at TTOP Chicken`)}
             loading="lazy"
             decoding="async"
             width={480}
@@ -72,13 +74,13 @@ export function PhotoCard({
           <LocalizedText value={item.spicy && (
             <span
               className="inline-flex h-6 items-center rounded-sm bg-white/90 px-1.5 text-[10px] font-bold uppercase tracking-wider text-[#ca3134] shadow-sm"
-              title="Spicy"
+              title={t("Spicy")}
             ><LocalizedText value={" 🌶 Spicy "} /></span>
           )} />
           <LocalizedText value={item.veg && (
             <span
               className="inline-flex h-6 items-center rounded-sm bg-white/90 px-1.5 text-[10px] font-bold uppercase tracking-wider text-[#1d418f] shadow-sm"
-              title="Vegetarian"
+              title={t("Vegetarian")}
             ><LocalizedText value={" V "} /></span>
           )} />
         </div>
@@ -110,6 +112,7 @@ export function CompactRow({
   cat: MenuCategory;
   trailing?: ReactNode;
 }) {
+  const { t, href } = useSiteLanguage();
   const cls = accentClasses(cat);
   return (
     <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-3 border-b border-dashed border-[#1d418f]/12 py-2.5 last:border-b-0">
@@ -146,6 +149,7 @@ export function CompactRow({
 }
 
 export function CategoryHeader({ cat }: { cat: MenuCategory }) {
+  const { t, href } = useSiteLanguage();
   const cls = accentClasses(cat);
   return (
     <div className="mb-6 flex items-end gap-4">
@@ -168,6 +172,7 @@ export function CategoryHeader({ cat }: { cat: MenuCategory }) {
 }
 
 export function CategoryNotes({ notes }: { notes?: string[] }) {
+  const { t, href } = useSiteLanguage();
   if (!notes?.length) return null;
   return (
     <ul className="mt-5 space-y-1.5 border-l-2 border-[#1d418f]/25 pl-4 text-xs leading-relaxed text-[#17233f]/70">
@@ -186,6 +191,7 @@ export function PhotoGrid({
   cat: MenuCategory;
   renderFooter?: (item: MenuItem) => ReactNode;
 }) {
+  const { t, href } = useSiteLanguage();
   return (
     <section id={cat.letter.replace("+", "")} className="scroll-mt-24">
       <CategoryHeader cat={cat} />
@@ -213,6 +219,7 @@ export function CompactList({
   cat: MenuCategory;
   renderTrailing?: (item: MenuItem) => ReactNode;
 }) {
+  const { t, href } = useSiteLanguage();
   return (
     <section id={cat.letter.replace("+", "")} className="scroll-mt-24">
       <CategoryHeader cat={cat} />
@@ -234,6 +241,7 @@ export function CompactList({
 
 /* Add-on toppings — grouped columns, no photos */
 export function AddOnGroups({ cat }: { cat: MenuCategory }) {
+  const { t, href } = useSiteLanguage();
   if (!cat.groups) return null;
   return (
     <section

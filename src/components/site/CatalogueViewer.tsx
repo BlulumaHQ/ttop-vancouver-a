@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { useEffect, useRef, useState } from "react";
 
 const PAGES = [
@@ -8,6 +8,7 @@ const PAGES = [
 ];
 
 export function CatalogueViewer() {
+  const { t, href } = useSiteLanguage();
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [zoom, setZoom] = useState(false);
   const touchStart = useRef<number | null>(null);
@@ -44,11 +45,11 @@ export function CatalogueViewer() {
               setOpenIdx(i);
             }}
             className="group block overflow-hidden border border-[#1d418f]/20 bg-white transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]"
-            aria-label={`View TTOP Formosa Chef-Pacs catalogue, page ${i + 1}`}
+            aria-label={t(`View TTOP Formosa Chef-Pacs catalogue, page ${i + 1}`)}
           >
             <img
               src={src}
-              alt={`TTOP Formosa Chef-Pacs catalogue, page ${i + 1}`}
+              alt={t(`TTOP Formosa Chef-Pacs catalogue, page ${i + 1}`)}
               width={500}
               height={700}
               loading="lazy"
@@ -64,7 +65,7 @@ export function CatalogueViewer() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`TTOP Formosa Chef-Pacs catalogue, page ${openIdx + 1}`}
+          aria-label={t(`TTOP Formosa Chef-Pacs catalogue, page ${openIdx + 1}`)}
           className="fixed inset-0 z-[100] flex flex-col bg-black/90"
           onClick={() => setOpenIdx(null)}
         >
@@ -77,7 +78,7 @@ export function CatalogueViewer() {
             </div>
             <button
               type="button"
-              aria-label="Close"
+              aria-label={t("Close")}
               onClick={() => setOpenIdx(null)}
               className="grid h-10 w-10 place-items-center rounded-sm border border-white/40 text-xl text-white hover:bg-white hover:text-[#1d418f]"
             ><LocalizedText value={" ✕ "} /></button>
@@ -99,13 +100,13 @@ export function CatalogueViewer() {
           >
             <button
               type="button"
-              aria-label="Previous page"
+              aria-label={t("Previous page")}
               onClick={(e) => { e.stopPropagation(); step(-1); }}
               className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-sm border border-white/40 bg-black/40 px-3 py-2 text-sm text-white hover:bg-white hover:text-[#1d418f] sm:block"
             ><LocalizedText value={" ← "} /></button>
             <button
               type="button"
-              aria-label="Next page"
+              aria-label={t("Next page")}
               onClick={(e) => { e.stopPropagation(); step(1); }}
               className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-sm border border-white/40 bg-black/40 px-3 py-2 text-sm text-white hover:bg-white hover:text-[#1d418f] sm:block"
             ><LocalizedText value={" → "} /></button>
@@ -113,7 +114,7 @@ export function CatalogueViewer() {
             <div className="flex min-h-full items-start justify-center p-4">
               <img
                 src={PAGES[openIdx]}
-                alt={`TTOP Formosa Chef-Pacs catalogue, page ${openIdx + 1}`}
+                alt={t(`TTOP Formosa Chef-Pacs catalogue, page ${openIdx + 1}`)}
                 onClick={() => setZoom((z) => !z)}
                 className={`select-none transition-transform duration-200 ${
                   zoom

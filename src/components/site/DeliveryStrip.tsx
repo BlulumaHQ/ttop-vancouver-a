@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import doordashAsset from "@/assets/delivery/doordash.png.asset.json";
 import ubereatsAsset from "@/assets/delivery/ubereats.png.asset.json";
 import fantuanAsset from "@/assets/delivery/fantuan.png.asset.json";
@@ -26,6 +26,7 @@ export function DeliveryStrip({
 }: {
   tone?: "cream" | "white" | "blue";
 }) {
+  const { t, href } = useSiteLanguage();
   const bg =
     tone === "blue"
       ? "bg-[#1d418f] text-white"
@@ -43,15 +44,15 @@ export function DeliveryStrip({
           <LocalizedText value={PARTNERS.map((p) => (
             <a
               key={p.name}
-              href={p.href}
+              href={href(p.href)}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Order TTOP Chicken on ${p.name}`}
+              aria-label={t(`Order TTOP Chicken on ${p.name}`)}
               className="grid h-12 w-12 place-items-center transition-transform duration-200 hover:-translate-y-0.5 sm:h-14 sm:w-14"
             >
               <img
                 src={p.src}
-                alt={`${p.name} logo`}
+                alt={t(`${p.name} logo`)}
                 className="h-full w-full object-contain"
                 loading="lazy"
               />

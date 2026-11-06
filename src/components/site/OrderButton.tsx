@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { ORDER_URL } from "@/lib/site";
 
 export function OrderButton({
@@ -10,6 +10,7 @@ export function OrderButton({
   size?: "sm" | "md" | "lg";
   children?: React.ReactNode;
 }) {
+  const { t, href } = useSiteLanguage();
   const sizes = {
     sm: "px-4 py-2 text-sm",
     md: "px-5 py-2.5 text-sm",
@@ -17,7 +18,7 @@ export function OrderButton({
   };
   return (
     <a
-      href={ORDER_URL}
+      href={href(ORDER_URL)}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center gap-2 rounded-sm bg-[#ca3134] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#a5262a] ${sizes[size]} ${className}`}
@@ -37,9 +38,10 @@ export function OutlineButton({
   children: React.ReactNode;
   className?: string;
 }) {
+  const { t, href } = useSiteLanguage();
   return (
     <a
-      href={href}
+      href={href(href)}
       className={`inline-flex items-center gap-2 rounded-sm border border-[#1d418f] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white ${className}`}
     >
       <LocalizedText value={children} />

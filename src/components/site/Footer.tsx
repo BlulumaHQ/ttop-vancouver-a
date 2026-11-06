@@ -1,4 +1,4 @@
-import { LocalizedText, Link } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText, Link } from "@/lib/i18n";
 
 import { useState } from "react";
 import {
@@ -41,6 +41,7 @@ function MobileAccordion({
   title: string;
   children: React.ReactNode;
 }) {
+  const { t, href } = useSiteLanguage();
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-white/15 md:border-0">
@@ -68,6 +69,7 @@ function MobileAccordion({
 }
 
 export function Footer() {
+  const { t, href } = useSiteLanguage();
   return (
     <footer className="bg-[#1d418f] text-white">
       <DeliveryStrip tone="blue" />
@@ -76,14 +78,14 @@ export function Footer() {
       <div className="md:hidden">
         <div className="mx-auto max-w-7xl px-5 pb-2 pt-10">
           <div className="flex flex-col items-start gap-5">
-            <Link to="/" aria-label="TTOP Chicken — home" className="inline-flex items-center gap-3">
-              <img src="/images/ttop-mascot.png" alt="" aria-hidden="true" className="h-11 w-auto" />
+            <Link to="/" aria-label={t("TTOP Chicken — home")} className="inline-flex items-center gap-3">
+              <img src="/images/ttop-mascot.png" alt={t("")} aria-hidden="true" className="h-11 w-auto" />
               <span className="font-display text-2xl font-black tracking-tight"><LocalizedText value={" TTOP "} /><span className="italic font-medium text-[#ffb6b6]"><LocalizedText value={"Chicken"} /></span>
               </span>
             </Link>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href={`tel:${PHONE_TEL}`}
+                href={href(`tel:${PHONE_TEL}`)}
                 className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white hover:bg-white hover:text-[#1d418f]"
               ><LocalizedText value={" 📞 "} /><LocalizedText value={PHONE} />
               </a>
@@ -92,9 +94,9 @@ export function Footer() {
           </div>
         </div>
         <div className="mx-auto max-w-7xl px-5 py-6">
-          <MobileAccordion title="Visit">
+          <MobileAccordion title={t("Visit")}>
           <a
-            href={MAP_URL}
+            href={href(MAP_URL)}
             target="_blank"
             rel="noopener noreferrer"
             className="block text-sm text-white/80 hover:text-white"
@@ -102,17 +104,17 @@ export function Footer() {
             <LocalizedText value={ADDRESS} />
           </a>
           <p className="mt-2 text-sm text-white/70"><LocalizedText value={HOURS} /></p>
-          <a href={`mailto:${EMAIL}`} className="mt-2 block text-sm text-white/80 hover:text-white">
+          <a href={href(`mailto:${EMAIL}`)} className="mt-2 block text-sm text-white/80 hover:text-white">
             <LocalizedText value={EMAIL} />
           </a>
           </MobileAccordion>
           <LocalizedText value={LINK_GROUPS.map((g) => (
-            <MobileAccordion key={g.title} title={g.title}>
+            <MobileAccordion key={g.title} title={t(g.title)}>
               <ul className="space-y-2 text-sm text-white/80">
                 <LocalizedText value={g.links.map((l) => (
                   <li key={l.label}>
                     <LocalizedText value={"href" in l ? (
-                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-white"><LocalizedText value={l.label} /></a>
+                      <a href={href(l.href)} target="_blank" rel="noopener noreferrer" className="hover:text-white"><LocalizedText value={l.label} /></a>
                     ) : (
                       <Link to={l.to} hash={"hash" in l ? l.hash : undefined} className="hover:text-white"><LocalizedText value={l.label} /></Link>
                     )} />
@@ -121,16 +123,16 @@ export function Footer() {
               </ul>
             </MobileAccordion>
           ))} />
-          <MobileAccordion title="More">
+          <MobileAccordion title={t("More")}>
             <ul className="space-y-2 text-sm text-white/80">
               <li><Link to="/about" className="hover:text-white"><LocalizedText value={"About"} /></Link></li>
               <li><Link to="/contact" className="hover:text-white"><LocalizedText value={"Contact"} /></Link></li>
             </ul>
           </MobileAccordion>
-          <MobileAccordion title="Follow">
+          <MobileAccordion title={t("Follow")}>
           <div className="flex gap-3">
-              <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"><LocalizedText value={"Instagram"} /></a>
-              <a href={FB_URL} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"><LocalizedText value={"Facebook"} /></a>
+              <a href={href(IG_URL)} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"><LocalizedText value={"Instagram"} /></a>
+              <a href={href(FB_URL)} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-white/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#1d418f]"><LocalizedText value={"Facebook"} /></a>
           </div>
           </MobileAccordion>
         </div>
@@ -142,14 +144,14 @@ export function Footer() {
           <div className="grid grid-cols-12 gap-10">
             {/* Brand column */}
             <div className="col-span-12 lg:col-span-4">
-              <Link to="/" aria-label="TTOP Chicken — home" className="inline-flex items-center gap-3">
-                <img src="/images/ttop-mascot.png" alt="" aria-hidden="true" className="h-14 w-auto" />
+              <Link to="/" aria-label={t("TTOP Chicken — home")} className="inline-flex items-center gap-3">
+                <img src="/images/ttop-mascot.png" alt={t("")} aria-hidden="true" className="h-14 w-auto" />
                 <span className="font-display text-3xl font-black tracking-tight"><LocalizedText value={" TTOP "} /><span className="italic font-medium text-[#ffb6b6]"><LocalizedText value={"Chicken"} /></span>
                 </span>
               </Link>
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75"><LocalizedText value={" Old-world Taiwanese cooking, born on Alexandra Food Street in Richmond. Chicken pots, bentos, and Formosa Chef-Pacs to take home. "} /></p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a href={`tel:${PHONE_TEL}`} className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#1d418f]">
+                <a href={href(`tel:${PHONE_TEL}`)} className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#1d418f]">
                   <span aria-hidden="true"><LocalizedText value={"📞"} /></span> <LocalizedText value={PHONE} />
                 </a>
                 <OrderButton size="sm" />
@@ -164,7 +166,7 @@ export function Footer() {
                   <LocalizedText value={g.links.map((l) => (
                     <li key={l.label}>
                       <LocalizedText value={"href" in l ? (
-                        <a href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-white"><LocalizedText value={l.label} /></a>
+                        <a href={href(l.href)} target="_blank" rel="noopener noreferrer" className="hover:text-white"><LocalizedText value={l.label} /></a>
                       ) : (
                         <Link to={l.to} hash={"hash" in l ? l.hash : undefined} className="hover:text-white"><LocalizedText value={l.label} /></Link>
                       )} />
@@ -177,11 +179,11 @@ export function Footer() {
             {/* Visit column */}
             <div className="col-span-6 lg:col-span-3 lg:col-start-5">
               <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]"><LocalizedText value={"Visit"} /></h4>
-              <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="block text-sm leading-relaxed text-white/85 hover:text-white">
+              <a href={href(MAP_URL)} target="_blank" rel="noopener noreferrer" className="block text-sm leading-relaxed text-white/85 hover:text-white">
                 <LocalizedText value={ADDRESS} />
               </a>
               <p className="mt-3 text-sm text-white/70"><LocalizedText value={HOURS} /></p>
-              <a href={`mailto:${EMAIL}`} className="mt-3 block text-sm text-white/85 hover:text-white">
+              <a href={href(`mailto:${EMAIL}`)} className="mt-3 block text-sm text-white/85 hover:text-white">
                 <LocalizedText value={EMAIL} />
               </a>
             </div>
@@ -199,9 +201,9 @@ export function Footer() {
             <div className="col-span-12 lg:col-span-2">
               <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#ffb6b6]"><LocalizedText value={"Follow"} /></h4>
               <div className="flex flex-col gap-2">
-                <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white">
+                <a href={href(IG_URL)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white">
                   <span aria-hidden="true"><LocalizedText value={"◈"} /></span><LocalizedText value={" Instagram "} /></a>
-                <a href={FB_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white">
+                <a href={href(FB_URL)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white">
                   <span aria-hidden="true"><LocalizedText value={"◈"} /></span><LocalizedText value={" Facebook "} /></a>
               </div>
             </div>
@@ -214,7 +216,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-[11px] text-white/70 md:flex-row lg:px-8">
           <p><LocalizedText value={"© 2026 TTOP Chicken. All rights reserved."} /></p>
           <p>
-            <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white"><LocalizedText value={"Web Design by Bluluma"} /></a>
+            <a href={href("https://bluluma.com")} target="_blank" rel="noopener noreferrer" className="underline hover:text-white"><LocalizedText value={"Web Design by Bluluma"} /></a>
           </p>
         </div>
       </div>

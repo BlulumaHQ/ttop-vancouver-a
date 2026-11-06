@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { CodeChip, RuleRedBlue } from "./CodeChip";
 
 export function Section({
@@ -12,6 +12,7 @@ export function Section({
   className?: string;
   id?: string;
 }) {
+  const { t, href } = useSiteLanguage();
   const bg =
     tone === "cream"
       ? "bg-[#faf6ef]"
@@ -38,6 +39,7 @@ export function SectionHead({
   chip?: string;
   onDark?: boolean;
 }) {
+  const { t, href } = useSiteLanguage();
   // chineseTitle is accepted for backward compatibility but no longer rendered —
   // the site is English-primary. A serif italic red accent below the eyebrow
   // preserves the red/blue visual variety.

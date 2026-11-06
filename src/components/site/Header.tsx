@@ -1,4 +1,4 @@
-import { LocalizedText, Link } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText, Link } from "@/lib/i18n";
 import { useRouterState } from "@tanstack/react-router";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
@@ -41,6 +41,7 @@ const PLAIN: Item[] = [
 ];
 
 function Chevron({ open }: { open: boolean }) {
+  const { t, href } = useSiteLanguage();
   return (
     <svg
       aria-hidden="true"
@@ -70,6 +71,7 @@ function DesktopGroup({
   setOpenId: (id: string | null) => void;
   pathname: string;
 }) {
+  const { t, href } = useSiteLanguage();
   const open = openId === group.id;
   const active = group.items.some((i) => i.to === pathname);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -183,6 +185,7 @@ function MobileAccordion({
   open: boolean;
   onToggle: () => void;
 }) {
+  const { t, href } = useSiteLanguage();
   return (
     <div className="border-b border-[#1d418f]/10">
       <button
@@ -219,6 +222,7 @@ function MobileAccordion({
 }
 
 export function Header() {
+  const { t, href } = useSiteLanguage();
   const [open, setOpen] = useState(false);
   const [openId, setOpenId] = useState<string | null>(null);
   const [acc, setAcc] = useState<string | null>(null);
@@ -283,10 +287,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#1d418f]/15 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between gap-4 px-5 lg:h-[96px] lg:px-8">
-        <Link to="/" aria-label="TTOP Chicken — home" className="flex items-center gap-2">
+        <Link to="/" aria-label={t("TTOP Chicken — home")} className="flex items-center gap-2">
           <img
             src="/images/ttop-logo-full.png"
-            alt="TTOP Chicken"
+            alt={t("TTOP Chicken")}
             className="h-14 w-auto sm:h-16 lg:h-[68px]"
             width={500}
             height={500}
@@ -328,7 +332,7 @@ export function Header() {
           </OrderButton>
           <button
             ref={burgerRef}
-            aria-label="Toggle menu"
+            aria-label={t("Toggle menu")}
             aria-expanded={open}
             className="ml-1 grid h-10 w-10 place-items-center rounded-sm border border-[#1d418f]/25 text-[#1d418f] transition-colors hover:bg-[#1d418f] hover:text-white min-[1100px]:hidden"
             onClick={() => setOpen((v) => !v)}
@@ -344,11 +348,11 @@ export function Header() {
           className="fixed inset-0 z-[100] flex flex-col bg-white min-[1100px]:hidden"
         >
           <div className="flex h-[88px] shrink-0 items-center justify-between border-b border-[#1d418f]/15 px-5">
-            <Link to="/" aria-label="TTOP Chicken — home" onClick={() => setOpen(false)}>
-              <img src="/images/ttop-logo-full.png" alt="TTOP Chicken" className="h-14 w-auto" />
+            <Link to="/" aria-label={t("TTOP Chicken — home")} onClick={() => setOpen(false)}>
+              <img src="/images/ttop-logo-full.png" alt={t("TTOP Chicken")} className="h-14 w-auto" />
             </Link>
             <button
-              aria-label="Close menu"
+              aria-label={t("Close menu")}
               onClick={() => {
                 setOpen(false);
                 burgerRef.current?.focus();

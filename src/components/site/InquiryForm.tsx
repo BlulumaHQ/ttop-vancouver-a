@@ -1,4 +1,4 @@
-import { LocalizedText } from "@/lib/i18n";
+import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 import { useState } from "react";
 
 export type Field = {
@@ -22,6 +22,7 @@ export function InquiryForm({
   successMessage?: string;
   twoColumn?: boolean;
 }) {
+  const { t, href } = useSiteLanguage();
   const [sent, setSent] = useState(false);
   return (
     <form
