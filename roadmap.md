@@ -5,6 +5,6 @@
 - [x] Verify translated pages, navigation, images and inquiry controls.
 
 # Cloudflare deployment compatibility
-- [ ] Replace production delivery-logo CDN references with existing public images and archive unused pointers without deleting remote assets.
-- [ ] Audit deployment settings and multilingual routes without changing design or content.
-- [ ] Run asset and locale checks, verify rendered logos, and inspect the automatically generated production build result.
+- [x] Replace production delivery-logo CDN references with existing public images and archive unused pointers without deleting remote assets.
+- [x] Audit deployment settings and multilingual routes without changing design or content.
+- [x] Run asset and locale checks, verify rendered logos, and inspect the automatically generated production build result.
