@@ -10,7 +10,7 @@
 - [x] Run asset and locale checks, verify rendered logos, and inspect the automatically generated production build result.
 
 # DoorDash logo replacement
-- [ ] Show complete printed-menu thumbnails and food photos without cropping; remove DoorDash's source-image white rim and verify both.
+- [x] Show complete printed-menu thumbnails and food photos without cropping; remove DoorDash's source-image white rim and verify both.
 - [x] Replace DoorDash with the latest original PNG using a self-hosted public image path.
 - [x] Verify equal logo dimensions on desktop/mobile and run asset and locale checks.
 - [x] Explain GitHub sync and external deployment verification limits; these external statuses are not accessible from this chat.
