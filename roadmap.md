@@ -8,3 +8,8 @@
 - [x] Replace production delivery-logo CDN references with existing public images and archive unused pointers without deleting remote assets.
 - [x] Audit deployment settings and multilingual routes without changing design or content.
 - [x] Run asset and locale checks, verify rendered logos, and inspect the automatically generated production build result.
+
+# DoorDash logo replacement
+- [ ] Replace DoorDash with the latest original PNG using a self-hosted public image path.
+- [ ] Verify equal logo dimensions on desktop/mobile and run asset and locale checks.
+- [ ] Explain GitHub sync and external deployment verification limits.
