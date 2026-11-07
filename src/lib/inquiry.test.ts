@@ -51,4 +51,10 @@ describe("Email handler", () => {
   test("cross-origin submissions are rejected", async () => { const req = request(contact); req.headers.set("origin","https://example.com"); expect((await handleInquiry(req,accepted)).status).toBe(403); });
   test("oversize payloads are rejected", async () => { expect((await handleInquiry(request({ ...contact, padding: "x".repeat(MAX_INQUIRY_BYTES) }),accepted)).status).toBe(413); });
   test("retries preserve idempotency key and exact body", async () => { const calls: { body: unknown; key: string | null }[] = []; const send: EmailFetch = async (_,init) => { calls.push({ body: init?.body, key: new Headers(init?.headers).get("Idempotency-Key") }); return Response.json({ id: "test" }); }; await handleInquiry(request(contact),send); await handleInquiry(request(contact),send); expect(calls[0]).toEqual(calls[1]); expect(calls[0]?.key).toBe(`inquiry-${base.submissionId}`); });
+  test("Workers module bindings submit successfully when request runtime bindings are lost", async () => {
+    const req = new Request("https://ttopchicken.com/api/inquiry", { method: "POST", headers: { origin: "https://ttopchicken.com", "content-type": "application/json", "cf-connecting-ip": "192.0.2.1" }, body: JSON.stringify(contact) });
+    const res = await handleInquiry(req,accepted,env);
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ ok: true, code: "sent" });
+  });
 });
