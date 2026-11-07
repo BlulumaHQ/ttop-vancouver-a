@@ -2,7 +2,10 @@
 - [x] Audit all inquiry fields and connect email-only Resend sending across three locales.
 - [x] Add validation, duplicate protection, spam safeguards and localized submission states.
 - [x] Test valid/invalid submissions and document Cloudflare bindings and live delivery checks.
-- [ ] Live delivery verification — blocked by external Cloudflare deployment, unavailable sandbox Resend credentials, and required CONTACT_RATE_LIMITER binding.
+- [ ] Confirm the production runtime-binding failure and make binding resolution compatible with the deployed Nitro/Cloudflare setup.
+- [ ] Preserve inquiry security and delivery behavior while adding safe diagnostic codes and server-side logs.
+- [ ] Add binding, failure, rate-limit, provider-error and successful-delivery tests; run checks and production build.
+- [ ] Live delivery verification — blocked until the corrected build is deployed with the configured Cloudflare bindings.
 
 # Chinese website
 - [x] Add independent Traditional Chinese and Simplified Chinese page URLs while retaining English.
