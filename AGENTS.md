@@ -11,3 +11,4 @@
 
 - Share page components between English, `/zh-tw/*`, and `/zh-cn/*` leaf routes; derive locale from the URL through React context so SSR and navigation stay consistent.
 - Keep separate Taiwan Traditional and mainland Simplified translation dictionaries; translate text in React rendering rather than mutating the DOM or storing a language preference.
+- Serve delivery logos from the existing public image paths for self-hosted deployment; retain unused CDN pointers under `.lovable/asset-archive/` without deleting their remote assets so older Lovable deployments remain intact.
