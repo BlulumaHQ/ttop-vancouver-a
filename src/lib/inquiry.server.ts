@@ -32,7 +32,7 @@ export type BindingSource = "request" | "worker-module" | "development" | "none"
 
 export function resolveWorkerEnvironment(
   request: Request,
-  moduleBindings: WorkerEnvironment | undefined = cloudflareWorkerEnv,
+  moduleBindings: WorkerEnvironment | undefined = cloudflareWorkerEnv as WorkerEnvironment,
 ): { env: WorkerEnvironment; source: BindingSource; isCloudflare: boolean } {
   const cloudflare = (request as RuntimeRequest).runtime?.cloudflare;
   const developmentBindings: WorkerEnvironment = import.meta.env.DEV
@@ -146,7 +146,7 @@ async function readLimitedBody(request: Request) {
 export async function handleInquiry(
   request: Request,
   send: EmailFetch = fetch,
-  moduleBindings: WorkerEnvironment | undefined = cloudflareWorkerEnv,
+  moduleBindings: WorkerEnvironment | undefined = cloudflareWorkerEnv as WorkerEnvironment,
 ): Promise<Response> {
   try {
     const origin = request.headers.get("origin");
