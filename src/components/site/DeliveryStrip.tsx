@@ -3,7 +3,7 @@ import { useSiteLanguage, LocalizedText } from "@/lib/i18n";
 const PARTNERS = [
   {
     name: "DoorDash",
-    src: "/images/delivery/doordash.png",
+    src: "/images/delivery/doordash-current.png",
     href: "https://www.doordash.com/store/ttop-%E8%8A%B1%E9%9B%95%E9%9B%9E-richmond-27547541/30803547/",
   },
   {
