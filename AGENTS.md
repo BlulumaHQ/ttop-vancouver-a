@@ -13,3 +13,5 @@
 - Keep separate Taiwan Traditional and mainland Simplified translation dictionaries; translate text in React rendering rather than mutating the DOM or storing a language preference.
 - Serve delivery logos from the existing public image paths for self-hosted deployment; retain unused CDN pointers under `.lovable/asset-archive/` without deleting their remote assets so older Lovable deployments remain intact.
 - Keep inquiry contracts client-safe in inquiry.ts and delivery in inquiry.server.ts behind the shared /api/inquiry endpoint; resolve Nitro 3 request bindings per request with the official cloudflare:workers env import as fallback, keep credentials server-only, and fail closed without the production rate limiter.
+
+- Root `wrangler.jsonc` pins the production Worker name and `keep_vars` so Nitro's generated deploy config targets the right Worker and keeps dashboard variables.
