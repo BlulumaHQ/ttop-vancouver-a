@@ -1,4 +1,3 @@
-# Chinese website
 # Activate inquiry forms
 - [ ] Audit all inquiry fields and connect email-only Resend sending across three locales.
 - [ ] Add validation, duplicate protection, spam safeguards and localized submission states.

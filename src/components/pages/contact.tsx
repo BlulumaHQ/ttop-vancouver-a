@@ -56,6 +56,7 @@ export function ContactPage() {
             <p className="mt-1 text-xs text-[#17233f]/60"><LocalizedText value={"We usually reply within a business day."} /></p>
             <div className="mt-6">
               <InquiryForm
+                formType="contact"
                 fields={[
                   { name: "name", label: "Name", required: true },
                   { name: "email", label: "Email", type: "email", required: true },
