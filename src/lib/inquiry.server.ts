@@ -2,6 +2,7 @@ import { z } from "zod";
 import { fieldLabels, inquirySchema, inquirySubjects, MAX_INQUIRY_BYTES, type Inquiry } from "./inquiry";
 type RateLimiter = { limit: (input: { key: string }) => Promise<{ success: boolean }> };
 export type WorkerEnvironment = { RESEND_API_KEY?: string; CONTACT_TO_EMAIL?: string; CONTACT_FROM_EMAIL?: string; CONTACT_RATE_LIMITER?: RateLimiter };
+export type EmailFetch = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 type RuntimeRequest = Request & { runtime?: { cloudflare?: { env?: WorkerEnvironment } } };
 export function escapeHtml(value: string): string {
   return value.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] ?? c);
@@ -21,7 +22,7 @@ async function readLimitedBody(request: Request) {
 }
 // Nitro 3's Cloudflare preset augments the original Request before invoking TanStack.
 // Bindings are resolved per request. process.env is only a local Vite development fallback.
-export async function handleInquiry(request: Request, send: typeof fetch = fetch): Promise<Response> {
+export async function handleInquiry(request: Request, send: EmailFetch = fetch): Promise<Response> {
   try {
     const origin = request.headers.get("origin");
     if (!origin || origin !== new URL(request.url).origin) return result(403,"invalid");

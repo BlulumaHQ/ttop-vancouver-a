@@ -1,7 +1,7 @@
 /// <reference types="bun" />
 import { describe, expect, test } from "bun:test";
 import { inquirySchema, inquirySubjects, MAX_INQUIRY_BYTES } from "./inquiry";
-import { buildInquiryEmail, handleInquiry, type WorkerEnvironment } from "./inquiry.server";
+import { buildInquiryEmail, handleInquiry, type WorkerEnvironment, type EmailFetch } from "./inquiry.server";
 
 const base = { locale: "en", submissionId: "12345678-1234-4234-8234-123456789abc", submittedAt: "2026-11-07T02:46:00.000Z", website: "" };
 const contact = { ...base, formType: "contact", fields: { name: "Test Visitor", email: "visitor@example.com", phone: "", message: "Inquiry test" } };
@@ -12,7 +12,7 @@ function request(input: unknown, environment: WorkerEnvironment = env) {
   Object.assign(req, { runtime: { cloudflare: { env: environment } } });
   return req;
 }
-const accepted: typeof fetch = async () => Response.json({ id: "test-message" });
+const accepted: EmailFetch = async () => Response.json({ id: "test-message" });
 describe("Inquiry contracts", () => {
   test("all four forms and all three locales validate", () => {
     const catering = { name: "Test Visitor", organization: "Test", email: "visitor@example.com", phone: "+1 604 555 0100", eventDate: "2026-12-01", guests: "50", fulfillment: "Delivery", mealType: "Lunch", dietary: "None", details: "Test" };
@@ -39,7 +39,7 @@ describe("Inquiry contracts", () => {
 describe("Email handler", () => {
   test("recipient, sender and validated reply-to use required configuration", async () => {
     let calls = 0;
-    const send: typeof fetch = async (url, init) => { calls++; expect(url).toBe("https://api.resend.com/emails"); const payload = JSON.parse(String(init?.body)); expect(payload.to).toEqual(["ttopvancouver@gmail.com"]); expect(payload.from).toBe("TTOP Chicken <forms@ttopchicken.com>"); expect(payload.reply_to).toBe("visitor@example.com"); expect(payload.html).toBeTruthy(); expect(payload.text).toBeTruthy(); return Response.json({ id: "test-message" }); };
+    const send: EmailFetch = async (url, init) => { calls++; expect(url).toBe("https://api.resend.com/emails"); const payload = JSON.parse(String(init?.body)); expect(payload.to).toEqual(["ttopvancouver@gmail.com"]); expect(payload.from).toBe("TTOP Chicken <forms@ttopchicken.com>"); expect(payload.reply_to).toBe("visitor@example.com"); expect(payload.html).toBeTruthy(); expect(payload.text).toBeTruthy(); return Response.json({ id: "test-message" }); };
     expect((await handleInquiry(request(contact),send)).status).toBe(200); expect(calls).toBe(1);
   });
   test("provider rejection never returns success", async () => { expect((await handleInquiry(request(contact),async () => new Response("", { status: 403 }))).status).toBe(502); });
@@ -50,5 +50,5 @@ describe("Email handler", () => {
   test("invalid input never reaches Resend", async () => { let calls = 0; const res = await handleInquiry(request({ ...contact, formType: "unknown" }),async () => { calls++; return Response.json({ id: "test" }); }); expect(res.status).toBe(400); expect(calls).toBe(0); });
   test("cross-origin submissions are rejected", async () => { const req = request(contact); req.headers.set("origin","https://example.com"); expect((await handleInquiry(req,accepted)).status).toBe(403); });
   test("oversize payloads are rejected", async () => { expect((await handleInquiry(request({ ...contact, padding: "x".repeat(MAX_INQUIRY_BYTES) }),accepted)).status).toBe(413); });
-  test("retries preserve idempotency key and exact body", async () => { const calls: { body: unknown; key: string | null }[] = []; const send: typeof fetch = async (_,init) => { calls.push({ body: init?.body, key: new Headers(init?.headers).get("Idempotency-Key") }); return Response.json({ id: "test" }); }; await handleInquiry(request(contact),send); await handleInquiry(request(contact),send); expect(calls[0]).toEqual(calls[1]); expect(calls[0]?.key).toBe(`inquiry-${base.submissionId}`); });
+  test("retries preserve idempotency key and exact body", async () => { const calls: { body: unknown; key: string | null }[] = []; const send: EmailFetch = async (_,init) => { calls.push({ body: init?.body, key: new Headers(init?.headers).get("Idempotency-Key") }); return Response.json({ id: "test" }); }; await handleInquiry(request(contact),send); await handleInquiry(request(contact),send); expect(calls[0]).toEqual(calls[1]); expect(calls[0]?.key).toBe(`inquiry-${base.submissionId}`); });
 });
