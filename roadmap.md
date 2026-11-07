@@ -24,4 +24,5 @@
 - [x] Show complete printed-menu thumbnails and food photos without cropping; remove DoorDash's source-image white rim and verify both.
 - [x] Replace DoorDash with the latest original PNG using a self-hosted public image path.
 - [x] Verify equal logo dimensions on desktop/mobile and run asset and locale checks.
-- [x] Explain GitHub sync and external deployment verification limits; these external statuses are not accessible from this chat.
+- [x] Explain GitHub sync and external deployment verification limits; these external statuses are not accessible from this chat.- [x] Diagnose production `configuration_missing`: deploy config pinned to `ttop-vancouver-a` with `keep_vars`; safe per-setting `checks` in 503 response.
+- [ ] Redeploy and re-test live form (blocked: Cloudflare deployment is outside this editor).

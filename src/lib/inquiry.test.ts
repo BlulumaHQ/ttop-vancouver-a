@@ -204,7 +204,45 @@ describe("Email handler", () => {
   test("missing credentials fail closed with a distinct safe error", async () => {
     const res = await handleInquiry(request(contact, {}), accepted);
     expect(res.status).toBe(503);
-    expect(await res.json()).toEqual({ ok: false, code: "configuration_missing" });
+    expect(await res.json()).toEqual({
+      ok: false,
+      code: "configuration_missing",
+      checks: {
+        RESEND_API_KEY: "missing",
+        CONTACT_TO_EMAIL: "missing",
+        CONTACT_FROM_EMAIL: "missing",
+        CONTACT_RATE_LIMITER: "missing",
+      },
+    });
+  });
+  test("configuration report names the bad setting without exposing values", async () => {
+    const res = await handleInquiry(
+      request(contact, { ...env, CONTACT_TO_EMAIL: "not-an-email" }),
+      accepted,
+    );
+    const text = await res.text();
+    expect(res.status).toBe(503);
+    expect(JSON.parse(text).checks.CONTACT_TO_EMAIL).toBe("invalid");
+    expect(JSON.parse(text).checks.CONTACT_FROM_EMAIL).toBe("ok");
+    expect(text).not.toContain("not-an-email");
+    expect(text).not.toContain("forms@ttopchicken.com");
+    expect(text).not.toContain(env.RESEND_API_KEY as string);
+  });
+  test("dashboard values with spaces or wrapping quotes still send", async () => {
+    let sentFrom = "";
+    const res = await handleInquiry(
+      request(contact, {
+        ...env,
+        CONTACT_FROM_EMAIL: ' "TTOP Chicken <forms@ttopchicken.com>"\n',
+        CONTACT_TO_EMAIL: " ttopvancouver@gmail.com ",
+      }),
+      async (_url, init) => {
+        sentFrom = JSON.parse(String(init?.body)).from;
+        return Response.json({ id: "test" });
+      },
+    );
+    expect(res.status).toBe(200);
+    expect(sentFrom).toBe("TTOP Chicken <forms@ttopchicken.com>");
   });
   test("missing production rate limiter fails closed with a distinct safe error", async () => {
     const res = await handleInquiry(

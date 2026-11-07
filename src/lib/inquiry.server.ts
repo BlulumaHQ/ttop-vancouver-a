@@ -104,6 +104,18 @@ export function buildInquiryEmail(data: Inquiry, timestamp: string) {
   };
 }
 
+/** Tolerate whitespace or one pair of wrapping quotes pasted into dashboard values. */
+export function normalizeSetting(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  let text = value.trim();
+  if (text.length >= 2 && /^(["'])[\s\S]*\1$/.test(text)) text = text.slice(1, -1).trim();
+  return text || undefined;
+}
+
+function settingState(value: string | undefined, valid: boolean) {
+  return !value ? "missing" : valid ? "ok" : "invalid";
+}
+
 function result(status: number, code: string) {
   return Response.json(
     { ok: status === 200, code },
@@ -178,22 +190,38 @@ export async function handleInquiry(
     const data = parsed.data;
 
     const { env, source, isCloudflare } = resolveWorkerEnvironment(request, moduleBindings);
-    const recipient = z.string().email().safeParse(env.CONTACT_TO_EMAIL);
+    const apiKey = normalizeSetting(env.RESEND_API_KEY);
+    const recipientValue = normalizeSetting(env.CONTACT_TO_EMAIL);
+    const senderValue = normalizeSetting(env.CONTACT_FROM_EMAIL);
+    const recipient = z.string().email().safeParse(recipientValue);
     const sender = z
       .string()
       .max(320)
       .regex(/^[^\r\n<>]+<[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+>$/)
-      .safeParse(env.CONTACT_FROM_EMAIL);
+      .safeParse(senderValue);
+    // Safe states only: never the values themselves.
+    const checks = {
+      RESEND_API_KEY: settingState(apiKey, Boolean(apiKey)),
+      CONTACT_TO_EMAIL: settingState(recipientValue, recipient.success),
+      CONTACT_FROM_EMAIL: settingState(senderValue, sender.success),
+      CONTACT_RATE_LIMITER: env.CONTACT_RATE_LIMITER ? "ok" : "missing",
+    } as const;
     const bindingDiagnostics = {
       bindingSource: source,
-      hasApiKey: Boolean(env.RESEND_API_KEY),
-      hasValidRecipient: recipient.success,
-      hasValidSender: sender.success,
+      hasRequestBindings: Boolean((request as RuntimeRequest).runtime?.cloudflare?.env),
+      hasModuleBindings: Boolean(moduleBindings),
+      hasApiKey: Boolean(apiKey),
+      recipientState: checks.CONTACT_TO_EMAIL,
+      senderState: checks.CONTACT_FROM_EMAIL,
       hasRateLimiter: Boolean(env.CONTACT_RATE_LIMITER),
     };
 
-    if (!env.RESEND_API_KEY || !recipient.success || !sender.success) {
-      return failure(503, "configuration_missing", bindingDiagnostics);
+    if (!apiKey || !recipient.success || !sender.success) {
+      console.error("[inquiry]", { code: "configuration_missing", ...bindingDiagnostics });
+      return Response.json(
+        { ok: false, code: "configuration_missing", checks },
+        { status: 503, headers: { "Cache-Control": "no-store" } },
+      );
     }
 
     // Production must never send without the native rate limiter.
@@ -219,7 +247,7 @@ export async function handleInquiry(
       response = await send("https://api.resend.com/emails", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${env.RESEND_API_KEY}`,
+          Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
           "Idempotency-Key": `inquiry-${data.submissionId}`,
         },
