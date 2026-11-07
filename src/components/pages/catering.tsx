@@ -62,6 +62,7 @@ export function CateringPage() {
           </div>
           <div className="border border-[#1d418f]/20 bg-white p-6 md:p-8">
             <InquiryForm
+              formType="catering"
               twoColumn
               fields={[
                 { name: "name", label: "Full Name", required: true },

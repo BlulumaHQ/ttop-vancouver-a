@@ -42,6 +42,7 @@ export function ProgramInquirySection({ defaultProgram }: { defaultProgram: Prog
         </div>
         <div className="border border-[#1d418f]/20 bg-white p-6 md:p-8">
           <InquiryForm
+            formType={defaultProgram}
             fields={[
               { name: "contact", label: "Contact Name", required: true },
               { name: "school", label: "School / Centre Name", required: true },

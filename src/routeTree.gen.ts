@@ -23,6 +23,7 @@ import { Route as MenuRouteImport } from './routes/menu'
 import { Route as MontessoriRouteImport } from './routes/montessori'
 import { Route as SchoolLunchRouteImport } from './routes/school-lunch'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiInquiryRouteImport } from './routes/api/inquiry'
 import { Route as ZhCnIndexRouteImport } from './routes/zh-cn.index'
 import { Route as ZhCnAboutRouteImport } from './routes/zh-cn.about'
 import { Route as ZhCnCateringRouteImport } from './routes/zh-cn.catering'
@@ -110,6 +111,11 @@ const SchoolLunchRoute = SchoolLunchRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInquiryRoute = ApiInquiryRouteImport.update({
+  id: '/api/inquiry',
+  path: '/api/inquiry',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ZhCnIndexRoute = ZhCnIndexRouteImport.update({
@@ -218,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/inquiry': typeof ApiInquiryRoute
   '/zh-cn/about': typeof ZhCnAboutRoute
   '/zh-cn/catering': typeof ZhCnCateringRoute
   '/zh-cn/chuchu-bar': typeof ZhCnChuchuBarRoute
@@ -252,6 +259,7 @@ export interface FileRoutesByTo {
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/inquiry': typeof ApiInquiryRoute
   '/zh-cn/about': typeof ZhCnAboutRoute
   '/zh-cn/catering': typeof ZhCnCateringRoute
   '/zh-cn/chuchu-bar': typeof ZhCnChuchuBarRoute
@@ -287,6 +295,7 @@ export interface FileRoutesById {
   '/montessori': typeof MontessoriRoute
   '/school-lunch': typeof SchoolLunchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/inquiry': typeof ApiInquiryRoute
   '/zh-cn/about': typeof ZhCnAboutRoute
   '/zh-cn/catering': typeof ZhCnCateringRoute
   '/zh-cn/chuchu-bar': typeof ZhCnChuchuBarRoute
@@ -323,6 +332,7 @@ export interface FileRouteTypes {
     | '/montessori'
     | '/school-lunch'
     | '/sitemap.xml'
+    | '/api/inquiry'
     | '/zh-cn/about'
     | '/zh-cn/catering'
     | '/zh-cn/chuchu-bar'
@@ -357,6 +367,7 @@ export interface FileRouteTypes {
     | '/montessori'
     | '/school-lunch'
     | '/sitemap.xml'
+    | '/api/inquiry'
     | '/zh-cn/about'
     | '/zh-cn/catering'
     | '/zh-cn/chuchu-bar'
@@ -391,6 +402,7 @@ export interface FileRouteTypes {
     | '/montessori'
     | '/school-lunch'
     | '/sitemap.xml'
+    | '/api/inquiry'
     | '/zh-cn/about'
     | '/zh-cn/catering'
     | '/zh-cn/chuchu-bar'
@@ -426,6 +438,7 @@ export interface RootRouteChildren {
   MontessoriRoute: typeof MontessoriRoute
   SchoolLunchRoute: typeof SchoolLunchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiInquiryRoute: typeof ApiInquiryRoute
   ZhCnAboutRoute: typeof ZhCnAboutRoute
   ZhCnCateringRoute: typeof ZhCnCateringRoute
   ZhCnChuchuBarRoute: typeof ZhCnChuchuBarRoute
@@ -544,6 +557,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/inquiry': {
+      id: '/api/inquiry'
+      path: '/api/inquiry'
+      fullPath: '/api/inquiry'
+      preLoaderRoute: typeof ApiInquiryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/zh-cn/': {
@@ -690,6 +710,7 @@ const rootRouteChildren: RootRouteChildren = {
   MontessoriRoute: MontessoriRoute,
   SchoolLunchRoute: SchoolLunchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiInquiryRoute: ApiInquiryRoute,
   ZhCnAboutRoute: ZhCnAboutRoute,
   ZhCnCateringRoute: ZhCnCateringRoute,
   ZhCnChuchuBarRoute: ZhCnChuchuBarRoute,
