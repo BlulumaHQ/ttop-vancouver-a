@@ -78,12 +78,12 @@ export function PrintedMenuViewer() {
             onClick={() => open(i)}
             className="group flex flex-col overflow-hidden border border-[#1d418f]/20 bg-white text-left transition-shadow hover:shadow-[4px_4px_0_0_#1d418f]"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#faf6ef]">
+            <div className="relative w-full bg-[#faf6ef]">
               <img
                 src={m.front}
                 alt={t(`${m.title} — front cover`)}
                 loading="lazy"
-                className="block h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+                className="block h-auto w-full object-contain"
               />
               <div className="absolute left-2 top-2">
                 <CodeChip tone={m.accent} size="sm">

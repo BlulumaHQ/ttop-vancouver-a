@@ -93,7 +93,7 @@ export function MenuPage() {
             <img
               src="/images/menu-hero-spread.webp"
               alt={t("TTOP Chicken bento spread — fried chicken, pork chop, LOBA rice, sides")}
-              className="block aspect-[4/3] w-full object-cover"
+              className="block aspect-[4/3] w-full object-contain"
               loading="eager"
               width={1200}
               height={900}
