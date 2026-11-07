@@ -40,7 +40,8 @@ export async function handleInquiry(request: Request, send: typeof fetch = fetch
       const ip = request.headers.get("cf-connecting-ip"); if (!ip) return result(503,"unavailable");
       if (!(await env.CONTACT_RATE_LIMITER.limit({ key: `inquiry:${ip}` })).success) return result(429,"limited");
     }
-    const email = buildInquiryEmail(data,new Date().toISOString());
+    // Preserve identical payload on retries: Resend idempotency rejects changed bodies.
+    const email = buildInquiryEmail(data,data.submittedAt);
     const response = await send("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json", "Idempotency-Key": `inquiry-${data.submissionId}` }, body: JSON.stringify({ from: sender.data, to: [recipient.data], reply_to: data.fields.email, ...email }), signal: AbortSignal.timeout(15000) });
     if (!response.ok) return result(502,"delivery_failed");
     const accepted = z.object({ id: z.string().min(1) }).safeParse(await response.json());

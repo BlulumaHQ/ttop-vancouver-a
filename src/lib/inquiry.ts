@@ -8,7 +8,7 @@ const programFields = z.object({ contact: required(100), school: required(), ema
   program: z.enum(["School Hot Lunch Program", "Montessori Daily Meals", "Other / Not sure yet"]),
   frequency: z.enum(["Daily", "Weekly", "Monthly", "Seasonal"]), count: z.union([z.literal(""), count]), message: text(5000),
 }).strict();
-const envelope = { locale: z.enum(["en", "zh-TW", "zh-CN"]), submissionId: z.string().uuid(), website: z.string().max(200).refine(s => s === "") };
+const envelope = { locale: z.enum(["en", "zh-TW", "zh-CN"]), submissionId: z.string().uuid(), submittedAt: z.string().datetime(), website: z.string().max(200).refine(s => s === "") };
 export const inquirySchema = z.discriminatedUnion("formType", [
   z.object({ ...envelope, formType: z.literal("contact"), fields: z.object({ name: required(100), email, phone, message: required(5000) }).strict() }).strict(),
   z.object({ ...envelope, formType: z.literal("catering"), fields: z.object({ name: required(100), organization: text(), email, phone: phone.refine(s => s.length > 0),

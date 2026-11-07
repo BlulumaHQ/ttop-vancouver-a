@@ -31,7 +31,7 @@ export function InquiryForm({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const pending = useRef(false);
-  const attempt = useRef<{ fingerprint: string; id: string } | null>(null);
+  const attempt = useRef<{ fingerprint: string; id: string; submittedAt: string } | null>(null);
   const messages = inquiryMessages[locale];
   return (
     <form
@@ -41,8 +41,8 @@ export function InquiryForm({
         const values = new FormData(e.currentTarget);
         const submitted = Object.fromEntries(fields.map((f) => [f.name, String(values.get(f.name) ?? "")]));
         const fingerprint = JSON.stringify(submitted);
-        if (attempt.current?.fingerprint !== fingerprint) attempt.current = { fingerprint, id: crypto.randomUUID() };
-        const input = { formType, locale, fields: submitted, submissionId: attempt.current?.id, website: String(values.get("website") ?? "") };
+        if (attempt.current?.fingerprint !== fingerprint) attempt.current = { fingerprint, id: crypto.randomUUID(), submittedAt: new Date().toISOString() };
+        const input = { formType, locale, fields: submitted, submissionId: attempt.current?.id, submittedAt: attempt.current?.submittedAt, website: String(values.get("website") ?? "") };
         const parsed = inquirySchema.safeParse(input);
         if (!parsed.success) { setError(messages.invalid); return; }
         pending.current = true;
