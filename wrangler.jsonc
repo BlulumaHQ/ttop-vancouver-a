@@ -1,0 +1,9 @@
+// Merged by Nitro into the generated dist/server/wrangler.json at build time.
+{
+  // Production Worker that serves www.ttopchicken.com.
+  "name": "ttop-vancouver-a",
+  // Keep plain-text variables set in the Cloudflare dashboard (CONTACT_TO_EMAIL,
+  // CONTACT_FROM_EMAIL) instead of deleting them on every `wrangler deploy`.
+  "keep_vars": true,
+  "compatibility_flags": ["nodejs_compat"]
+}
