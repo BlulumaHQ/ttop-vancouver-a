@@ -51,8 +51,24 @@ export function resolveWorkerEnvironment(
         : "none";
 
   return {
-    // Request bindings win; the official Workers module is the production fallback.
-    env: { ...developmentBindings, ...moduleBindings, ...cloudflare?.env },
+    // Request bindings win; read only the four values this handler needs.
+    env: {
+      RESEND_API_KEY:
+        cloudflare?.env?.RESEND_API_KEY ??
+        moduleBindings?.RESEND_API_KEY ??
+        developmentBindings.RESEND_API_KEY,
+      CONTACT_TO_EMAIL:
+        cloudflare?.env?.CONTACT_TO_EMAIL ??
+        moduleBindings?.CONTACT_TO_EMAIL ??
+        developmentBindings.CONTACT_TO_EMAIL,
+      CONTACT_FROM_EMAIL:
+        cloudflare?.env?.CONTACT_FROM_EMAIL ??
+        moduleBindings?.CONTACT_FROM_EMAIL ??
+        developmentBindings.CONTACT_FROM_EMAIL,
+      CONTACT_RATE_LIMITER:
+        cloudflare?.env?.CONTACT_RATE_LIMITER ??
+        moduleBindings?.CONTACT_RATE_LIMITER,
+    },
     source,
     isCloudflare: Boolean(cloudflare || !import.meta.env.DEV),
   };

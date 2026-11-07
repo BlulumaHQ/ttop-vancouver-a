@@ -8,7 +8,9 @@ Email-only delivery uses your existing Resend account. There is no stored submis
 ## Existing settings — retain them
 In the **same deployed Cloudflare Worker**, retain `RESEND_API_KEY` as an encrypted secret, `CONTACT_TO_EMAIL=ttopvancouver@gmail.com` and `CONTACT_FROM_EMAIL=TTOP Chicken <forms@ttopchicken.com>`. No new Resend credentials or DNS changes are needed.
 
-Nitro 3's installed `cloudflare_module` preset augments requests with `request.runtime.cloudflare.env`; the handler reads the bindings there at request time. It does not depend on production `process.env`. Only local Vite development has a `process.env` fallback. Resend is called directly using Web Fetch, with no added SDK or deployment framework.
+Nitro 3's installed `cloudflare_module` preset augments requests with `request.runtime.cloudflare.env`; the handler reads those bindings per request and falls back to the official `import { env } from "cloudflare:workers"` API if a deployment adapter supplies an ordinary request without that augmentation. Nitro externalizes the official module for Workers builds. A serve-only Vite shim supports the local preview; it is excluded from production builds. Production never depends on `process.env`, and only the four required values are read on the server. Resend is called directly using Web Fetch, with no added SDK or deployment framework.
+
+Safe response codes distinguish `configuration_missing`, `rate_limiter_missing`, `rate_limit_unavailable`, `invalid`, `limited`, `delivery_failed`, and `unexpected_error`. Server logs contain only fixed codes, binding-presence booleans, error class names and Resend HTTP status—never API keys, email contents, visitor information, IP addresses or provider response bodies.
 
 ## Required new Cloudflare resource
 Add a **native Cloudflare Rate Limiting binding** named `CONTACT_RATE_LIMITER` to this Worker, with **5 requests per IP per 60 seconds**. Choose a namespace ID unique within your account. If your deployment manages bindings in Wrangler config, merge this fragment into that configuration (do not replace domain, routes, vars or other bindings):
