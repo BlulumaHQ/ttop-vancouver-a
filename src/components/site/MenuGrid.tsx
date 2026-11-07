@@ -53,7 +53,7 @@ export function PhotoCard({
             decoding="async"
             width={480}
             height={480}
-            className="block aspect-square w-full object-cover"
+            className="block aspect-square w-full object-contain"
           />
         ) : (
           <PhotoPlaceholder code={item.code} />

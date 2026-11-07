@@ -83,7 +83,7 @@ export function PrintedMenuViewer() {
                 src={m.front}
                 alt={t(`${m.title} — front cover`)}
                 loading="lazy"
-                className="block h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+                className="block h-full w-full object-contain"
               />
               <div className="absolute left-2 top-2">
                 <CodeChip tone={m.accent} size="sm">
