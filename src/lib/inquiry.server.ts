@@ -19,10 +19,7 @@ export type WorkerEnvironment = {
   CONTACT_RATE_LIMITER?: RateLimiter;
 };
 
-export type EmailFetch = (
-  input: RequestInfo | URL,
-  init?: RequestInit,
-) => Promise<Response>;
+export type EmailFetch = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 
 type RuntimeRequest = Request & {
   runtime?: { cloudflare?: { env?: WorkerEnvironment } };
@@ -66,8 +63,7 @@ export function resolveWorkerEnvironment(
         moduleBindings?.CONTACT_FROM_EMAIL ??
         developmentBindings.CONTACT_FROM_EMAIL,
       CONTACT_RATE_LIMITER:
-        cloudflare?.env?.CONTACT_RATE_LIMITER ??
-        moduleBindings?.CONTACT_RATE_LIMITER,
+        cloudflare?.env?.CONTACT_RATE_LIMITER ?? moduleBindings?.CONTACT_RATE_LIMITER,
     },
     source,
     isCloudflare: Boolean(cloudflare || !import.meta.env.DEV),
@@ -92,10 +88,7 @@ export function buildInquiryEmail(data: Inquiry, timestamp: string) {
   const rows = [
     ["Form type", inquirySubjects[data.formType]],
     ["Language", data.locale],
-    ...Object.entries(data.fields).map(([key, value]) => [
-      fieldLabels[key] ?? key,
-      value || "—",
-    ]),
+    ...Object.entries(data.fields).map(([key, value]) => [fieldLabels[key] ?? key, value || "—"]),
     ["Submission timestamp (UTC)", timestamp],
   ];
 
@@ -129,10 +122,7 @@ function failure(
 }
 
 async function readLimitedBody(request: Request) {
-  if (
-    Number(request.headers.get("content-length")) > MAX_INQUIRY_BYTES ||
-    !request.body
-  ) {
+  if (Number(request.headers.get("content-length")) > MAX_INQUIRY_BYTES || !request.body) {
     return null;
   }
 
@@ -187,10 +177,7 @@ export async function handleInquiry(
     if (!parsed.success) return failure(400, "invalid");
     const data = parsed.data;
 
-    const { env, source, isCloudflare } = resolveWorkerEnvironment(
-      request,
-      moduleBindings,
-    );
+    const { env, source, isCloudflare } = resolveWorkerEnvironment(request, moduleBindings);
     const recipient = z.string().email().safeParse(env.CONTACT_TO_EMAIL);
     const sender = z
       .string()
@@ -265,9 +252,7 @@ export async function handleInquiry(
         providerStatus: response.status,
       });
     }
-    const accepted = z
-      .object({ id: z.string().min(1) })
-      .safeParse(providerPayload);
+    const accepted = z.object({ id: z.string().min(1) }).safeParse(providerPayload);
     if (!accepted.success) {
       return failure(502, "delivery_failed", {
         providerStatus: response.status,

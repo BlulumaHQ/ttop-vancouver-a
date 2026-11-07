@@ -5,9 +5,8 @@ import type { EmailFetch, WorkerEnvironment } from "./inquiry.server";
 
 mock.module("cloudflare:workers", () => ({ env: {} }));
 
-const { buildInquiryEmail, handleInquiry, resolveWorkerEnvironment } = await import(
-  "./inquiry.server"
-);
+const { buildInquiryEmail, handleInquiry, resolveWorkerEnvironment } =
+  await import("./inquiry.server");
 
 const base = {
   locale: "en",
@@ -122,14 +121,10 @@ describe("Inquiry contracts", () => {
     ).toBe(false);
   });
   test("unsupported forms are rejected", () => {
-    expect(
-      inquirySchema.safeParse({ ...contact, formType: "unknown" }).success,
-    ).toBe(false);
+    expect(inquirySchema.safeParse({ ...contact, formType: "unknown" }).success).toBe(false);
   });
   test("honeypot blocks bots", () => {
-    expect(
-      inquirySchema.safeParse({ ...contact, website: "spam" }).success,
-    ).toBe(false);
+    expect(inquirySchema.safeParse({ ...contact, website: "spam" }).success).toBe(false);
   });
   test("HTML content is escaped while text preserves all fields", () => {
     const data = inquirySchema.parse({
@@ -145,12 +140,8 @@ describe("Inquiry contracts", () => {
   test("subjects match the four requested form names", () => {
     expect(inquirySubjects.contact).toBe("TTOP Chicken — New Contact Inquiry");
     expect(inquirySubjects.catering).toBe("TTOP Chicken — New Catering Inquiry");
-    expect(inquirySubjects.school).toBe(
-      "TTOP Chicken — New School Hot Lunch Inquiry",
-    );
-    expect(inquirySubjects.montessori).toBe(
-      "TTOP Chicken — New Montessori / Daycare Inquiry",
-    );
+    expect(inquirySubjects.school).toBe("TTOP Chicken — New School Hot Lunch Inquiry");
+    expect(inquirySubjects.montessori).toBe("TTOP Chicken — New Montessori / Daycare Inquiry");
   });
 });
 
@@ -206,9 +197,7 @@ describe("Email handler", () => {
     expect(await res.json()).toEqual({ ok: false, code: "delivery_failed" });
   });
   test("missing provider acceptance id never returns success", async () => {
-    const res = await handleInquiry(request(contact), async () =>
-      Response.json({}),
-    );
+    const res = await handleInquiry(request(contact), async () => Response.json({}));
     expect(res.status).toBe(502);
     expect(await res.json()).toEqual({ ok: false, code: "delivery_failed" });
   });
@@ -270,13 +259,10 @@ describe("Email handler", () => {
   });
   test("invalid input never reaches Resend", async () => {
     let calls = 0;
-    const res = await handleInquiry(
-      request({ ...contact, formType: "unknown" }),
-      async () => {
-        calls++;
-        return Response.json({ id: "test" });
-      },
-    );
+    const res = await handleInquiry(request({ ...contact, formType: "unknown" }), async () => {
+      calls++;
+      return Response.json({ id: "test" });
+    });
     expect(res.status).toBe(400);
     expect(await res.json()).toEqual({ ok: false, code: "invalid" });
     expect(calls).toBe(0);
