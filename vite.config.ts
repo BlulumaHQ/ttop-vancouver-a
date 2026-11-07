@@ -9,6 +9,12 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
   vite: {
+    build: {
+      rolldownOptions: {
+        // Workers provides this built-in module at runtime; keep it server-external.
+        external: ["cloudflare:workers"],
+      },
+    },
     plugins: [
       {
         name: "ttop-cloudflare-workers-preview",

@@ -14,6 +14,7 @@
 - [x] Verify translated pages, navigation, images and inquiry controls.
 
 # Cloudflare deployment compatibility
+- [ ] Externalize the official Workers module for the SSR build; verify the complete build and generated server output.
 - [x] Replace production delivery-logo CDN references with existing public images and archive unused pointers without deleting remote assets.
 - [x] Audit deployment settings and multilingual routes without changing design or content.
 - [x] Run asset and locale checks, verify rendered logos, and inspect the automatically generated production build result.
