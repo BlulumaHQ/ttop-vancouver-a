@@ -1,3 +1,4 @@
+/// <reference types="bun" />
 import { describe, expect, test } from "bun:test";
 import { inquirySchema, inquirySubjects, MAX_INQUIRY_BYTES } from "./inquiry";
 import { buildInquiryEmail, handleInquiry, type WorkerEnvironment } from "./inquiry.server";

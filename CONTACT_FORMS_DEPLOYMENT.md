@@ -43,4 +43,6 @@ After deployment:
 
 ## Changed files
 Created: `src/lib/inquiry.ts`, `src/lib/inquiry.server.ts`, `src/lib/inquiry.test.ts`, `src/routes/api/inquiry.ts`, this guide.
-Modified: `src/components/site/InquiryForm.tsx`, `src/components/site/ProgramInquirySection.tsx`, `src/components/pages/contact.tsx`, `src/components/pages/catering.tsx`, `AGENTS.md`, `roadmap.md`. TanStack regenerates its route tree automatically.
+Modified: `src/components/site/InquiryForm.tsx`, `src/components/site/ProgramInquirySection.tsx`, `src/components/pages/contact.tsx`, `src/components/pages/catering.tsx`, `package.json`, `bun.lock` (Bun test types), `AGENTS.md`, `roadmap.md`. TanStack regenerates its route tree automatically.
+
+Verification completed in the editor: 21 tests passed (18 inquiry tests and 3 locale tests); all 12 form/locale combinations reached the actual endpoint, displayed localized failures when credentials were unavailable, preserved input and never falsely reported success. Desktop and mobile form screenshots were checked; no browser runtime exceptions were observed. Image validation passed. Check the latest automatic production-build result before deploying.

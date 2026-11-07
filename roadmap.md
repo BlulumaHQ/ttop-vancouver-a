@@ -1,7 +1,8 @@
 # Activate inquiry forms
-- [ ] Audit all inquiry fields and connect email-only Resend sending across three locales.
-- [ ] Add validation, duplicate protection, spam safeguards and localized submission states.
-- [ ] Test valid/invalid submissions and document Cloudflare bindings and live delivery checks.
+- [x] Audit all inquiry fields and connect email-only Resend sending across three locales.
+- [x] Add validation, duplicate protection, spam safeguards and localized submission states.
+- [x] Test valid/invalid submissions and document Cloudflare bindings and live delivery checks.
+- [ ] Live delivery verification — blocked by external Cloudflare deployment, unavailable sandbox Resend credentials, and required CONTACT_RATE_LIMITER binding.
 
 # Chinese website
 - [x] Add independent Traditional Chinese and Simplified Chinese page URLs while retaining English.
