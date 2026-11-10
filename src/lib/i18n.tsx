@@ -46,7 +46,7 @@ export function Link(props: React.ComponentProps<typeof RouterLink>) {
 }
 
 export function localizedHead(locale: Locale, path: string, title: string, description: string) {
-  const url = `https://instant-client-ready.lovable.app${localizedPath(path, locale)}`;
+  const url = `${SITE_URL}${localizedPath(path, locale)}`;
   const translatedTitle = translateText(title, locale);
   const translatedDescription = translateText(description, locale);
   return {
@@ -62,8 +62,8 @@ export function localizedHead(locale: Locale, path: string, title: string, descr
     ],
     links: [
       { rel: "canonical", href: url },
-      ...(["en", "zh-TW", "zh-CN"] as const).map((language) => ({ rel: "alternate", hrefLang: language, href: `https://instant-client-ready.lovable.app${localizedPath(path, language)}` })),
-      { rel: "alternate", hrefLang: "x-default", href: `https://instant-client-ready.lovable.app${path}` },
+      ...(["en", "zh-TW", "zh-CN"] as const).map((language) => ({ rel: "alternate", hrefLang: language, href: `${SITE_URL}${localizedPath(path, language)}` })),
+      { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}${path}` },
     ],
   };
 }
