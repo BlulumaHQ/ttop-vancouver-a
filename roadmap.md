@@ -1,8 +1,9 @@
 # Domain-aware search indexing
 - [x] Inspect the SSR/Cloudflare entry, Lovable preview behavior, custom-domain responses, canonical URLs, sitemap and robots policy.
-- [ ] Add and test HTML-only noindex headers for exact platform-domain suffixes without changing routes, access or custom-domain responses.
-- [ ] Point canonical, alternate and sitemap URLs at the verified production custom domain so they do not canonicalize to noindex platform URLs.
-- [ ] Verify local host simulations, tests, build output and available public responses; external platform hosts require their next deployment.
+- [x] Add and test HTML-only noindex headers for exact platform-domain suffixes without changing routes, access or custom-domain responses.
+- [x] Point canonical, alternate and sitemap URLs at the verified production custom domain so they do not canonicalize to noindex platform URLs.
+- [x] Verify local platform/custom host simulations, nested routes, 404 HTML, non-HTML responses, 38 tests, asset checks and the automatic build.
+- [ ] Re-check actual platform-host responses after their next deployment; no live Workers/Pages/Netlify deployment was available, and Lovable's own unpublished-project 404 is platform-controlled.
 
 # Activate inquiry forms
 - [x] Audit all inquiry fields and connect email-only Resend sending across three locales.
