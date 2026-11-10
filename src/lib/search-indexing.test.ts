@@ -55,7 +55,7 @@ describe("Incoming hostname resolution", () => {
   });
 
   test("uses the public forwarded hostname only for local preview requests", () => {
-    const request = new Request("http://localhost:8080/zh-tw/menu", {
+    const request = new Request("http://127.0.0.1:8080/zh-tw/menu", {
       headers: {
         "x-forwarded-host": "id-preview--example.lovable.app, internal-proxy.local",
       },
