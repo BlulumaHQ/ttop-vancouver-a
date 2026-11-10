@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { SITE_URL } from "@/lib/site";
 
-const BASE_URL = "https://instant-client-ready.lovable.app";
+const BASE_URL = SITE_URL;
 
 const PATHS = ["/", "/menu", "/chuchu-bar", "/frozen-foods", "/school-lunch", "/montessori", "/catering", "/about", "/contact"];
 

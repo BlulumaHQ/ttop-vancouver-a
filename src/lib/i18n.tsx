@@ -3,6 +3,7 @@ import { Link as RouterLink, useRouterState } from "@tanstack/react-router";
 import tw from "./translations/zh-tw.json";
 import cn from "./translations/zh-cn.json";
 import { CONTENT_PATHS, localizedPath, localeFromPath, unlocalizedPath, type Locale } from "./locale";
+import { SITE_URL } from "./site";
 
 const LocaleContext = createContext<Locale>("en");
 const dictionaries: Record<string, Record<string, string>> = { "zh-TW": tw, "zh-CN": cn };

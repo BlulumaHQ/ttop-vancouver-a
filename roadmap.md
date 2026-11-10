@@ -1,3 +1,9 @@
+# Domain-aware search indexing
+- [x] Inspect the SSR/Cloudflare entry, Lovable preview behavior, custom-domain responses, canonical URLs, sitemap and robots policy.
+- [ ] Add and test HTML-only noindex headers for exact platform-domain suffixes without changing routes, access or custom-domain responses.
+- [ ] Point canonical, alternate and sitemap URLs at the verified production custom domain so they do not canonicalize to noindex platform URLs.
+- [ ] Verify local host simulations, tests, build output and available public responses; external platform hosts require their next deployment.
+
 # Activate inquiry forms
 - [x] Audit all inquiry fields and connect email-only Resend sending across three locales.
 - [x] Add validation, duplicate protection, spam safeguards and localized submission states.
