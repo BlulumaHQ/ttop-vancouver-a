@@ -4,13 +4,26 @@ import { SITE_URL } from "@/lib/site";
 
 const BASE_URL = SITE_URL;
 
-const PATHS = ["/", "/menu", "/chuchu-bar", "/frozen-foods", "/school-lunch", "/montessori", "/catering", "/about", "/contact"];
+const PATHS = [
+  "/",
+  "/menu",
+  "/chuchu-bar",
+  "/frozen-foods",
+  "/school-lunch",
+  "/montessori",
+  "/catering",
+  "/about",
+  "/contact",
+];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const allPaths = [...PATHS, ...["zh-tw", "zh-cn"].flatMap((locale) => PATHS.map((path) => `/${locale}${path}`))];
+        const allPaths = [
+          ...PATHS,
+          ...["zh-tw", "zh-cn"].flatMap((locale) => PATHS.map((path) => `/${locale}${path}`)),
+        ];
         const urls = allPaths.map(
           (p) =>
             `  <url>\n    <loc>${BASE_URL}${p}</loc>\n    <changefreq>weekly</changefreq>\n  </url>`,

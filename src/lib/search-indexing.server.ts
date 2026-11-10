@@ -1,18 +1,11 @@
-const PLATFORM_HOST_SUFFIXES = [
-  "lovable.app",
-  "workers.dev",
-  "pages.dev",
-  "netlify.app",
-] as const;
+const PLATFORM_HOST_SUFFIXES = ["lovable.app", "workers.dev", "pages.dev", "netlify.app"] as const;
 
 const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1"]);
 
 function normalizeHostname(value: string | null): string {
   if (!value) return "";
   try {
-    return new URL(`http://${value.trim()}`).hostname
-      .replace(/\.$/, "")
-      .toLowerCase();
+    return new URL(`http://${value.trim()}`).hostname.replace(/\.$/, "").toLowerCase();
   } catch {
     return "";
   }
@@ -32,19 +25,14 @@ export function getIncomingHostname(request: Request): string {
   // deployments the request URL is authoritative, so a spoofed forwarding
   // header cannot make a custom-domain response noindex.
   if (LOCAL_HOSTNAMES.has(requestHostname)) {
-    const forwardedHost = request.headers
-      .get("x-forwarded-host")
-      ?.split(",")[0];
+    const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0];
     return normalizeHostname(forwardedHost ?? null) || requestHostname;
   }
 
   return requestHostname;
 }
 
-export function applyPlatformNoindex(
-  request: Request,
-  response: Response,
-): Response {
+export function applyPlatformNoindex(request: Request, response: Response): Response {
   const contentType = response.headers.get("content-type") ?? "";
   if (
     !contentType.toLowerCase().includes("text/html") ||

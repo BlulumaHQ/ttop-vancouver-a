@@ -6,9 +6,7 @@ import {
   isPlatformHostname,
 } from "./search-indexing.server";
 
-function htmlResponse(
-  init: { status?: number; headers?: HeadersInit; body?: string } = {},
-) {
+function htmlResponse(init: { status?: number; headers?: HeadersInit; body?: string } = {}) {
   return new Response(init.body ?? "<html><body>Public page</body></html>", {
     status: init.status ?? 200,
     headers: { "content-type": "text/html; charset=utf-8", ...init.headers },
@@ -59,13 +57,10 @@ describe("Incoming hostname resolution", () => {
   test("uses the public forwarded hostname only for local preview requests", () => {
     const request = new Request("http://localhost:8080/zh-tw/menu", {
       headers: {
-        "x-forwarded-host":
-          "id-preview--example.lovable.app, internal-proxy.local",
+        "x-forwarded-host": "id-preview--example.lovable.app, internal-proxy.local",
       },
     });
-    expect(getIncomingHostname(request)).toBe(
-      "id-preview--example.lovable.app",
-    );
+    expect(getIncomingHostname(request)).toBe("id-preview--example.lovable.app");
   });
 });
 
@@ -111,22 +106,14 @@ describe("Domain-aware noindex responses", () => {
   test("leaves custom-domain HTML index-eligible and otherwise unchanged", () => {
     for (const domain of ["ttopchicken.com", "www.ttopchicken.com"]) {
       const original = htmlResponse();
-      const response = applyPlatformNoindex(
-        new Request(`https://${domain}/zh-tw/menu`),
-        original,
-      );
+      const response = applyPlatformNoindex(new Request(`https://${domain}/zh-tw/menu`), original);
       expect(response).toBe(original);
       expect(response.headers.has("x-robots-tag")).toBe(false);
     }
   });
 
   test("does not add noindex to JSON, XML, robots.txt or other non-HTML responses", () => {
-    for (const contentType of [
-      "application/json",
-      "application/xml",
-      "text/plain",
-      "image/png",
-    ]) {
+    for (const contentType of ["application/json", "application/xml", "text/plain", "image/png"]) {
       const original = new Response("public content", {
         headers: { "content-type": contentType },
       });
