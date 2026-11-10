@@ -4,5 +4,13 @@
   "name": "ttop-vancouver-a",
   // Keep plain-text variables set in the Cloudflare dashboard (CONTACT_TO_EMAIL,
   // CONTACT_FROM_EMAIL) instead of deleting them on every `wrangler deploy`.
-  "keep_vars": true
+  "keep_vars": true,
+  // Native Cloudflare Rate Limiting binding required by the inquiry endpoint.
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ]
 }
