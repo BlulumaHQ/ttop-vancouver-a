@@ -1,3 +1,4 @@
+export const SITE_URL = "https://www.ttopchicken.com";
 export const ORDER_URL =
   "https://order.chatchefs.com/taiwan-taipei-original-pot-07b91840/13986-cambie-rd-unit-223-richmond-bc-v6v-2k3-29340aa5/menu";
 export const PHONE = "604-285-8867";
